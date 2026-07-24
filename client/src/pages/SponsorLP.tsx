@@ -15,7 +15,7 @@ export default function SponsorLP() {
   return (
     <PageLayout>
       <PageHero en="SPONSOR" ja="協賛企業募集" sub="日田イルミナージュ2026の協賛企業を募集しています。地域を盛り上げる取り組みにご参加ください。" bgImage="/manus-storage/hero_97225277.jpg" />
-      <div className="pb-20 bg-[#F7F1E5]">
+      <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-[1100px] mx-auto px-4 -mt-4">
           <div className="mt-6 bg-[#10243E] rounded-2xl p-8 text-white mb-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -34,7 +34,7 @@ export default function SponsorLP() {
               ))}
             </div>
           </div>
-          <h3 className="font-serif-jp font-bold text-[#10243E] text-2xl mb-6">協賛プラン</h3>
+          <h3 className="font-serif-jp font-bold text-white text-2xl mb-6">協賛プラン</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {PLANS.map((p) => (
               <div key={p.rank} className={`rounded-2xl p-5 ${p.color}`}>
@@ -52,20 +52,20 @@ export default function SponsorLP() {
           </div>
           {SPONSORS.length > 0 && (
             <div className="mb-10">
-              <h3 className="font-serif-jp font-bold text-[#10243E] text-xl mb-4">協賛企業一覧（予定）</h3>
+              <h3 className="font-serif-jp font-bold text-white text-xl mb-4">協賛企業一覧（予定）</h3>
               <div className="flex flex-wrap gap-3">
                 {SPONSORS.map((s) => (
-                  <span key={s.id} className="bg-white border border-[#e8e0d0] rounded-xl px-4 py-2 text-sm font-sans-jp text-[#10243E] shadow-sm">
+                  <span key={s.id} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm font-sans-jp text-white shadow-sm">
                     <span className="text-xs text-[#C8A35A] font-bold mr-1.5">[{s.rank}]</span>{s.name}
                   </span>
                 ))}
               </div>
             </div>
           )}
-          <div className="bg-white rounded-2xl shadow-md p-8 border border-[#e8e0d0] text-center">
-            <h3 className="font-serif-jp font-bold text-[#10243E] text-xl mb-3">協賛のお申し込み・お問い合わせ</h3>
-            <p className="font-sans-jp text-[#10243E]/70 text-sm mb-5">詳細資料のご請求・ご相談はお問い合わせフォームよりお気軽にどうぞ。</p>
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#C8A35A] hover:bg-[#b8924a] text-[#10243E] font-bold px-8 py-4 rounded-xl font-sans-jp transition-all active:scale-95">
+          <div className="bg-white/5 rounded-2xl p-8 border border-white/10 text-center">
+            <h3 className="font-serif-jp font-bold text-white text-xl mb-3">協賛のお申し込み・お問い合わせ</h3>
+            <p className="font-sans-jp text-white/60 text-sm mb-5">詳細資料のご請求・ご相談はお問い合わせフォームよりお気軽にどうぞ。</p>
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#C8A35A] hover:bg-[#b8924a] text-white font-bold px-8 py-4 rounded-xl font-sans-jp transition-all active:scale-95">
               協賛についてお問い合わせする
             </Link>
           </div>

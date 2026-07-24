@@ -5,10 +5,10 @@ import { Train, Car, Bus, MapPin } from "lucide-react";
 export default function Access() {
   return (
     <PageLayout>
-      <PageHero en="ACCESS" ja="アクセス" sub="会場へのアクセス方法をご案内します。" bgImage="/manus-storage/gallery3_77c209d6.jpg" />
-      <div className="pb-20 bg-[#F7F1E5]">
-        <div className="max-w-[1100px] mx-auto px-4 -mt-4">
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <PageHero en="ACCESS" ja="アクセス" sub="会場へのアクセス方法をご案内します。" bgImage="/manus-storage/gallery3_a3ce42f5.jpg" />
+      <div className="pb-24 bg-[#050a1a]">
+        <div className="max-w-[1100px] mx-auto px-4 pt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-4">
               {[
                 { icon: <Train size={20} className="text-[#C8A35A]" />, title: "電車でお越しの方", content: ["JR久大本線「日田駅」下車", "駅から会場まで徒歩約20分、またはシャトルバス利用（無料）"] },
@@ -16,14 +16,14 @@ export default function Access() {
                 { icon: <Bus size={20} className="text-[#C8A35A]" />, title: "シャトルバス", content: ["JR日田駅〜会場間を無料運行（予定）", "時刻表は開催前にお知らせします"] },
                 { icon: <MapPin size={20} className="text-[#C8A35A]" />, title: "会場住所", content: ["サッポロビール日田工場", "〒877-0000 大分県日田市大字高瀬"] },
               ].map(({ icon, title, content }) => (
-                <div key={title} className="bg-white rounded-2xl shadow-md p-6 border border-[#e8e0d0]">
+                <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#C8A35A]/30 transition-colors">
                   <div className="flex items-center gap-3 mb-3">
                     {icon}
-                    <h3 className="font-serif-jp font-bold text-[#10243E] text-base">{title}</h3>
+                    <h3 className="font-serif-jp font-bold text-white text-base">{title}</h3>
                   </div>
                   <ul className="space-y-1.5">
                     {content.map((c, i) => (
-                      <li key={i} className="font-sans-jp text-sm text-[#10243E]/80 flex gap-2">
+                      <li key={i} className="font-sans-jp text-sm text-white/60 flex gap-2">
                         <span className="text-[#C8A35A] mt-0.5">•</span>{c}
                       </li>
                     ))}
@@ -31,7 +31,7 @@ export default function Access() {
                 </div>
               ))}
             </div>
-            <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-[#e8e0d0] h-[500px] lg:h-auto">
+            <div className="rounded-2xl overflow-hidden border border-white/10 h-[500px] lg:h-auto">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.0!2d130.9522!3d33.3212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354149c0e6c5c5c5%3A0x0!2z44K144OD44Od44Ot44OT44O844OraOacrOWkp-W4guWtpuWumA!5e0!3m2!1sja!2sjp!4v1700000000000"
                 width="100%"

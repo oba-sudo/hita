@@ -6,12 +6,12 @@ import { MapPin, Clock, Phone, Waves, ParkingCircle, Bus, ExternalLink } from "l
 export default function Stay() {
   return (
     <PageLayout>
-      <PageHero en="STAY" ja="宿泊施設" sub="日田での宿泊をお楽しみください。温泉・旅館・ホテルなど多彩な宿泊施設をご紹介します。" bgImage="/manus-storage/gallery2_8f991659.jpg" />
-      <div className="pb-20 bg-[#F7F1E5]">
+      <PageHero en="STAY" ja="宿泊施設" sub="日田での宿泊をお楽しみください。温泉・旅館・ホテルなど多彩な宿泊施設をご紹介します。" bgImage="/manus-storage/gallery2_3f1cfbd2.jpg" />
+      <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-[1100px] mx-auto px-4 -mt-4">
           <div className="mt-6 space-y-6">
             {STAYS.map((s) => (
-              <div key={s.id} className="bg-white rounded-2xl shadow-md overflow-hidden border border-[#e8e0d0] flex flex-col md:flex-row">
+              <div key={s.id} className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden flex flex-col md:flex-row">
                 <div className="md:w-72 h-52 md:h-auto shrink-0 overflow-hidden">
                   <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
                 </div>
@@ -19,11 +19,11 @@ export default function Stay() {
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div>
                       <span className="text-xs bg-[#10243E] text-[#C8A35A] px-2 py-0.5 rounded font-sans-jp">{s.type}</span>
-                      <h3 className="font-serif-jp font-bold text-[#10243E] text-xl mt-1">{s.name}</h3>
+                      <h3 className="font-serif-jp font-bold text-white text-xl mt-1">{s.name}</h3>
                     </div>
                   </div>
-                  <p className="font-sans-jp text-sm text-[#10243E]/70 leading-relaxed mb-4">{s.description}</p>
-                  <div className="grid grid-cols-2 gap-2 text-xs text-[#10243E]/60 font-sans-jp mb-4">
+                  <p className="font-sans-jp text-sm text-white/60 leading-relaxed mb-4">{s.description}</p>
+                  <div className="grid grid-cols-2 gap-2 text-xs text-white/50 font-sans-jp mb-4">
                     <div className="flex items-center gap-1.5"><MapPin size={12} />{s.distance}</div>
                     <div className="flex items-center gap-1.5"><Clock size={12} />IN {s.checkIn} / OUT {s.checkOut}</div>
                   </div>
@@ -39,7 +39,7 @@ export default function Stay() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-xs text-[#10243E]/50 font-sans-jp text-center">
+          <p className="mt-8 text-xs text-white/40 font-sans-jp text-center">
             ※ 宿泊施設の情報は変更になる場合があります。予約前に各施設へご確認ください。
           </p>
         </div>
