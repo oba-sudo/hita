@@ -1,7 +1,7 @@
 // Header — ヨルノヨ参考スタイル（ダークスペーステーマ）
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Ticket, CalendarCheck } from "lucide-react";
+import { Menu, X, Ticket, CalendarCheck, Star } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "/about", label: "イベント概要" },
@@ -66,6 +66,14 @@ export default function Header() {
             >
               <CalendarCheck size={13} />
               本日の開催
+            </Link>
+            <Link
+              href="/sponsor"
+              className="hidden md:flex items-center gap-1.5 text-xs font-sans-jp px-3 py-1.5 rounded border transition-all active:scale-95"
+              style={{ borderColor: "rgba(212,175,55,0.5)", color: "#D4AF37" }}
+            >
+              <Star size={11} />
+              協賛企業募集
             </Link>
             <Link
               href="/ticket"
