@@ -14,7 +14,7 @@ export default function About() {
               <h3 className="font-serif-jp font-bold text-[#10243E] text-xl mb-6 border-b border-[#e8e0d0] pb-3">開催概要</h3>
               <dl className="space-y-5">
                 {[
-                  { icon: <Calendar size={18} className="text-[#C8A35A]" />, label: "開催期間", value: "2026年11月下旬〜2027年1月上旬（予定）" },
+                  { icon: <Calendar size={18} className="text-[#C8A35A]" />, label: "開催期間", value: "2026年10月31日（土）〜2027年1月31日（日）／全93日間" },
                   { icon: <Clock size={18} className="text-[#C8A35A]" />, label: "開催時間", value: "17:00〜22:00（最終入場 21:30）" },
                   { icon: <MapPin size={18} className="text-[#C8A35A]" />, label: "会場", value: "サッポロビール日田工場（大分県日田市大字高瀬）" },
                   { icon: <Ticket size={18} className="text-[#C8A35A]" />, label: "入場料", value: "有料（チケット要）" },

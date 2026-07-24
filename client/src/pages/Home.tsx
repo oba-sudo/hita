@@ -118,7 +118,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex flex-wrap justify-center gap-4 text-white/70 text-xs font-sans-jp">
-            <span className="flex items-center gap-1"><CalendarCheck size={12} />2026年11月下旬〜2027年1月上旬（予定）</span>
+            <span className="flex items-center gap-1"><CalendarCheck size={12} />2026年10月31日〜2027年1月31日（93日間）</span>
             <span className="flex items-center gap-1"><Clock size={12} />17:00〜22:00</span>
             <span className="flex items-center gap-1"><MapPin size={12} />大分県日田市</span>
           </div>
@@ -165,7 +165,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10243E]/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex flex-wrap gap-2">
-                    {[{ icon: <CalendarCheck size={14} />, text: "2026年11月下旬〜" }, { icon: <Clock size={14} />, text: "17:00〜22:00" }, { icon: <MapPin size={14} />, text: "大分県日田市" }].map(({ icon, text }) => (
+                    {[{ icon: <CalendarCheck size={14} />, text: "10/31〜1/31（93日間）" }, { icon: <Clock size={14} />, text: "17:00〜22:00" }, { icon: <MapPin size={14} />, text: "大分県日田市" }].map(({ icon, text }) => (
                       <span key={text} className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-sans-jp">{icon}{text}</span>
                     ))}
                   </div>
@@ -181,7 +181,7 @@ export default function Home() {
                   地元の事業者・住民・行政が一体となって作り上げる、日田ならではの冬の祭典。来場者に日田の食・宿・観光・文化を体験していただき、何度でも訪れたくなる「日田のファン」を増やすことを目指しています。
                 </p>
                 <div className="grid grid-cols-3 gap-4 pt-2">
-                  {[{ num: "5万人+", label: "来場目標" }, { num: "45日間", label: "開催期間（予定）" }, { num: "無料", label: "シャトルバス" }].map(({ num, label }) => (
+                  {[{ num: "5万人+", label: "来場目標" }, { num: "93日間", label: "開催期間" }, { num: "無料", label: "シャトルバス" }].map(({ num, label }) => (
                     <div key={label} className="text-center bg-white rounded-xl p-4 shadow-sm border border-[#e8e0d0]">
                       <p className="font-display font-bold text-[#C8A35A] text-2xl">{num}</p>
                       <p className="font-sans-jp text-[#10243E]/60 text-xs mt-1">{label}</p>
@@ -438,7 +438,7 @@ export default function Home() {
             <h2 className="font-serif-jp font-black text-white text-3xl sm:text-4xl md:text-5xl mb-4 drop-shadow-xl">
               光の日田へ、ようこそ。
             </h2>
-            <p className="font-sans-jp text-white/80 text-base mb-8">2026年11月下旬〜2027年1月上旬（予定）</p>
+            <p className="font-sans-jp text-white/80 text-base mb-8">2026年10月31日（土）〜2027年1月31日（日）　全93日間</p>
             <Link href="/ticket" className="inline-flex items-center gap-2 bg-[#C8A35A] hover:bg-[#b8924a] text-[#10243E] font-bold px-10 py-5 rounded-xl font-sans-jp text-lg transition-all active:scale-95 shadow-2xl shadow-[#C8A35A]/30">
               <Ticket size={20} />チケットを購入する
             </Link>

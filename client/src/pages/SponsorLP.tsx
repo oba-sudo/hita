@@ -21,7 +21,7 @@ export default function SponsorLP() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
                 { icon: <Users size={28} className="text-[#C8A35A] mx-auto mb-2" />, label: "来場者数", value: "5万人以上", note: "（目標）" },
-                { icon: <TrendingUp size={28} className="text-[#C8A35A] mx-auto mb-2" />, label: "開催期間", value: "約45日間", note: "（予定）" },
+                { icon: <TrendingUp size={28} className="text-[#C8A35A] mx-auto mb-2" />, label: "開催期間", value: "93日間", note: "10/31〜1/31" },
                 { icon: <Star size={28} className="text-[#C8A35A] mx-auto mb-2" />, label: "SNSリーチ", value: "10万人以上", note: "（目標）" },
                 { icon: <Heart size={28} className="text-[#C8A35A] mx-auto mb-2" />, label: "地域貢献", value: "日田市全体", note: "の活性化" },
               ].map(({ icon, label, value, note }) => (
