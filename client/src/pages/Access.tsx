@@ -1,0 +1,51 @@
+import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
+import { Train, Car, Bus, MapPin } from "lucide-react";
+
+export default function Access() {
+  return (
+    <PageLayout>
+      <PageHero en="ACCESS" ja="アクセス" sub="会場へのアクセス方法をご案内します。" bgImage="/manus-storage/gallery3_77c209d6.jpg" />
+      <div className="pb-20 bg-[#F7F1E5]">
+        <div className="max-w-[1100px] mx-auto px-4 -mt-4">
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              {[
+                { icon: <Train size={20} className="text-[#C8A35A]" />, title: "電車でお越しの方", content: ["JR久大本線「日田駅」下車", "駅から会場まで徒歩約20分、またはシャトルバス利用（無料）"] },
+                { icon: <Car size={20} className="text-[#C8A35A]" />, title: "お車でお越しの方", content: ["大分自動車道「日田IC」から約10分", "会場周辺に複数の駐車場あり（有料・無料あり）", "混雑が予想されますので公共交通機関のご利用をおすすめします"] },
+                { icon: <Bus size={20} className="text-[#C8A35A]" />, title: "シャトルバス", content: ["JR日田駅〜会場間を無料運行（予定）", "時刻表は開催前にお知らせします"] },
+                { icon: <MapPin size={20} className="text-[#C8A35A]" />, title: "会場住所", content: ["〒877-0000 大分県日田市 天領日田おひなまつり会場周辺"] },
+              ].map(({ icon, title, content }) => (
+                <div key={title} className="bg-white rounded-2xl shadow-md p-6 border border-[#e8e0d0]">
+                  <div className="flex items-center gap-3 mb-3">
+                    {icon}
+                    <h3 className="font-serif-jp font-bold text-[#10243E] text-base">{title}</h3>
+                  </div>
+                  <ul className="space-y-1.5">
+                    {content.map((c, i) => (
+                      <li key={i} className="font-sans-jp text-sm text-[#10243E]/80 flex gap-2">
+                        <span className="text-[#C8A35A] mt-0.5">•</span>{c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-[#e8e0d0] h-[500px] lg:h-auto">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.1!2d130.9413!3d33.3219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354149d4b3b3b3b3%3A0x0!2z5aSn55Sw5biC!5e0!3m2!1sja!2sjp!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "400px" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="会場地図"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </PageLayout>
+  );
+}

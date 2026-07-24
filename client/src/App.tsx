@@ -5,31 +5,47 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-
+import Today from "./pages/Today";
+import About from "./pages/About";
+import Ticket from "./pages/Ticket";
+import Access from "./pages/Access";
+import Highlights from "./pages/Highlights";
+import Restaurants from "./pages/Restaurants";
+import Stay from "./pages/Stay";
+import Tourism from "./pages/Tourism";
+import Gallery from "./pages/Gallery";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import SponsorLP from "./pages/SponsorLP";
+import Privacy from "./pages/Privacy";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/today"} component={Today} />
+      <Route path={"/about"} component={About} />
+      <Route path={"/ticket"} component={Ticket} />
+      <Route path={"/access"} component={Access} />
+      <Route path={"/highlights"} component={Highlights} />
+      <Route path={"/restaurants"} component={Restaurants} />
+      <Route path={"/stay"} component={Stay} />
+      <Route path={"/tourism"} component={Tourism} />
+      <Route path={"/gallery"} component={Gallery} />
+      <Route path={"/faq"} component={FAQ} />
+      <Route path={"/contact"} component={Contact} />
+      <Route path={"/sponsor"} component={SponsorLP} />
+      <Route path={"/privacy"} component={Privacy} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <Router />
