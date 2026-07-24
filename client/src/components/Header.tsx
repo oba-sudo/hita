@@ -1,9 +1,10 @@
 // Header — ヨルノヨ参考スタイル（ダークスペーステーマ）
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Ticket, CalendarCheck, Star } from "lucide-react";
+import { Menu, X, Ticket, CalendarCheck } from "lucide-react";
 
 const NAV_ITEMS = [
+  { href: "/sponsor", label: "協賛企業募集", highlight: true },
   { href: "/about", label: "イベント概要" },
   { href: "/highlights", label: "見どころ" },
   { href: "/ticket", label: "チケット" },
@@ -15,6 +16,7 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  type NavItem = { href: string; label: string; highlight?: boolean };
   const [mobileOpen, setMobileOpen] = useState(false);
   const [location] = useLocation();
 
@@ -48,15 +50,26 @@ export default function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-5">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="font-sans-jp text-xs text-white/65 hover:text-[#D4AF37] transition-colors duration-200"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {(NAV_ITEMS as NavItem[]).map((item) =>
+              item.highlight ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="font-sans-jp text-xs font-bold px-3 py-1 rounded border transition-all active:scale-95"
+                  style={{ borderColor: "rgba(212,175,55,0.6)", color: "#D4AF37" }}
+                >
+                  ★ {item.label}
+                </Link>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="font-sans-jp text-xs text-white/65 hover:text-[#D4AF37] transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -66,14 +79,6 @@ export default function Header() {
             >
               <CalendarCheck size={13} />
               本日の開催
-            </Link>
-            <Link
-              href="/sponsor"
-              className="hidden md:flex items-center gap-1.5 text-xs font-sans-jp px-3 py-1.5 rounded border transition-all active:scale-95"
-              style={{ borderColor: "rgba(212,175,55,0.5)", color: "#D4AF37" }}
-            >
-              <Star size={11} />
-              協賛企業募集
             </Link>
             <Link
               href="/ticket"

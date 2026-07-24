@@ -141,6 +141,8 @@ export default function Home() {
             transition: "transform 0.1s linear",
           }}
         />
+        {/* イメージ注釈 */}
+        <div className="absolute bottom-16 right-3 z-20 text-[10px] text-white/30 font-sans-jp pointer-events-none select-none">※イメージ画像です</div>
         {/* 多層グラデーション */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/90" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#040810] via-transparent to-transparent" />
@@ -231,7 +233,6 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-2 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
               { num: "93", unit: "日間", label: "開催日数" },
-              { num: "5万", unit: "人+", label: "来場目標" },
               { num: "17:00", unit: "〜", label: "開場時間" },
               { num: "FREE", unit: "", label: "駐車場無料" },
             ].map((item, i) => (

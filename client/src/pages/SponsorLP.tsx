@@ -26,7 +26,6 @@ const OVERVIEW_ROWS = [
   { label: "開催日数", value: "93日間" },
   { label: "開催時間", value: "17:00 開場 ▶ 17:30 点灯 ▶ 21:30 閉場" },
   { label: "入場料", value: "大人 1,500円 ／ 子ども（小学生まで）500円" },
-  { label: "目標来場者数", value: "3万人" },
 ];
 
 const VISITOR_BREAKDOWN = [
@@ -321,6 +320,8 @@ export default function SponsorLP() {
       {/* ===== ヒーロー ===== */}
       <section className="relative min-h-[90svh] flex flex-col justify-end pt-14 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMG.hero})` }} />
+        {/* イメージ注釈 */}
+        <div className="absolute bottom-4 right-4 z-20 text-[10px] text-white/30 font-sans-jp pointer-events-none select-none">※イメージ画像です</div>
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,20,50,0.7) 0%, rgba(10,20,50,0.5) 50%, rgba(10,20,50,0.9) 100%)" }} />
         <div className="relative z-10 max-w-2xl mx-auto px-6 pb-12 w-full">
           <p className="text-[#C8A35A] text-xs tracking-[0.4em] mb-3 font-sans-jp">— SPONSORSHIP RECRUITMENT</p>
@@ -330,7 +331,7 @@ export default function SponsorLP() {
           <p className="text-white/80 text-base font-sans-jp mb-2">日田イルミナージュ2026</p>
           <p className="text-white/70 text-sm font-sans-jp leading-relaxed mb-8">
             日田に、新たな「冬の観光目的」をつくる。<br />
-            93日間・目標来場者3万人のイルミネーションイベントを通じて、<br />
+            93日間のイルミネーションイベントを通じて、<br />
             日田の観光振興と地域経済の活性化に、ともに取り組みませんか。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -355,7 +356,6 @@ export default function SponsorLP() {
             {[
               { label: "開催期間", value: "2026年10月31日（土）〜 2027年1月31日（日）" },
               { label: "開催日数", value: "93日間" },
-              { label: "目標来場者数", value: "3万人" },
               { label: "会場", value: "サッポロビール九州日田工場" },
             ].map((item) => (
               <div key={item.label} className="bg-black/30 backdrop-blur-sm px-3 py-3">
@@ -371,7 +371,7 @@ export default function SponsorLP() {
       <section ref={sectionsRef.about} className="py-16 bg-white scroll-mt-14">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-[#C8A35A] text-xs tracking-[0.3em] text-center font-sans-jp mb-1">ABOUT THE EVENT</p>
-          <h2 className="font-serif-jp font-bold text-2xl text-center text-gray-900 mb-1">事業概要・来場者数計画</h2>
+          <h2 className="font-serif-jp font-bold text-2xl text-center text-gray-900 mb-1">事業概要</h2>
           <div className="w-10 h-0.5 bg-[#C8A35A] mx-auto mb-8" />
 
           <div className="bg-[#f8f5ee] rounded-lg p-6 mb-8">
