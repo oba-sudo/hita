@@ -349,7 +349,7 @@ export default function Home() {
                 {[
                   { icon: <Bus size={18} className="text-[#C8A35A]" />, title: "シャトルバス（無料）", desc: "JR日田駅〜会場間を無料運行予定" },
                   { icon: <Car size={18} className="text-[#C8A35A]" />, title: "お車でお越しの方", desc: "大分自動車道「日田IC」から約10分。会場周辺に駐車場あり。" },
-                  { icon: <MapPin size={18} className="text-[#C8A35A]" />, title: "会場", desc: "大分県日田市 天領日田おひなまつり会場周辺" },
+                  { icon: <MapPin size={18} className="text-[#C8A35A]" />, title: "会場", desc: "サッポロビール日田工場（大分県日田市大字高瀬）" },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex gap-3 bg-white rounded-xl p-4 shadow-sm border border-[#e8e0d0]">
                     <div className="mt-0.5">{icon}</div>

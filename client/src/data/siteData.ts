@@ -2,8 +2,8 @@ export const EVENT_INFO = {
   name: "日田イルミナージュ2026",
   period: "2026年11月下旬〜2027年1月上旬（予定）",
   hours: "17:00〜22:00（最終入場 21:30）",
-  venue: "大分県日田市 天領日田おひなまつり会場周辺",
-  venueShort: "大分県日田市",
+  venue: "サッポロビール日田工場（大分県日田市）",
+  venueShort: "サッポロビール日田工場",
   mainCopy: "光を見に来る。日田に泊まり、食べ、巡り、また訪れる。",
   ticketUrl: "#ticket",
 };
@@ -63,4 +63,3 @@ export const SPONSORS = [
   { id: "sp5", name: "〇〇食品", rank: "シルバー", industry: "食品・飲料" },
   { id: "sp6", name: "△△銀行", rank: "シルバー", industry: "金融・保険" },
 ];
-
