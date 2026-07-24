@@ -104,10 +104,10 @@ export default function Home() {
             <span className="font-display text-[#C8A35A]">2026</span>
           </h1>
           <p className="font-sans-jp text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-2 drop-shadow">
-            光を見に来る。
+            冬の日田が、光に包まれる。
           </p>
           <p className="font-sans-jp text-white/70 text-sm sm:text-base leading-relaxed mb-8 drop-shadow">
-            日田に泊まり、食べ、巡り、また訪れる。
+            泊まり、食べ、巡り、また訪れる。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
             <Link href="/ticket" className="inline-flex items-center justify-center gap-2 bg-[#C8A35A] hover:bg-[#b8924a] text-[#10243E] font-bold px-8 py-4 rounded-xl font-sans-jp text-base transition-all active:scale-95 shadow-lg shadow-[#C8A35A]/30">
