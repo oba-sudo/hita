@@ -1,500 +1,478 @@
-// Home.tsx — ヨルノヨ参考スタイル: Dark Space × Gold Glow × Entertainment Festival
-// Design: 完全ダーク背景・英字大見出し・写真グリッド・地域エンタメ感
-import { useEffect, useRef } from "react";
+/**
+ * Home.tsx — 日田イルミナージュ2026 トップページ
+ * デザイン: スマホ優先・体験型スクロール・没入感重視
+ * 各セクションが独自の雰囲気を持ち、スクロールで世界観が変わる
+ */
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
-import { Ticket, CalendarCheck, MapPin, Clock, ChevronDown, ArrowRight, Star, Utensils, Hotel, Camera, Map } from "lucide-react";
-import PageLayout from "@/components/PageLayout";
-import SectionHeading from "@/components/SectionHeading";
+import { ChevronDown, MapPin, Clock, Calendar, Ticket, ArrowRight, Sparkles, Star, Utensils, Hotel, Camera, Map } from "lucide-react";
 
-// スクロールフェードイン hook
-function useFadeIn() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            observer.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll(".fade-in-up").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+// ── 画像URL ──────────────────────────────────────────
+const IMG = {
+  hero: "/manus-storage/hero_new_main_a3f186f4.jpg",
+  tunnel: "/manus-storage/hero_new_tunnel_90800fe9.jpg",
+  river: "/manus-storage/hero_new_river_c2accbcc.jpg",
+  crowd: "/manus-storage/hita_wide_crowd_5f089356.jpg",
+  food: "/manus-storage/hita_food_24c8ee40.jpg",
+  v1: "/manus-storage/hita_vertical1_ca94d1c0.jpg",
+  v2: "/manus-storage/hita_vertical2_c4f71435.jpg",
+  g1: "/manus-storage/gallery1_b05537d1.jpg",
+  g2: "/manus-storage/gallery2_3f1cfbd2.jpg",
+  g3: "/manus-storage/gallery3_a3ce42f5.jpg",
+};
+
+// ── パーティクル（星） ────────────────────────────────
+function Stars() {
+  const stars = Array.from({ length: 60 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 2 + 0.5,
+    delay: Math.random() * 4,
+    dur: Math.random() * 3 + 2,
+  }));
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {stars.map((s) => (
+        <div
+          key={s.id}
+          className="absolute rounded-full bg-white"
+          style={{
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            width: s.size,
+            height: s.size,
+            animation: `twinkle ${s.dur}s ${s.delay}s infinite alternate`,
+            opacity: 0.6,
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
-// ヒーロースライドショー
-const HERO_IMAGES = [
-  "/manus-storage/hero_new_main_a3f186f4.jpg",
-  "/manus-storage/hero_new_tunnel_90800fe9.jpg",
-  "/manus-storage/hero_new_river_c2accbcc.jpg",
-];
+// ── スクロール進捗フック ──────────────────────────────
+function useScrollProgress(ref: React.RefObject<HTMLElement | null>) {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setProgress(entry.intersectionRatio),
+      { threshold: Array.from({ length: 21 }, (_, i) => i / 20) }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [ref]);
+  return progress;
+}
 
-// 楽しみから探すカード
-const ENJOY_CARDS = [
-  { icon: Star, label: "光を楽しむ", sub: "Illumination", href: "/highlights", img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&q=80" },
-  { icon: Utensils, label: "食を味わう", sub: "Dining", href: "/restaurants", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" },
-  { icon: Hotel, label: "泊まる", sub: "Stay", href: "/stay", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" },
-  { icon: Map, label: "エリアを巡る", sub: "Explore", href: "/tourism", img: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" },
-  { icon: Camera, label: "写真を撮る", sub: "Gallery", href: "/gallery", img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&q=80" },
-  { icon: Ticket, label: "チケット", sub: "Ticket", href: "/ticket", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" },
-];
-
-// 日田の魅力カード
-const HITA_CARDS = [
-  {
-    title: "三隈川リフレクション",
-    sub: "Mikuma River",
-    desc: "川面に映るイルミネーションが幻想的な空間を演出。日田を代表する絶景スポット。",
-    img: "/manus-storage/hero_new_river_c2accbcc.jpg",
-    tag: "絶景スポット",
-  },
-  {
-    title: "豆田町の光の路地",
-    sub: "Mameda Town",
-    desc: "江戸時代の面影を残す豆田町の街並みが、イルミネーションで幻想的に彩られる。",
-    img: "/manus-storage/hero_new_tunnel_90800fe9.jpg",
-    tag: "歴史地区",
-  },
-  {
-    title: "サッポロ工場の光の庭",
-    sub: "Sapporo Factory",
-    desc: "サッポロビール日田工場の広大な敷地が、93日間の光の祭典の舞台となる。",
-    img: "/manus-storage/hero_new_main_a3f186f4.jpg",
-    tag: "メイン会場",
-  },
-];
+// ── フェードイン ──────────────────────────────────────
+function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.15 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(32px)",
+        transition: `opacity 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
-  useFadeIn();
-  const slideRef = useRef<number>(0);
-  const imgRef = useRef<HTMLImageElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      slideRef.current = (slideRef.current + 1) % HERO_IMAGES.length;
-      if (imgRef.current) {
-        imgRef.current.style.opacity = "0";
-        setTimeout(() => {
-          if (imgRef.current) {
-            imgRef.current.src = HERO_IMAGES[slideRef.current];
-            imgRef.current.style.opacity = "1";
-          }
-        }, 600);
-      }
-    }, 5000);
-    return () => clearInterval(interval);
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <PageLayout>
-      {/* ============ HERO ============ */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Background Image Slideshow */}
-        <img
-          ref={imgRef}
-          src={HERO_IMAGES[0]}
-          alt="日田イルミナージュ2026"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ transition: "opacity 0.8s ease", zIndex: 1 }}
-        />
-        {/* Dark Overlay */}
+    <div className="bg-[#040810] text-white overflow-x-hidden">
+      <style>{`
+        @keyframes twinkle { from { opacity: 0.2; } to { opacity: 0.9; } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes glow-pulse { 0%,100% { text-shadow: 0 0 20px rgba(200,163,90,0.4); } 50% { text-shadow: 0 0 60px rgba(200,163,90,0.9), 0 0 100px rgba(200,163,90,0.4); } }
+        @keyframes scroll-hint { 0%,100% { transform: translateY(0); opacity:1; } 50% { transform: translateY(8px); opacity:0.4; } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .gold-shimmer {
+          background: linear-gradient(90deg, #C8A35A 0%, #f0d080 40%, #C8A35A 60%, #a07830 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: shimmer 4s linear infinite;
+        }
+        .text-glow { animation: glow-pulse 3s ease-in-out infinite; }
+        .scroll-hint { animation: scroll-hint 2s ease-in-out infinite; }
+        .float { animation: float 4s ease-in-out infinite; }
+        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+        .clip-diagonal-rev { clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%); }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
+        .horizontal-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 1: フルスクリーンヒーロー（没入型）
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative h-[100svh] min-h-[600px] flex flex-col items-center justify-end pb-16 overflow-hidden">
+        {/* 背景画像 */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
-            background: "linear-gradient(to bottom, rgba(5,10,26,0.3) 0%, rgba(5,10,26,0.5) 50%, rgba(5,10,26,0.85) 100%)",
-            zIndex: 2,
+            backgroundImage: `url(${IMG.hero})`,
+            transform: `scale(1.08) translateY(${scrollY * 0.3}px)`,
+            transition: "transform 0.1s linear",
           }}
         />
+        {/* 多層グラデーション */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#040810] via-transparent to-transparent" />
+        {/* 星 */}
+        <Stars />
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          {/* Badge */}
+        {/* コンテンツ */}
+        <div className="relative z-10 text-center px-6 w-full max-w-lg mx-auto">
+          {/* バッジ */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-display tracking-widest mb-6"
-            style={{
-              border: "1px solid rgba(212,175,55,0.5)",
-              background: "rgba(212,175,55,0.1)",
-              color: "#D4AF37",
-              animationDelay: "0ms",
-            }}
+            className="inline-flex items-center gap-2 border border-[#C8A35A]/50 rounded-full px-4 py-1.5 mb-6 text-xs tracking-widest text-[#C8A35A] backdrop-blur-sm"
+            style={{ opacity: heroLoaded ? 1 : 0, transition: "opacity 1s ease 0.3s", animation: heroLoaded ? undefined : "none" }}
           >
-            <span className="text-[#D4AF37]">◆</span>
+            <Sparkles size={10} />
             HITA ILLUMINAGE 2026
+            <Sparkles size={10} />
           </div>
 
-          {/* Title */}
+          {/* メインタイトル */}
           <h1
-            className="font-serif-jp font-black text-white leading-tight mb-3"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
+            className="font-display text-[clamp(3rem,14vw,5.5rem)] leading-none tracking-tight mb-2"
+            style={{ opacity: 1 }}
           >
-            日田イルミナージュ
+            <span className="block text-white drop-shadow-2xl">日田</span>
+            <span className="block gold-shimmer">イルミナージュ</span>
+            <span className="block text-white/90 text-[0.55em] tracking-[0.3em] mt-1">2026</span>
           </h1>
-          <p
-            className="font-display text-[#D4AF37] font-bold mb-6 gold-glow"
-            style={{ fontSize: "clamp(2rem, 7vw, 4.5rem)" }}
-          >
-            2026
-          </p>
 
-          {/* Tagline */}
-          <p className="font-serif-jp text-white/90 text-lg md:text-xl mb-2">
+          {/* サブコピー */}
+          <p className="font-sans-jp text-white/70 text-sm tracking-widest mt-4 mb-8">
             冬の日田が、光に包まれる。
           </p>
-          <p className="font-sans-jp text-white/60 text-sm mb-10">
-            泊まり、食べ、巡り、また訪れる。
-          </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
-            <Link
-              href="/ticket"
-              className="inline-flex items-center justify-center gap-2 font-bold font-sans-jp text-base px-8 py-4 rounded-lg transition-all active:scale-95 shadow-lg"
-              style={{ background: "#D4AF37", color: "#050a1a", boxShadow: "0 0 30px rgba(212,175,55,0.4)" }}
-            >
-              <Ticket size={18} />
-              チケットを購入する
+          {/* CTA ボタン */}
+          <div className="flex flex-col gap-3 items-center">
+            <Link href="/ticket">
+              <button className="w-full max-w-xs flex items-center justify-center gap-2 bg-[#C8A35A] text-[#040810] font-bold font-sans-jp py-4 px-8 rounded-full text-sm tracking-wider active:scale-95 transition-transform">
+                <Ticket size={16} />
+                チケットを購入する
+              </button>
             </Link>
-            <Link
-              href="/today"
-              className="inline-flex items-center justify-center gap-2 font-bold font-sans-jp text-base px-8 py-4 rounded-lg transition-all active:scale-95"
-              style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.3)", color: "#fff", backdropFilter: "blur(8px)" }}
-            >
-              <CalendarCheck size={18} />
-              本日の開催情報
-            </Link>
-          </div>
-
-          {/* Event Info */}
-          <div className="flex flex-wrap justify-center gap-5 text-white/55 text-xs font-sans-jp">
-            <span className="flex items-center gap-1.5"><CalendarCheck size={12} />2026年10月31日〜2027年1月31日（93日間）</span>
-            <span className="flex items-center gap-1.5"><Clock size={12} />17:00〜22:00</span>
-            <span className="flex items-center gap-1.5"><MapPin size={12} />大分県日田市 サッポロビール日田工場</span>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/40 animate-bounce">
-          <ChevronDown size={28} />
-        </div>
-
-        {/* Side Label */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-          <span className="side-label">HITA ILLUMINAGE 2026</span>
-        </div>
-      </section>
-
-      {/* ============ ENJOY — 楽しみから探す ============ */}
-      <section className="relative z-10 py-20 md:py-28" style={{ background: "#0a0f2e" }}>
-        <div className="container">
-          <div className="fade-in-up">
-            <SectionHeading en="ENJOY" ja="楽しみから探す" align="center" />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 fade-in-up">
-            {ENJOY_CARDS.map((card) => (
-              <Link
-                key={card.href}
-                href={card.href}
-                className="relative overflow-hidden rounded-lg group card-hover"
-                style={{ aspectRatio: "4/3" }}
-              >
-                <img
-                  src={card.img}
-                  alt={card.label}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to top, rgba(5,10,26,0.85) 0%, rgba(5,10,26,0.2) 60%, transparent 100%)" }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="font-display text-[#D4AF37] text-xs tracking-widest mb-1">{card.sub}</p>
-                  <p className="font-serif-jp text-white font-bold text-base md:text-lg">{card.label}</p>
-                </div>
-                <div
-                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ color: "#D4AF37" }}
-                >
-                  <ArrowRight size={16} />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ ABOUT — イベント概要 ============ */}
-      <section className="relative z-10 py-20 md:py-28" style={{ background: "#050a1a" }}>
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="fade-in-up">
-              <SectionHeading en="ABOUT" ja="日田イルミナージュとは" />
-              <p className="font-sans-jp text-white/70 text-sm leading-relaxed mb-6">
-                大分県日田市のサッポロビール日田工場を舞台に、2026年10月31日から93日間にわたって開催される冬のイルミネーションイベントです。
-              </p>
-              <p className="font-sans-jp text-white/70 text-sm leading-relaxed mb-8">
-                光を入口として、日田の食・宿・観光・文化の魅力を発信し、地域全体の活性化を目指す「地域創生型イルミネーション」。来場者が日田に泊まり、食べ、巡り、また訪れたくなる体験を提供します。
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {[
-                  { num: "93", unit: "日間", label: "開催期間" },
-                  { num: "5万", unit: "人+", label: "来場目標" },
-                  { num: "17:00", unit: "〜22:00", label: "開催時間" },
-                  { num: "無料", unit: "", label: "シャトルバス" },
-                ].map(({ num, unit, label }) => (
-                  <div
-                    key={label}
-                    className="p-4 rounded-lg"
-                    style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.15)" }}
-                  >
-                    <p className="font-display text-[#D4AF37] text-2xl font-bold">
-                      {num}<span className="text-sm ml-0.5">{unit}</span>
-                    </p>
-                    <p className="font-sans-jp text-white/55 text-xs mt-1">{label}</p>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 font-sans-jp text-sm font-bold transition-colors"
-                style={{ color: "#D4AF37" }}
-              >
-                詳しく見る <ArrowRight size={14} />
-              </Link>
-            </div>
-            <div className="fade-in-up">
-              <div className="relative rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                <img
-                  src="/manus-storage/hero_new_main_a3f186f4.jpg"
-                  alt="日田イルミナージュ会場"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(135deg, rgba(5,10,26,0.3) 0%, transparent 60%)" }}
-                />
-                <div
-                  className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full text-xs font-sans-jp"
-                  style={{ background: "rgba(212,175,55,0.9)", color: "#050a1a", fontWeight: 700 }}
-                >
-                  サッポロビール日田工場
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ HIGHLIGHTS — 見どころ ============ */}
-      <section className="relative z-10 py-20 md:py-28" style={{ background: "#0a0f2e" }}>
-        <div className="container">
-          <div className="fade-in-up">
-            <SectionHeading en="HIGHLIGHTS" ja="日田の見どころ" align="center" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-up">
-            {HITA_CARDS.map((card) => (
-              <div
-                key={card.title}
-                className="rounded-xl overflow-hidden card-hover"
-                style={{ background: "#0f1840" }}
-              >
-                <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                  <img
-                    src={card.img}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span
-                      className="px-2 py-0.5 rounded text-xs font-sans-jp font-bold"
-                      style={{ background: "rgba(212,175,55,0.9)", color: "#050a1a" }}
-                    >
-                      {card.tag}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <p className="font-display text-[#D4AF37] text-xs tracking-widest mb-1">{card.sub}</p>
-                  <h3 className="font-serif-jp text-white font-bold text-lg mb-2">{card.title}</h3>
-                  <p className="font-sans-jp text-white/55 text-xs leading-relaxed">{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10 fade-in-up">
-            <Link
-              href="/highlights"
-              className="inline-flex items-center gap-2 font-sans-jp text-sm font-bold px-6 py-3 rounded-lg transition-all active:scale-95"
-              style={{ border: "1px solid rgba(212,175,55,0.5)", color: "#D4AF37" }}
-            >
-              すべての見どころを見る <ArrowRight size={14} />
+            <Link href="/today">
+              <button className="w-full max-w-xs flex items-center justify-center gap-2 border border-white/30 text-white font-sans-jp py-3.5 px-8 rounded-full text-sm tracking-wider backdrop-blur-sm active:scale-95 transition-transform">
+                <Calendar size={14} />
+                本日の開催情報
+              </button>
             </Link>
           </div>
         </div>
+
+        {/* 基本情報バー */}
+        <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-md border-t border-white/10 px-4 py-3 flex justify-center gap-6 text-xs text-white/60 font-sans-jp">
+          <span className="flex items-center gap-1.5"><Calendar size={11} className="text-[#C8A35A]" />10/31〜1/31（93日間）</span>
+          <span className="flex items-center gap-1.5"><Clock size={11} className="text-[#C8A35A]" />17:00〜22:00</span>
+          <span className="flex items-center gap-1.5"><MapPin size={11} className="text-[#C8A35A]" />サッポロ日田工場</span>
+        </div>
+
+        {/* スクロールヒント */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 scroll-hint">
+          <ChevronDown size={20} className="text-white/40" />
+        </div>
+
+        {/* 画像プリロード */}
+        <img src={IMG.hero} className="hidden" onLoad={() => setHeroLoaded(true)} alt="" />
       </section>
 
-      {/* ============ AREA — エリアから探す ============ */}
-      <section className="relative z-10 py-20 md:py-28" style={{ background: "#050a1a" }}>
-        <div className="container">
-          <div className="fade-in-up">
-            <SectionHeading en="AREA" ja="日田市内を巡る" sub="イルミネーション会場から足を伸ばして、日田の魅力を全身で体感してください。" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in-up">
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 2: 大きな数字で語るイベント規模
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative py-20 px-6 overflow-hidden">
+        {/* 背景テクスチャ */}
+        <div className="absolute inset-0 bg-[#040810]" />
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, #C8A35A 0%, transparent 60%), radial-gradient(circle at 80% 20%, #4060a0 0%, transparent 50%)" }} />
+
+        <div className="relative max-w-lg mx-auto">
+          <FadeIn>
+            <p className="text-[#C8A35A] text-xs tracking-[0.4em] font-sans-jp mb-3">ABOUT THE EVENT</p>
+            <h2 className="font-display text-4xl text-white leading-tight mb-6">
+              光で街ごと、<br />
+              <span className="gold-shimmer">変わる冬。</span>
+            </h2>
+            <p className="font-sans-jp text-white/60 text-sm leading-relaxed">
+              日田イルミナージュは、単なるイルミネーションイベントではありません。光をきっかけに、日田の食・宿・観光・文化を体験していただき、何度でも訪れたくなる「日田のファン」を増やすことを目指しています。
+            </p>
+          </FadeIn>
+
+          {/* 数字グリッド */}
+          <div className="mt-12 grid grid-cols-2 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              {
-                area: "豆田町",
-                en: "Mameda Town",
-                desc: "江戸時代の商家町の面影を残す重要伝統的建造物群保存地区。夜はイルミネーションで幻想的に。",
-                img: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80",
-                tags: ["歴史地区", "散策"],
-              },
-              {
-                area: "三隈川・花月川",
-                en: "Mikuma River",
-                desc: "日田を流れる清流。川面に映るイルミネーションのリフレクションが絶景。",
-                img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
-                tags: ["絶景", "フォトスポット"],
-              },
-              {
-                area: "日田温泉",
-                en: "Hita Onsen",
-                desc: "イルミネーション鑑賞後は日田温泉でゆっくり。宿泊とセットで特別な夜を。",
-                img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-                tags: ["温泉", "宿泊"],
-              },
-              {
-                area: "日田グルメ",
-                en: "Hita Gourmet",
-                desc: "日田やきそば・日田梨・日田杉を使った地元料理など、日田ならではの食文化を楽しむ。",
-                img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
-                tags: ["グルメ", "地域食材"],
-              },
-            ].map((item) => (
-              <Link
-                key={item.area}
-                href="/tourism"
-                className="relative overflow-hidden rounded-xl group card-hover"
-                style={{ aspectRatio: "16/7" }}
-              >
-                <img
-                  src={item.img}
-                  alt={item.area}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to right, rgba(5,10,26,0.85) 0%, rgba(5,10,26,0.3) 100%)" }}
-                />
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <p className="font-display text-[#D4AF37] text-xs tracking-widest mb-1">{item.en}</p>
-                  <h3 className="font-serif-jp text-white font-bold text-xl mb-2">{item.area}</h3>
-                  <p className="font-sans-jp text-white/65 text-xs leading-relaxed mb-3 max-w-xs">{item.desc}</p>
-                  <div className="flex gap-2">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 rounded text-xs font-sans-jp"
-                        style={{ background: "rgba(0,229,255,0.15)", border: "1px solid rgba(0,229,255,0.3)", color: "#00E5FF" }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+              { num: "93", unit: "日間", label: "開催日数" },
+              { num: "5万", unit: "人+", label: "来場目標" },
+              { num: "17:00", unit: "〜", label: "開場時間" },
+              { num: "FREE", unit: "", label: "駐車場無料" },
+            ].map((item, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="bg-[#0a1020] p-6 text-center">
+                  <div className="font-display text-3xl text-[#C8A35A] leading-none">
+                    {item.num}<span className="text-lg">{item.unit}</span>
                   </div>
+                  <div className="font-sans-jp text-white/40 text-xs mt-2">{item.label}</div>
                 </div>
-              </Link>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============ ACCESS — アクセス ============ */}
-      <section className="relative z-10 py-20 md:py-28" style={{ background: "#0a0f2e" }}>
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="fade-in-up">
-              <SectionHeading en="ACCESS" ja="アクセス" />
-              <div className="space-y-4 mb-8">
-                {[
-                  { label: "会場", value: "サッポロビール日田工場（大分県日田市大字高瀬）" },
-                  { label: "開催期間", value: "2026年10月31日（土）〜2027年1月31日（日）" },
-                  { label: "開催時間", value: "17:00〜22:00（最終入場 21:30）" },
-                  { label: "シャトルバス", value: "JR日田駅〜会場 無料運行（期間中）" },
-                ].map(({ label, value }) => (
-                  <div
-                    key={label}
-                    className="flex gap-4 p-4 rounded-lg"
-                    style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
-                  >
-                    <span
-                      className="font-sans-jp text-xs font-bold shrink-0 mt-0.5"
-                      style={{ color: "#D4AF37", minWidth: "5rem" }}
-                    >
-                      {label}
-                    </span>
-                    <span className="font-sans-jp text-white/75 text-xs leading-relaxed">{value}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/access"
-                className="inline-flex items-center gap-2 font-sans-jp text-sm font-bold px-6 py-3 rounded-lg transition-all active:scale-95"
-                style={{ background: "#D4AF37", color: "#050a1a" }}
-              >
-                <MapPin size={14} />
-                アクセス詳細を見る
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 3: 全幅画像 × テキストオーバーレイ（斜めカット）
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative clip-diagonal -mb-8">
+        <div className="relative h-[70vw] max-h-[420px] overflow-hidden">
+          <img src={IMG.tunnel} alt="光のトンネル" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center px-8 max-w-sm">
+            <FadeIn>
+              <p className="text-[#C8A35A] text-xs tracking-[0.3em] font-sans-jp mb-2">HIGHLIGHTS</p>
+              <h2 className="font-display text-3xl text-white leading-tight mb-3">
+                光のトンネルを<br />歩く体験
+              </h2>
+              <p className="font-sans-jp text-white/70 text-xs leading-relaxed mb-5">
+                色とりどりのLEDが織りなす幻想的なトンネル。歩くたびに光が変化する体験型スポット。
+              </p>
+              <Link href="/highlights">
+                <span className="inline-flex items-center gap-2 text-[#C8A35A] text-xs font-sans-jp border-b border-[#C8A35A]/40 pb-0.5">
+                  見どころをすべて見る <ArrowRight size={12} />
+                </span>
               </Link>
-            </div>
-            <div className="fade-in-up rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.5!2d130.9408!3d33.3219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541a2b5f4e8e8e9%3A0x1234567890abcdef!2z44K144OD44Od44Ot44O844OT44O844OrE697Eld5de5E5B5!5e0!3m2!1sja!2sjp!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
-                allowFullScreen
-                loading="lazy"
-                title="会場マップ"
-              />
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ============ TICKET CTA ============ */}
-      <section
-        className="relative z-10 py-24 md:py-32 overflow-hidden"
-        style={{ background: "#050a1a" }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse at center, rgba(212,175,55,0.12) 0%, transparent 70%)",
-          }}
-        />
-        <div className="relative container text-center fade-in-up">
-          <p className="font-display text-[#D4AF37] text-xs tracking-[0.4em] uppercase mb-4">Ticket</p>
-          <h2 className="font-serif-jp font-black text-white text-3xl md:text-5xl mb-4">
-            チケットを購入する
-          </h2>
-          <div className="section-divider-center mb-6" />
-          <p className="font-sans-jp text-white/55 text-sm mb-10 max-w-lg mx-auto">
-            前売り券・当日券・ペアチケットなど各種チケットをご用意しています。
-          </p>
-          <Link
-            href="/ticket"
-            className="inline-flex items-center gap-3 font-bold font-sans-jp text-lg px-10 py-5 rounded-xl transition-all active:scale-95"
-            style={{
-              background: "#D4AF37",
-              color: "#050a1a",
-              boxShadow: "0 0 40px rgba(212,175,55,0.5), 0 0 80px rgba(212,175,55,0.2)",
-            }}
-          >
-            <Ticket size={22} />
-            チケット情報を見る
-          </Link>
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 4: 楽しみ方カテゴリ（横スクロール）
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative py-16 bg-[#040810] clip-diagonal-rev pt-24">
+        <div className="px-6 mb-8">
+          <FadeIn>
+            <p className="text-[#C8A35A] text-xs tracking-[0.4em] font-sans-jp mb-2">ENJOY</p>
+            <h2 className="font-display text-3xl text-white">楽しみ方から<br />探す</h2>
+          </FadeIn>
+        </div>
+
+        {/* 横スクロールカード */}
+        <div className="flex gap-4 overflow-x-auto horizontal-scroll pl-6 pr-6 pb-4">
+          {[
+            { icon: Sparkles, label: "光を楽しむ", sub: "イルミネーション", href: "/highlights", img: IMG.g1, color: "#C8A35A" },
+            { icon: Utensils, label: "食べる", sub: "飲食店・屋台", href: "/restaurants", img: IMG.food, color: "#e07040" },
+            { icon: Hotel, label: "泊まる", sub: "宿泊施設", href: "/stay", img: IMG.v1, color: "#4090d0" },
+            { icon: Map, label: "巡る", sub: "観光スポット", href: "/tourism", img: IMG.v2, color: "#50b080" },
+            { icon: Camera, label: "撮る", sub: "フォトスポット", href: "/gallery", img: IMG.g2, color: "#c060c0" },
+            { icon: Ticket, label: "チケット", sub: "購入・料金", href: "/ticket", img: IMG.g3, color: "#C8A35A" },
+          ].map((item, i) => (
+            <Link key={i} href={item.href}>
+              <div className="flex-shrink-0 w-36 rounded-2xl overflow-hidden relative active:scale-95 transition-transform">
+                <div className="h-48 relative">
+                  <img src={item.img} alt={item.label} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                  <div
+                    className="absolute top-3 left-3 w-8 h-8 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${item.color}22`, border: `1px solid ${item.color}66` }}
+                  >
+                    <item.icon size={14} style={{ color: item.color }} />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <div className="font-sans-jp font-bold text-white text-sm leading-tight">{item.label}</div>
+                    <div className="font-sans-jp text-white/50 text-xs mt-0.5">{item.sub}</div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
-    </PageLayout>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 5: 川面リフレクション × 右寄せテキスト
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative overflow-hidden">
+        <div className="relative h-[80vw] max-h-[480px]">
+          <img src={IMG.river} alt="三隈川リフレクション" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/85 via-black/30 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center items-end px-8 text-right max-w-sm ml-auto">
+            <FadeIn>
+              <p className="text-[#C8A35A] text-xs tracking-[0.3em] font-sans-jp mb-2">HITA × NATURE</p>
+              <h2 className="font-display text-3xl text-white leading-tight mb-3">
+                川面に映る、<br />もうひとつの光
+              </h2>
+              <p className="font-sans-jp text-white/70 text-xs leading-relaxed">
+                三隈川の水面に映るイルミネーションが幻想的な空間を演出。日田ならではの水辺の光景。
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 6: 地域創生メッセージ（テキスト主役）
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative py-24 px-6 overflow-hidden bg-[#040810]">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(ellipse at 50% 50%, #C8A35A 0%, transparent 70%)" }} />
+        <div className="relative max-w-lg mx-auto text-center">
+          <FadeIn>
+            <Star size={20} className="text-[#C8A35A] mx-auto mb-6 float" />
+            <h2 className="font-display text-[clamp(2rem,10vw,3.5rem)] leading-tight mb-6">
+              <span className="block text-white/40 text-sm tracking-[0.4em] font-sans-jp mb-4">CONCEPT</span>
+              <span className="gold-shimmer">「光を見に来る。</span><br />
+              <span className="text-white">日田に泊まり、食べ、</span><br />
+              <span className="text-white">巡り、また訪れる。」</span>
+            </h2>
+            <p className="font-sans-jp text-white/50 text-sm leading-relaxed mt-6">
+              地域の事業者・住民・行政が一体となって作り上げる、日田ならではの冬の祭典。光が、人と街をつなぐ。
+            </p>
+          </FadeIn>
+
+          {/* 地域キーワード */}
+          <FadeIn delay={0.3}>
+            <div className="mt-10 flex flex-wrap justify-center gap-2">
+              {["豆田町", "三隈川", "日田杉", "天領日田", "日田温泉", "日田グルメ", "サッポロ工場"].map((tag) => (
+                <span key={tag} className="font-sans-jp text-xs text-white/50 border border-white/10 rounded-full px-3 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 7: 全幅群衆ショット × 中央テキスト
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative">
+        <div className="relative h-[60vw] max-h-[360px] overflow-hidden">
+          <img src={IMG.crowd} alt="会場全景" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+            <FadeIn>
+              <p className="font-sans-jp text-white/60 text-xs tracking-widest mb-3">2026.10.31 — 2027.1.31</p>
+              <h2 className="font-display text-3xl text-white leading-tight">
+                93日間、<br />
+                <span className="gold-shimmer">日田が輝く。</span>
+              </h2>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 8: アクセス情報（ダーク）
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-16 px-6 bg-[#060d1a]">
+        <div className="max-w-lg mx-auto">
+          <FadeIn>
+            <p className="text-[#C8A35A] text-xs tracking-[0.4em] font-sans-jp mb-2">ACCESS</p>
+            <h2 className="font-display text-3xl text-white mb-8">アクセス</h2>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="space-y-0 divide-y divide-white/5">
+              {[
+                { label: "会場", value: "サッポロビール日田工場（大分県日田市大字高瀬）" },
+                { label: "期間", value: "2026年10月31日（土）〜2027年1月31日（日）" },
+                { label: "時間", value: "17:00〜22:00（最終入場 21:30）" },
+                { label: "駐車場", value: "無料（会場周辺）" },
+              ].map((row) => (
+                <div key={row.label} className="py-4 flex gap-4">
+                  <span className="font-sans-jp text-[#C8A35A] text-xs w-14 flex-shrink-0 pt-0.5">{row.label}</span>
+                  <span className="font-sans-jp text-white/70 text-sm leading-relaxed">{row.value}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <Link href="/access">
+              <button className="mt-8 w-full flex items-center justify-center gap-2 border border-white/20 text-white/70 font-sans-jp py-4 rounded-xl text-sm active:scale-95 transition-transform">
+                <MapPin size={14} className="text-[#C8A35A]" />
+                アクセス詳細を見る
+                <ArrowRight size={14} />
+              </button>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 9: チケット購入CTA（ゴールド背景）
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#C8A35A] via-[#a07830] to-[#6a4e20]" />
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 60%)" }} />
+        <Stars />
+        <div className="relative py-20 px-6 text-center max-w-lg mx-auto">
+          <FadeIn>
+            <Ticket size={32} className="text-[#040810]/60 mx-auto mb-4" />
+            <h2 className="font-display text-3xl text-[#040810] leading-tight mb-3">
+              チケットを<br />購入する
+            </h2>
+            <p className="font-sans-jp text-[#040810]/70 text-sm mb-8">
+              大人 ¥1,500 / 子ども ¥800<br />
+              未就学児 無料
+            </p>
+            <Link href="/ticket">
+              <button className="bg-[#040810] text-[#C8A35A] font-bold font-sans-jp py-4 px-10 rounded-full text-sm tracking-wider active:scale-95 transition-transform">
+                チケット詳細・購入
+              </button>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SECTION 10: フッター前 協賛募集
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-14 px-6 bg-[#040810] border-t border-white/5">
+        <div className="max-w-lg mx-auto text-center">
+          <FadeIn>
+            <p className="font-sans-jp text-white/30 text-xs tracking-[0.3em] mb-3">SPONSOR</p>
+            <h3 className="font-display text-xl text-white mb-3">協賛企業を募集しています</h3>
+            <p className="font-sans-jp text-white/50 text-xs leading-relaxed mb-6">
+              日田イルミナージュ2026は地域創生を目的としたイベントです。<br />
+              協賛・協力いただける企業・団体を広く募集しています。
+            </p>
+            <Link href="/sponsor">
+              <button className="inline-flex items-center gap-2 border border-[#C8A35A]/40 text-[#C8A35A] font-sans-jp py-3 px-8 rounded-full text-xs tracking-wider active:scale-95 transition-transform">
+                協賛について詳しく見る <ArrowRight size={12} />
+              </button>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+    </div>
   );
 }
