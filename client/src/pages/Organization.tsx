@@ -41,9 +41,11 @@ export default function Organization() {
     },
     {
       role: "後援",
-      name: "日田市観光協会",
+      name: "一般社団法人日田市観光協会",
       desc: "日田市の観光振興を担う団体。地域の観光資源の発掘・発信と、来訪者の受け入れ体制整備を推進しています。",
       color: "#80c080",
+      url: "https://oidehita.com/",
+      urlLabel: "一般社団法人日田市観光協会公式サイト",
     },
     {
       role: "後援",
