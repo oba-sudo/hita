@@ -13,6 +13,7 @@ const IMG = {
   tunnel: "/manus-storage/hero_clean2_71d5a923.jpg",
   river: "/manus-storage/hero_clean3_219daed0.jpg",
   crowd: "/manus-storage/hita_wide_crowd_5f089356.jpg",
+  crowdClean: "/manus-storage/hita_crowd_clean_1ea4edaa.jpg",
   food: "/manus-storage/hita_food_24c8ee40.jpg",
   v1: "/manus-storage/hita_vertical1_ca94d1c0.jpg",
   v2: "/manus-storage/hita_vertical2_c4f71435.jpg",
@@ -355,7 +356,7 @@ export default function Home() {
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative">
         <div className="relative h-[60vw] max-h-[360px] overflow-hidden">
-          <img src={IMG.crowd} alt="会場全景" className="w-full h-full object-cover" />
+          <img src={IMG.crowdClean} alt="会場全景" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/50" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <FadeIn>
