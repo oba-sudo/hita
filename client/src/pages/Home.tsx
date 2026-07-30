@@ -383,7 +383,7 @@ export default function Home() {
           <FadeIn delay={0.1}>
             <div className="space-y-0 divide-y divide-white/5">
               {[
-                { label: "会場", value: "サッポロビール九州日田工場（大分県日田市大字高瀬）" },
+                { label: "会場", value: "サッポロビール九州日田工場（大分県日田市高瀬６９７９）" },
                 { label: "期間", value: "2026年10月31日（土）〜2027年1月31日（日）" },
                 { label: "時間", value: "17:00〜22:00（最終入場 21:30）" },
                 { label: "駐車場", value: "無料（会場周辺）" },
