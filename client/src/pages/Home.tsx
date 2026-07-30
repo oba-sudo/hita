@@ -9,9 +9,9 @@ import { ChevronDown, MapPin, Clock, Calendar, Ticket, ArrowRight, Sparkles, Sta
 
 // ── 画像URL ──────────────────────────────────────────
 const IMG = {
-  hero: "/manus-storage/hero_new_main_a3f186f4.jpg",
-  tunnel: "/manus-storage/hero_new_tunnel_90800fe9.jpg",
-  river: "/manus-storage/hero_new_river_c2accbcc.jpg",
+  hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
+  tunnel: "/manus-storage/hero_clean2_71d5a923.jpg",
+  river: "/manus-storage/hero_clean3_219daed0.jpg",
   crowd: "/manus-storage/hita_wide_crowd_5f089356.jpg",
   food: "/manus-storage/hita_food_24c8ee40.jpg",
   v1: "/manus-storage/hita_vertical1_ca94d1c0.jpg",

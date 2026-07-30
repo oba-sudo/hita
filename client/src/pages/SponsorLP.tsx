@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 
 const IMG = {
-  hero: "/manus-storage/hero_new_main_a3f186f4.jpg",
+  hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
   crowd: "/manus-storage/hita_wide_crowd_5f089356.jpg",
-  tunnel: "/manus-storage/hero_new_tunnel_90800fe9.jpg",
+  tunnel: "/manus-storage/hero_clean2_71d5a923.jpg",
 };
 
 // ===== データ =====
