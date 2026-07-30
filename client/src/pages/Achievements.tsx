@@ -5,7 +5,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 
 const IMG = {
   g1: "/manus-storage/saga_illuminage_photo_4d895885.png",
-  g2: "/manus-storage/gallery2_3f1cfbd2.jpg",
+  g2: "/manus-storage/illuminage_each_photo_7df461c2.png",
   g3: "/manus-storage/gallery3_a3ce42f5.jpg",
   hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
   crowd: "/manus-storage/hita_crowd_clean_1ea4edaa.jpg",
