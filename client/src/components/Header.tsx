@@ -1,22 +1,20 @@
-// Header — ヨルノヨ参考スタイル（ダークスペーステーマ）
+// Header — 第1段階構成（協賛営業用公式サイト）
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Ticket, CalendarCheck } from "lucide-react";
+import { Menu, X, Star } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/sponsor", label: "協賛企業募集", highlight: true },
-  { href: "/about", label: "イベント概要" },
-  { href: "/highlights", label: "見どころ" },
-  { href: "/ticket", label: "チケット" },
+  { href: "/about", label: "日田イルミナージュとは" },
+  { href: "/overview", label: "開催概要" },
+  { href: "/organization", label: "開催体制" },
+  { href: "/achievements", label: "過去実績" },
+  { href: "/news", label: "お知らせ" },
   { href: "/access", label: "アクセス" },
-  { href: "/restaurants", label: "飲食店" },
-  { href: "/stay", label: "宿泊施設" },
-  { href: "/gallery", label: "ギャラリー" },
+  { href: "/contact", label: "お問い合わせ" },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  type NavItem = { href: string; label: string; highlight?: boolean };
   const [mobileOpen, setMobileOpen] = useState(false);
   const [location] = useLocation();
 
@@ -41,6 +39,7 @@ export default function Header() {
         }}
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
+          {/* ロゴ */}
           <Link href="/" className="flex items-center gap-2 group">
             <span className="text-[#D4AF37] text-lg">◆</span>
             <span className="font-serif-jp font-bold text-white text-sm md:text-base leading-tight">
@@ -49,44 +48,28 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-5">
-            {(NAV_ITEMS as NavItem[]).map((item) =>
-              item.highlight ? (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="font-sans-jp text-xs font-bold px-3 py-1 rounded border transition-all active:scale-95"
-                  style={{ borderColor: "rgba(212,175,55,0.6)", color: "#D4AF37" }}
-                >
-                  ★ {item.label}
-                </Link>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="font-sans-jp text-xs text-white/65 hover:text-[#D4AF37] transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
+          {/* PCナビ */}
+          <nav className="hidden lg:flex items-center gap-4">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="font-sans-jp text-xs text-white/65 hover:text-[#D4AF37] transition-colors duration-200"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
+          {/* 右側CTA */}
           <div className="flex items-center gap-2">
             <Link
-              href="/today"
-              className="hidden md:flex items-center gap-1.5 text-xs font-sans-jp text-white/65 hover:text-[#D4AF37] transition-colors px-3 py-1.5"
-            >
-              <CalendarCheck size={13} />
-              本日の開催
-            </Link>
-            <Link
-              href="/ticket"
+              href="/sponsor"
               className="flex items-center gap-1.5 font-bold text-xs font-sans-jp px-4 py-2 rounded transition-all active:scale-95"
               style={{ background: "#D4AF37", color: "#050a1a" }}
             >
-              <Ticket size={13} />
-              チケット購入
+              <Star size={12} />
+              協賛・スポンサーについて
             </Link>
             <button
               className="lg:hidden text-white/80 hover:text-white p-1"
@@ -99,18 +82,14 @@ export default function Header() {
         </div>
       </header>
 
+      {/* モバイルメニュー */}
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 flex flex-col pt-20"
           style={{ background: "rgba(5,10,26,0.97)", backdropFilter: "blur(16px)" }}
         >
           <nav className="flex flex-col px-6 py-4 gap-1">
-            {[...NAV_ITEMS,
-              { href: "/today", label: "本日の開催情報" },
-              { href: "/faq", label: "よくある質問" },
-              { href: "/contact", label: "お問い合わせ" },
-              { href: "/sponsor", label: "協賛募集" },
-            ].map((item) => (
+            {[...NAV_ITEMS].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -122,11 +101,11 @@ export default function Header() {
           </nav>
           <div className="px-6 mt-4">
             <Link
-              href="/ticket"
+              href="/sponsor"
               className="block w-full text-center font-bold font-sans-jp py-4 rounded-lg text-base"
               style={{ background: "#D4AF37", color: "#050a1a" }}
             >
-              チケットを購入する
+              ★ 協賛・スポンサーについて
             </Link>
           </div>
         </div>
