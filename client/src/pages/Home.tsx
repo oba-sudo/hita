@@ -319,27 +319,6 @@ export default function Home() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 5: 川面リフレクション × 右寄せテキスト
-      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative overflow-hidden">
-        <div className="relative h-[80vw] max-h-[480px]">
-          <img src={IMG.river} alt="三隈川リフレクション" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-l from-black/85 via-black/30 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-center items-end px-8 text-right max-w-sm ml-auto">
-            <FadeIn>
-              <p className="text-[#C8A35A] text-xs tracking-[0.3em] font-sans-jp mb-2">HITA × NATURE</p>
-              <h2 className="font-display text-3xl text-white leading-tight mb-3">
-                川面に映る、<br />もうひとつの光
-              </h2>
-              <p className="font-sans-jp text-white/70 text-xs leading-relaxed">
-                三隈川の水面に映るイルミネーションが幻想的な空間を演出。日田ならではの水辺の光景。
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 6: 地域創生メッセージ（テキスト主役）
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative py-24 px-6 overflow-hidden bg-[#040810]">
@@ -361,7 +340,7 @@ export default function Home() {
           {/* 地域キーワード */}
           <FadeIn delay={0.3}>
             <div className="mt-10 flex flex-wrap justify-center gap-2">
-              {["豆田町", "三隈川", "日田杉", "天領日田", "日田温泉", "日田グルメ", "サッポロ工場"].map((tag) => (
+              {["豆田町", "日田杉", "天領日田", "日田温泉", "日田グルメ", "サッポロ工場"].map((tag) => (
                 <span key={tag} className="font-sans-jp text-xs text-white/50 border border-white/10 rounded-full px-3 py-1">
                   {tag}
                 </span>
