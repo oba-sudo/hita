@@ -322,10 +322,10 @@ export default function SponsorLP() {
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMG.hero})` }} />
         {/* イメージ注釈 */}
         <div className="absolute bottom-4 right-4 z-20 text-[10px] text-white/30 font-sans-jp pointer-events-none select-none">※イメージ画像です</div>
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,20,50,0.7) 0%, rgba(10,20,50,0.5) 50%, rgba(10,20,50,0.9) 100%)" }} />
-        <div className="relative z-10 max-w-2xl mx-auto px-6 pb-12 w-full">
-          <p className="text-[#C8A35A] text-xs tracking-[0.4em] mb-3 font-sans-jp">— SPONSORSHIP RECRUITMENT</p>
-          <h1 className="font-serif-jp font-bold text-white text-[clamp(2rem,8vw,3.2rem)] leading-tight mb-3">
+       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,20,50,0.7) 0%, rgba(10,20,50,0.5) 50%, rgba(10,20,50,0.9) 100%)" }} />
+       <div className="relative z-10 max-w-2xl mx-auto px-6 pb-12 w-full">
+         <p className="text-[#C8A35A] text-xs tracking-[0.4em] mb-3 font-sans-jp">— SPONSORSHIP RECRUITMENT</p>
+          <h1 className="font-serif-jp font-bold text-white text-[clamp(2rem,8vw,3.2rem)] leading-tight mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.7)" }}>
             協賛募集のご案内
           </h1>
           <p className="text-white/80 text-base font-sans-jp mb-2">日田イルミナージュ2026</p>
