@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const IMG = {
-  g1: "/manus-storage/gallery1_b05537d1.jpg",
+  g1: "/manus-storage/saga_illuminage_photo_4d895885.png",
   g2: "/manus-storage/gallery2_3f1cfbd2.jpg",
   g3: "/manus-storage/gallery3_a3ce42f5.jpg",
   hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
@@ -36,33 +36,33 @@ export default function Achievements() {
             日田の地域特性に合わせた新しい冬のイベントをつくります。
           </p>
 
-          {/* 九州イルミナージュ */}
+          {/* 佐賀イルミナージュ */}
           <div
             className="rounded-xl overflow-hidden mb-8"
             style={{ border: "1px solid rgba(212,175,55,0.15)" }}
           >
             <div className="relative h-48 md:h-64">
-              <img src={IMG.crowd} alt="九州イルミナージュ ※過去開催イメージ" className="w-full h-full object-cover" style={{ filter: "brightness(0.6)" }} />
+              <img src={IMG.g1} alt="佐賀イルミナージュ ※過去開催イメージ" className="w-full h-full object-cover" style={{ filter: "brightness(0.6)" }} />
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(5,10,26,0.9) 0%, transparent 60%)" }} />
               <p className="absolute top-3 right-3 font-sans-jp text-white/40 text-xs">※過去開催イメージ</p>
               <div className="absolute bottom-0 left-0 p-5">
-                <p className="font-display text-[#D4AF37] text-xs tracking-widest uppercase mb-1">Kyushu Illuminage</p>
-                <h2 className="font-serif-jp text-white text-xl font-bold">九州イルミナージュ</h2>
+                <p className="font-display text-[#D4AF37] text-xs tracking-widest uppercase mb-1">Saga Illuminage</p>
+                <h2 className="font-serif-jp text-white text-xl font-bold">佐賀イルミナージュ</h2>
               </div>
             </div>
             <div className="p-6" style={{ background: "rgba(255,255,255,0.02)" }}>
               <p className="font-sans-jp text-white/65 text-sm leading-loose mb-4">
-                株式会社BIDOWが手がける九州イルミナージュは、福岡・佐賀をはじめとした九州各地で開催されてきたイルミネーションイベントです。
+                株式会社BIDOWが手がける佐賀イルミナージュは、佐賀県をはじめとした九州各地で開催されてきたイルミネーションイベントです。
                 地域の特色を生かした会場演出と、地域連携型の運営体制が特徴です。
               </p>
               <a
-                href="https://kyushu-illuminage.jp/"
+                href="https://saga-illuminage.jp/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-sans-jp text-sm font-bold transition-colors"
                 style={{ color: "#D4AF37" }}
               >
-                九州イルミナージュ公式サイト <ExternalLink size={13} />
+                佐賀イルミナージュ公式サイト <ExternalLink size={13} />
               </a>
             </div>
           </div>

@@ -26,10 +26,10 @@ export default function Organization() {
     {
       role: "企画運営",
       name: "株式会社BIDOW",
-      desc: "イルミネーションイベントの企画・制作・運営を専門とする会社。九州イルミナージュをはじめ、全国各地でイルミネーションイベントを手がけてきた実績を持ちます。",
+      desc: "イルミネーションイベントの企画・制作・運営を専門とする会社。佐賀イルミナージュをはじめ、全国各地でイルミネーションイベントを手がけてきた実績を持ちます。",
       color: "#C8A35A",
-      url: "https://kyushu-illuminage.jp/",
-      urlLabel: "九州イルミナージュ公式サイト",
+      url: "https://saga-illuminage.jp/",
+      urlLabel: "佐賀イルミナージュ公式サイト",
     },
     {
       role: "協力",

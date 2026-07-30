@@ -7,10 +7,11 @@ import Footer from "@/components/Footer";
 import { Star, MapPin, Calendar, Clock, ChevronDown, ArrowRight, Building2, Users, Globe, Award } from "lucide-react";
 
 const IMG = {
+  saga: "/manus-storage/saga_illuminage_photo_4d895885.png",
   hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
   tunnel: "/manus-storage/hero_clean2_71d5a923.jpg",
   crowd: "/manus-storage/hita_crowd_clean_1ea4edaa.jpg",
-  g1: "/manus-storage/gallery1_b05537d1.jpg",
+  g1: "/manus-storage/saga_illuminage_photo_4d895885.png",
   g2: "/manus-storage/gallery2_3f1cfbd2.jpg",
   g3: "/manus-storage/gallery3_a3ce42f5.jpg",
 };
@@ -339,7 +340,7 @@ export default function Home() {
                 name: "株式会社BIDOW",
                 desc: "イルミネーションイベントの企画・制作・運営を専門とする会社。",
                 color: "#C8A35A",
-                url: "https://kyushu-illuminage.jp/",
+               url: "https://saga-illuminage.jp/",
               },
               {
                 role: "協力",
@@ -401,7 +402,7 @@ export default function Home() {
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             {[
-              { img: IMG.g1, title: "九州イルミナージュ", location: "福岡県・佐賀県", note: "過去開催イメージ" },
+              { img: IMG.g1, title: "佐賀イルミナージュ", location: "佐賀県", note: "過去開催イメージ" },
               { img: IMG.g2, title: "イルミナージュ各地", location: "全国各地", note: "過去開催イメージ" },
               { img: IMG.g3, title: "地域連携型イベント", location: "地域一体型運営", note: "過去開催イメージ" },
             ].map((item) => (
@@ -420,13 +421,13 @@ export default function Home() {
           </div>
           <FadeIn delay={0.2}>
             <a
-              href="https://kyushu-illuminage.jp/"
+              href="https://saga-illuminage.jp/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-sans-jp text-sm transition-all"
               style={{ color: "#D4AF37" }}
             >
-              九州イルミナージュ公式サイトで過去実績を見る <ArrowRight size={14} />
+              佐賀イルミナージュ公式サイトで過去実績を見る <ArrowRight size={14} />
             </a>
           </FadeIn>
         </div>
