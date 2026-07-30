@@ -21,7 +21,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="font-sans-jp text-white/45 text-xs leading-relaxed mb-4">
-              大分県日田市サッポロビール日田工場を舞台に<br />
+              大分県日田市サッポロビール九州日田工場を舞台に<br />
               開催される冬のイルミネーションイベント。<br />
               2026年10月31日〜2027年1月31日（93日間）
             </p>

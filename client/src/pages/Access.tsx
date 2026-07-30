@@ -12,9 +12,9 @@ export default function Access() {
             <div className="space-y-4">
               {[
                 { icon: <Train size={20} className="text-[#C8A35A]" />, title: "電車でお越しの方", content: ["JR久大本線「日田駅」下車", "駅から会場まで徒歩約20分、またはシャトルバス利用（無料）"] },
-                { icon: <Car size={20} className="text-[#C8A35A]" />, title: "お車でお越しの方", content: ["大分自動車道「日田IC」から約10分", "サッポロビール日田工場敷地内に駐車場あり", "混雑が予想されますので公共交通機関のご利用をおすすめします"] },
+                { icon: <Car size={20} className="text-[#C8A35A]" />, title: "お車でお越しの方", content: ["大分自動車道「日田IC」から約10分", "サッポロビール九州日田工場敷地内に駐車場あり", "混雑が予想されますので公共交通機関のご利用をおすすめします"] },
                 { icon: <Bus size={20} className="text-[#C8A35A]" />, title: "シャトルバス", content: ["JR日田駅〜会場間を無料運行（予定）", "時刻表は開催前にお知らせします"] },
-                { icon: <MapPin size={20} className="text-[#C8A35A]" />, title: "会場住所", content: ["サッポロビール日田工場", "〒877-0000 大分県日田市大字高瀬"] },
+                { icon: <MapPin size={20} className="text-[#C8A35A]" />, title: "会場住所", content: ["サッポロビール九州日田工場", "〒877-0000 大分県日田市大字高瀬"] },
               ].map(({ icon, title, content }) => (
                 <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#C8A35A]/30 transition-colors">
                   <div className="flex items-center gap-3 mb-3">

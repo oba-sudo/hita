@@ -17,7 +17,7 @@ export default function About() {
                 {[
                   { icon: <Calendar size={18} className="text-[#C8A35A]" />, label: "開催期間", value: "2026年10月31日（土）〜2027年1月31日（日）／全93日間" },
                   { icon: <Clock size={18} className="text-[#C8A35A]" />, label: "開催時間", value: "17:00〜22:00（最終入場 21:30）" },
-                  { icon: <MapPin size={18} className="text-[#C8A35A]" />, label: "会場", value: "サッポロビール日田工場（大分県日田市大字高瀬）" },
+                  { icon: <MapPin size={18} className="text-[#C8A35A]" />, label: "会場", value: "サッポロビール九州日田工場（大分県日田市大字高瀬）" },
                   { icon: <Ticket size={18} className="text-[#C8A35A]" />, label: "入場料", value: "有料（チケット要）" },
                   { icon: <Users size={18} className="text-[#C8A35A]" />, label: "対象", value: "どなたでもご参加いただけます" },
                 ].map(({ icon, label, value }) => (

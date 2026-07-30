@@ -198,7 +198,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-md border-t border-white/10 px-4 py-3 flex justify-center gap-6 text-xs text-white/60 font-sans-jp">
           <span className="flex items-center gap-1.5"><Calendar size={11} className="text-[#C8A35A]" />10/31〜1/31（93日間）</span>
           <span className="flex items-center gap-1.5"><Clock size={11} className="text-[#C8A35A]" />17:00〜22:00</span>
-          <span className="flex items-center gap-1.5"><MapPin size={11} className="text-[#C8A35A]" />サッポロ日田工場</span>
+          <span className="flex items-center gap-1.5"><MapPin size={11} className="text-[#C8A35A]" />サッポロビール九州日田工場</span>
         </div>
 
         {/* スクロールヒント */}
@@ -341,7 +341,7 @@ export default function Home() {
           {/* 地域キーワード */}
           <FadeIn delay={0.3}>
             <div className="mt-10 flex flex-wrap justify-center gap-2">
-              {["豆田町", "日田杉", "天領日田", "日田温泉", "日田グルメ", "サッポロ工場"].map((tag) => (
+              {["豆田町", "日田杉", "天領日田", "日田温泉", "日田グルメ", "サッポロビール九州日田工場"].map((tag) => (
                 <span key={tag} className="font-sans-jp text-xs text-white/50 border border-white/10 rounded-full px-3 py-1">
                   {tag}
                 </span>
@@ -383,7 +383,7 @@ export default function Home() {
           <FadeIn delay={0.1}>
             <div className="space-y-0 divide-y divide-white/5">
               {[
-                { label: "会場", value: "サッポロビール日田工場（大分県日田市大字高瀬）" },
+                { label: "会場", value: "サッポロビール九州日田工場（大分県日田市大字高瀬）" },
                 { label: "期間", value: "2026年10月31日（土）〜2027年1月31日（日）" },
                 { label: "時間", value: "17:00〜22:00（最終入場 21:30）" },
                 { label: "駐車場", value: "無料（会場周辺）" },
