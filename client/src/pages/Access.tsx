@@ -32,7 +32,7 @@ export default function Access() {
             </div>
             <div className="rounded-2xl overflow-hidden border border-white/10 h-[500px] lg:h-auto min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d130.9440418!3d33.2979371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35416a6590a96e8d%3A0x8abbe19477e78166!2z44K144OD44Od44Ot44OT44O844Or5Lmd5bee5pel55Sw5L-d5Zy6!5e0!3m2!1sja!2sjp!4v1700000000001!5m2!1sja!2sjp"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3248.5!2d130.9440418!3d33.2979371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35416a6590a96e8d%3A0x8abbe19477e78166!2z44K144OD44Od44Ot44OT44O844Or5Lmd5bee5pel55Sw5L-d5Zy6!5e0!3m2!1sja!2sjp!4v1753970000000!5m2!1sja!2sjp"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "400px" }}
