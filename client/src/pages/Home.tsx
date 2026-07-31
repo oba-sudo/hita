@@ -71,7 +71,7 @@ function SectionLabel({ en, ja }: { en: string; ja: string }) {
   return (
     <div className="mb-6 md:mb-8">
       <p className="font-display text-[#D4AF37] text-xs tracking-[0.3em] uppercase mb-2">{en}</p>
-      <h2 className="font-serif-jp text-2xl md:text-3xl font-bold text-white leading-tight">{ja}</h2>
+      <h2 className="font-serif-jp text-2xl md:text-3xl font-bold text-white leading-tight whitespace-pre-line text-left">{ja}</h2>
       <div className="mt-3 w-12 h-px" style={{ background: "linear-gradient(to right, #D4AF37, transparent)" }} />
     </div>
   );
