@@ -319,7 +319,7 @@ export default function Home() {
       <section className="py-20 md:py-28" style={{ background: "#050a1a" }}>
         <div className="container">
           <FadeIn>
-            <SectionLabel en="Organization" ja={"専門団体と地域関係団体が連携する\n日田の冬季観光プロジェクト"} />
+            <SectionLabel en="Organization" ja={"専門団体と地域関係団体が\n連携する\n日田の冬季観光プロジェクト"} />
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="font-sans-jp text-white/60 text-sm leading-loose max-w-2xl mb-10">
