@@ -1,7 +1,7 @@
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { STAYS } from "@/data/siteData";
-import { MapPin, Clock, Phone, Waves, ParkingCircle, Bus, ExternalLink } from "lucide-react";
+import { MapPin, Clock, Phone, Waves, ParkingCircle, ExternalLink } from "lucide-react";
 
 export default function Stay() {
   return (
@@ -30,7 +30,6 @@ export default function Stay() {
                   <div className="flex flex-wrap gap-2 mb-4">
                     {s.hasOnsen && <span className="flex items-center gap-1 bg-blue-50 text-blue-700 text-xs px-2.5 py-1 rounded-full font-sans-jp"><Waves size={11} />温泉あり</span>}
                     {s.hasParking && <span className="flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-sans-jp"><ParkingCircle size={11} />駐車場あり</span>}
-                    {s.hasShuttle && <span className="flex items-center gap-1 bg-orange-50 text-orange-700 text-xs px-2.5 py-1 rounded-full font-sans-jp"><Bus size={11} />シャトル送迎</span>}
                   </div>
                   <a href={s.bookingUrl} className="inline-flex items-center gap-2 bg-[#10243E] hover:bg-[#1a3a5e] text-white font-bold text-sm px-5 py-2.5 rounded-xl font-sans-jp transition-all active:scale-95">
                     <ExternalLink size={14} />予約・詳細を見る

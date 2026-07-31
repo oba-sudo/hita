@@ -1,7 +1,7 @@
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { TODAY_STATUS } from "@/data/siteData";
-import { CheckCircle, AlertTriangle, XCircle, Clock, Car, Bus, RefreshCw } from "lucide-react";
+import { CheckCircle, AlertTriangle, XCircle, Clock, Car, RefreshCw } from "lucide-react";
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { color: string; icon: React.ReactNode }> = {
@@ -58,10 +58,6 @@ export default function Today() {
                 <div className="flex items-center gap-2 text-white/40 text-xs font-sans-jp mb-2"><Car size={13} />駐車場</div>
                 <StatusBadge status={s.parkingStatus} />
               </div>
-              <div className="bg-white/5 border border-white/5 rounded-xl p-4">
-                <div className="flex items-center gap-2 text-white/40 text-xs font-sans-jp mb-2"><Bus size={13} />シャトルバス</div>
-                <StatusBadge status={s.shuttleStatus} />
-              </div>
             </div>
             {s.weatherNote && (
               <div className="px-6 pb-4">
@@ -85,4 +81,3 @@ export default function Today() {
     </PageLayout>
   );
 }
-

@@ -16,7 +16,6 @@ export const TODAY_STATUS = {
   lastEntry: "21:30",
   ticketStatus: "販売中",
   parkingStatus: "空車" as "空車" | "混雑" | "満車" | "情報確認中",
-  shuttleStatus: "通常運行" as "通常運行" | "遅延" | "運休" | "本日は運行なし",
   weatherNote: "本日は晴天の予報です。防寒対策をしてお越しください。",
   trafficNote: "",
   updatedAt: "2026年11月XX日 16:00",
@@ -32,9 +31,9 @@ export const RESTAURANTS = [
 ];
 
 export const STAYS = [
-  { id: "s1", name: "天領の宿 日田温泉", type: "温泉旅館", area: "温泉街", description: "日田温泉の老舗旅館。源泉かけ流しの温泉と旬の料理が自慢。", distance: "会場から車で10分", distanceTime: "車で約10分", hasOnsen: true, hasParking: true, hasShuttle: true, checkIn: "15:00", checkOut: "11:00", phone: "0973-XX-XXXX", bookingUrl: "#", image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" },
-  { id: "s2", name: "ホテル日田ステーション", type: "ホテル", area: "日田駅周辺", description: "日田駅から徒歩3分のビジネスホテル。観光の拠点として便利な立地。", distance: "会場から徒歩20分", distanceTime: "徒歩約20分", hasOnsen: false, hasParking: true, hasShuttle: false, checkIn: "15:00", checkOut: "10:00", phone: "0973-XX-XXXX", bookingUrl: "#", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" },
-  { id: "s3", name: "日田の里 山荘", type: "旅館", area: "郊外", description: "自然に囲まれた静かな旅館。日田の山の幸を使った料理が評判。", distance: "会場から車で15分", distanceTime: "車で約15分", hasOnsen: true, hasParking: true, hasShuttle: true, checkIn: "14:00", checkOut: "11:00", phone: "0973-XX-XXXX", bookingUrl: "#", image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" },
+  { id: "s1", name: "天領の宿 日田温泉", type: "温泉旅館", area: "温泉街", description: "日田温泉の老舗旅館。源泉かけ流しの温泉と旬の料理が自慢。", distance: "会場から車で10分", distanceTime: "車で約10分", hasOnsen: true, hasParking: true, checkIn: "15:00", checkOut: "11:00", phone: "0973-XX-XXXX", bookingUrl: "#", image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" },
+  { id: "s2", name: "ホテル日田ステーション", type: "ホテル", area: "日田駅周辺", description: "日田駅から徒歩3分のビジネスホテル。観光の拠点として便利な立地。", distance: "会場から徒歩20分", distanceTime: "徒歩約20分", hasOnsen: false, hasParking: true, checkIn: "15:00", checkOut: "10:00", phone: "0973-XX-XXXX", bookingUrl: "#", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" },
+  { id: "s3", name: "日田の里 山荘", type: "旅館", area: "郊外", description: "自然に囲まれた静かな旅館。日田の山の幸を使った料理が評判。", distance: "会場から車で15分", distanceTime: "車で約15分", hasOnsen: true, hasParking: true, checkIn: "14:00", checkOut: "11:00", phone: "0973-XX-XXXX", bookingUrl: "#", image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" },
 ];
 
 export const TOURISM_SPOTS = [
@@ -47,8 +46,7 @@ export const TOURISM_SPOTS = [
 export const FAQ_ITEMS = [
   { q: "開催期間はいつですか？", a: "2026年10月31日（土）から2027年1月31日（日）までの93日間を予定しています。" },
   { q: "チケットはどこで購入できますか？", a: "公式チケット販売サイト（外部）にてオンライン購入が可能です。当日券は会場入口でも販売予定ですが、混雑状況によっては販売を終了する場合があります。" },
-  { q: "駐車場はありますか？", a: "会場周辺に複数の駐車場をご用意しています。開催期間中は混雑が予想されますので、公共交通機関やシャトルバスのご利用をおすすめします。" },
-  { q: "シャトルバスはありますか？", a: "JR日田駅から会場まで無料シャトルバスを運行予定です。時刻表は開催前にお知らせします。" },
+  { q: "駐車場はありますか？", a: "会場周辺に複数の駐車場をご用意しています。開催期間中は混雑が予想されますので、公共交通機関のご利用をおすすめします。" },
   { q: "雨天でも開催しますか？", a: "小雨程度であれば通常開催します。荒天の場合は中止または内容変更となる場合があります。当日の開催状況は「本日の開催情報」ページでご確認ください。" },
   { q: "子ども連れでも楽しめますか？", a: "はい、ご家族でお楽しみいただけるイベントです。ベビーカーでの入場も可能です。子ども向けのイベントも予定しています。" },
   { q: "ペットは入場できますか？", a: "ペットの入場については、開催時の規定に従います。詳細は開催前にお知らせします。" },

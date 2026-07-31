@@ -574,7 +574,7 @@ export default function Home() {
                   <p className="font-sans-jp text-white/55 text-xs">〒877-0054 大分県日田市高瀬６９７９</p>
                 </div>
                 <p className="font-sans-jp text-white/40 text-xs leading-relaxed">
-                  ※駐車場・シャトルバス・交通規制などの詳細は、正式決定後に公開します。
+                  ※駐車場・交通規制などの詳細は、正式決定後に公開します。
                 </p>
                 <Link
                   href="/access"
