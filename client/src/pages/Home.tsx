@@ -124,7 +124,7 @@ export default function Home() {
             transform: `translateY(${scrollY * 0.3}px)`,
           }}
         />
-        <img src={IMG.hero} className="hidden" onLoad={() => setHeroLoaded(true)} alt="" />
+        <img src={IMG.hero} className="hidden" onLoad={() => setHeroLoaded(true)} alt="日田イルミナージュ2026 会場イメージ" />
         {/* グラデーションオーバーレイ */}
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(5,10,26,0.3) 0%, rgba(5,10,26,0.5) 50%, rgba(5,10,26,0.92) 100%)" }} />
         {/* パーティクル */}
