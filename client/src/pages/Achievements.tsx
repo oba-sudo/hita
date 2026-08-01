@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const IMG = {
-  g1: "/manus-storage/saga_illuminage_photo_4d895885.png",
+  g1: "/manus-storage/saga-illuminage-new_43ccfc92.png",
   g2: "/manus-storage/illuminage_each_photo_7df461c2.png",
   g3: "/manus-storage/gallery3_a3ce42f5.jpg",
   hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
