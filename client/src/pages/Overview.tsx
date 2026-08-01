@@ -36,7 +36,7 @@ export default function Overview() {
               { label: "主催", value: "日田イルミナージュ実行委員会" },
               { label: "企画運営", value: "株式会社BIDOW" },
               { label: "協力", value: "一般社団法人日本イルミネーション協会" },
-              { label: "後援", value: "一般社団法人日田市観光協会、日田温泉旅館組合" },
+              { label: "後援", value: "一般社団法人日田市観光協会、日田市、日田商工会議所" },
             ].map((row, i, arr) => (
               <div
                 key={row.label}

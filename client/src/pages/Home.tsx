@@ -205,7 +205,7 @@ export default function Home() {
                 { role: "主催", name: "日田イルミナージュ実行委員会" },
                 { role: "企画運営", name: "株式会社BIDOW" },
                 { role: "協力", name: "一般社団法人日本イルミネーション協会" },
-                { role: "後援", name: "一般社団法人日田市観光協会・日田温泉旅館組合" },
+                { role: "後援", name: "一般社団法人日田市観光協会・日田市・日田商工会議所" },
               ].map((o) => (
                 <div key={o.role} className="flex items-center gap-1.5">
                   <span className="font-sans-jp text-[#D4AF37]/70 text-xs">{o.role}：</span>
@@ -352,7 +352,7 @@ export default function Home() {
               },
               {
                 role: "後援",
-                name: "一般社団法人日田市観光協会・日田温泉旅館組合",
+                name: "一般社団法人日田市観光協会・日田市・日田商工会議所",
                 desc: "日田市の観光振興を担う地域団体。地域一体型の運営を支援。",
                 color: "#80c080",
               },
@@ -493,7 +493,7 @@ export default function Home() {
                 { label: "主催", value: "日田イルミナージュ実行委員会" },
                 { label: "企画運営", value: "株式会社BIDOW" },
                 { label: "協力", value: "一般社団法人日本イルミネーション協会" },
-                { label: "後援", value: "一般社団法人日田市観光協会、日田温泉旅館組合" },
+                { label: "後援", value: "一般社団法人日田市観光協会、日田市、日田商工会議所" },
               ].map((row, i) => (
                 <div
                   key={row.label}
@@ -531,7 +531,7 @@ export default function Home() {
                 { date: "2026.07.30", tag: "開催情報", title: "日田イルミナージュ2026開催決定のお知らせ" },
                 { date: "2026.07.30", tag: "協賛募集", title: "協賛・スポンサー募集開始のお知らせ" },
                 { date: "2026.07.30", tag: "協力決定", title: "一般社団法人日本イルミネーション協会との協力決定のお知らせ" },
-                { date: "2026.07.30", tag: "後援決定", title: "一般社団法人日田市観光協会・日田温泉旅館組合の後援決定のお知らせ" },
+                { date: "2026.07.30", tag: "後援決定", title: "一般社団法人日田市観光協会・日田市・日田商工会議所の後援決定のお知らせ" },
               ].map((item, i) => (
                 <div
                   key={i}

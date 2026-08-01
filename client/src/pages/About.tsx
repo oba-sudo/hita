@@ -68,7 +68,8 @@ export default function About() {
                 { label: "企画運営", value: "株式会社BIDOW", url: "https://saga-illuminage.jp/", urlLabel: "佐賀イルミナージュ公式サイト" },
                 { label: "協力", value: "一般社団法人日本イルミネーション協会", url: "https://jia-or.jp/", urlLabel: "日本イルミネーション協会公式サイト" },
                 { label: "後援", value: "一般社団法人日田市観光協会", url: "https://oidehita.com/", urlLabel: "一般社団法人日田市観光協会公式サイト" },
-                { label: "後援", value: "日田温泉旅館組合" },
+                { label: "後援", value: "日田市" },
+                { label: "後援", value: "日田商工会議所" },
               ].map(({ label, value, url, urlLabel }, i) => (
                 <div key={i} className="flex gap-4 border-b border-white/5 pb-4 last:border-0 last:pb-0">
                   <dt className="font-sans-jp text-xs text-white/40 w-20 shrink-0 pt-0.5">{label}</dt>

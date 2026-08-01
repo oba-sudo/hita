@@ -67,7 +67,7 @@ export default function Footer() {
                 { role: "主催", name: "日田イルミナージュ実行委員会" },
                 { role: "企画運営", name: "株式会社BIDOW" },
                 { role: "協力", name: "一般社団法人日本イルミネーション協会" },
-                { role: "後援", name: "一般社団法人日田市観光協会\n日田温泉旅館組合" },
+                { role: "後援", name: "一般社団法人日田市観光協会\n日田市\n日田商工会議所" },
               ].map((o) => (
                 <li key={o.role} className="flex gap-2">
                   <span className="font-sans-jp text-[#D4AF37]/70 text-xs shrink-0 w-14">{o.role}</span>
