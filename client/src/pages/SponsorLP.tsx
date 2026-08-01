@@ -615,11 +615,11 @@ export default function SponsorLP() {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            <a href="mailto:fujisaki@bidow.jp" className="flex items-center gap-3 bg-[#0a1432] text-white rounded-lg p-4 hover:bg-[#1a2a52] transition-colors">
+            <a href="mailto:info@bidow.jp" className="flex items-center gap-3 bg-[#0a1432] text-white rounded-lg p-4 hover:bg-[#1a2a52] transition-colors">
               <Mail size={20} className="text-[#C8A35A] flex-shrink-0" />
               <div>
                 <p className="font-sans-jp text-xs text-white/60 mb-0.5">メール</p>
-                <p className="font-sans-jp text-sm font-bold">fujisaki@bidow.jp</p>
+                <p className="font-sans-jp text-sm font-bold">info@bidow.jp</p>
               </div>
             </a>
             <a href="tel:080-3908-4738" className="flex items-center gap-3 bg-[#0a1432] text-white rounded-lg p-4 hover:bg-[#1a2a52] transition-colors">
