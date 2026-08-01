@@ -1,6 +1,7 @@
 // News.tsx — お知らせページ
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useSEO } from "@/hooks/useSEO";
 
 function PageHero({ title, en }: { title: string; en: string }) {
   return (
@@ -46,6 +47,10 @@ const NEWS_ITEMS = [
 ];
 
 export default function News() {
+  useSEO({
+    title: "お知らせ | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026に関する最新情報・お知らせ。開催決定・協賛募集・後援決定など最新ニュースをお届けします。",
+  });
   return (
     <div className="min-h-screen" style={{ background: "#050a1a", color: "#fff" }}>
       <Header />
@@ -79,4 +84,3 @@ export default function News() {
     </div>
   );
 }
-

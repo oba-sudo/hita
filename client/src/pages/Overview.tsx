@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin, Calendar, Clock } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 function PageHero({ title, en }: { title: string; en: string }) {
   return (
@@ -19,6 +20,10 @@ function PageHero({ title, en }: { title: string; en: string }) {
 }
 
 export default function Overview() {
+  useSEO({
+    title: "開催概要 | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026の開催概要。開催期間：2026年10月31日〜2027年1月31日（全93日間）。会場：サッポロビール九州日田工場（大分県日田市）。主催・後援情報も掲載。",
+  });
   return (
     <div className="min-h-screen" style={{ background: "#050a1a", color: "#fff" }}>
       <Header />

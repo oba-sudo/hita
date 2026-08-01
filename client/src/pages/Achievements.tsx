@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 const IMG = {
   g1: "/manus-storage/saga-illuminage-new_43ccfc92.png",
@@ -24,6 +25,10 @@ function PageHero({ title, en }: { title: string; en: string }) {
 }
 
 export default function Achievements() {
+  useSEO({
+    title: "過去実績 | 日田イルミナージュ2026",
+    description: "イルミナージュの過去開催実績。佐賀イルミナージュをはじめ、全国各地で開催されてきたイルミネーションイベントの実績と、一般社団法人日本イルミネーション協会との協力体制をご紹介します。",
+  });
   return (
     <div className="min-h-screen" style={{ background: "#050a1a", color: "#fff" }}>
       <Header />

@@ -1,7 +1,12 @@
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Privacy() {
+  useSEO({
+    title: "プライバシーポリシー | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026における個人情報の取り扱いについてのプライバシーポリシーです。",
+  });
   return (
     <PageLayout>
       <PageHero en="PRIVACY POLICY" ja="プライバシーポリシー" />

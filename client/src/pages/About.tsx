@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { MapPin, Calendar, Star, ArrowRight } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 function PageHero({ title, en }: { title: string; en: string }) {
   return (
@@ -16,6 +17,10 @@ function PageHero({ title, en }: { title: string; en: string }) {
 }
 
 export default function About() {
+  useSEO({
+    title: "日田イルミナージュとは | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026のコンセプト・開催背景・実施体制をご紹介します。大分県日田市サッポロビール九州日田工場で2026年10月31日〜2027年1月31日開催。",
+  });
   return (
     <div className="min-h-screen" style={{ background: "#050a1a", color: "#fff" }}>
       <Header />

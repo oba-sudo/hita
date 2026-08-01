@@ -2,8 +2,13 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Contact() {
+  useSEO({
+    title: "お問い合わせ | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026へのお問い合わせはこちら。チケット・アクセス・協賛・取材に関するご質問をお受けしています。",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", category: "", message: "" });
 

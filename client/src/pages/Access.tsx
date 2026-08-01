@@ -1,8 +1,13 @@
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { Train, Car, MapPin } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Access() {
+  useSEO({
+    title: "アクセス | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026の会場アクセス情報。会場：サッポロビール九州日田工場（〒877-0054 大分県日田市高瀬6979）。電車・お車でのアクセス方法をご案内します。",
+  });
   return (
     <PageLayout>
       <PageHero en="ACCESS" ja="アクセス" sub="会場へのアクセス方法をご案内します。" bgImage="/manus-storage/gallery3_a3ce42f5.jpg" />

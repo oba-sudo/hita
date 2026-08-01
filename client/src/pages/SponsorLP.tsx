@@ -5,6 +5,7 @@
  * デザイン: ダークネイビー × ゴールド、白背景セクション交互
  */
 import { useState, useEffect, useRef } from "react";
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import {
   Download, ChevronDown, ChevronUp, CheckCircle2,
@@ -238,6 +239,10 @@ function PlanCard({ plan }: { plan: Plan }) {
 // ===== メインコンポーネント =====
 export default function SponsorLP() {
   const [scrolled, setScrolled] = useState(false);
+  useSEO({
+    title: "協賛・スポンサー募集 | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026の協賛企業・スポンサーを募集しています。大分県日田市で93日間開催されるイルミネーションイベントへの協賛で、地域経済活性化と企業PRを実現しませんか。",
+  });
   const sectionsRef = {
     about: useRef<HTMLElement>(null),
     plans: useRef<HTMLElement>(null),

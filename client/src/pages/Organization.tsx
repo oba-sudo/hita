@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 function PageHero({ title, en }: { title: string; en: string }) {
   return (
@@ -61,6 +62,10 @@ export default function Organization() {
     },
   ];
 
+  useSEO({
+    title: "開催体制 | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026の開催体制。主催：日田イルミナージュ実行委員会、企画運営：株式会社BIDOW、協力：一般社団法人日本イルミネーション協会、後援：日田市・日田商工会議所・一般社団法人日田市観光協会。",
+  });
   return (
     <div className="min-h-screen" style={{ background: "#050a1a", color: "#fff" }}>
       <Header />
