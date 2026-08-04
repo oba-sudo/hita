@@ -8,7 +8,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <PageLayout>
-      <PageHero en="FAQ" ja="よくある質問" sub="お客様からよくいただくご質問をまとめました。" bgImage="/manus-storage/gallery3_a3ce42f5.jpg" />
+      <PageHero en="FAQ" ja="よくある質問" sub="お客様からよくいただくご質問をまとめました。" bgImage="/images/gallery3.jpg" />
       <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-3xl mx-auto px-4 -mt-4">
           <div className="mt-6 space-y-3">

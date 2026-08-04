@@ -3,18 +3,18 @@ import PageHero from "@/components/PageHero";
 import { Sparkles } from "lucide-react";
 
 const HIGHLIGHTS = [
-  { id: 1, title: "メインゲート イルミネーション", description: "会場への入口を彩る豪華なイルミネーションゲート。記念撮影スポットとして人気です。", tag: "フォトスポット", image: "/manus-storage/gallery1_b05537d1.jpg" },
-  { id: 2, title: "光のトンネル", description: "色とりどりのLEDが織りなす幻想的なトンネル。歩くたびに光が変化する体験型スポット。", tag: "体験型", image: "/manus-storage/gallery2_3f1cfbd2.jpg" },
-  { id: 3, title: "三隈川リフレクション", description: "川面に映るイルミネーションが幻想的な空間を演出。日田ならではの水辺の光景。", tag: "絶景スポット", image: "/manus-storage/gallery3_a3ce42f5.jpg" },
-  { id: 4, title: "フードエリア", description: "日田の名物グルメが集まるフードエリア。温かい食べ物で体を温めながら光を楽しめます。", tag: "グルメ", image: "/manus-storage/gallery1_b05537d1.jpg" },
-  { id: 5, title: "フォトスポット巡り", description: "会場内に設置された多数のフォトスポット。SNS映えする写真が撮れます。", tag: "フォトスポット", image: "/manus-storage/gallery2_3f1cfbd2.jpg" },
-  { id: 6, title: "キッズエリア", description: "子どもたちが楽しめる体験型アトラクション。家族みんなで楽しめます。", tag: "ファミリー", image: "/manus-storage/gallery3_a3ce42f5.jpg" },
+  { id: 1, title: "メインゲート イルミネーション", description: "会場への入口を彩る豪華なイルミネーションゲート。記念撮影スポットとして人気です。", tag: "フォトスポット", image: "/images/gallery1.jpg" },
+  { id: 2, title: "光のトンネル", description: "色とりどりのLEDが織りなす幻想的なトンネル。歩くたびに光が変化する体験型スポット。", tag: "体験型", image: "/images/gallery2.jpg" },
+  { id: 3, title: "三隈川リフレクション", description: "川面に映るイルミネーションが幻想的な空間を演出。日田ならではの水辺の光景。", tag: "絶景スポット", image: "/images/gallery3.jpg" },
+  { id: 4, title: "フードエリア", description: "日田の名物グルメが集まるフードエリア。温かい食べ物で体を温めながら光を楽しめます。", tag: "グルメ", image: "/images/gallery1.jpg" },
+  { id: 5, title: "フォトスポット巡り", description: "会場内に設置された多数のフォトスポット。SNS映えする写真が撮れます。", tag: "フォトスポット", image: "/images/gallery2.jpg" },
+  { id: 6, title: "キッズエリア", description: "子どもたちが楽しめる体験型アトラクション。家族みんなで楽しめます。", tag: "ファミリー", image: "/images/gallery3.jpg" },
 ];
 
 export default function Highlights() {
   return (
     <PageLayout>
-      <PageHero en="HIGHLIGHTS" ja="見どころ" sub="日田イルミナージュ2026の主な見どころをご紹介します。" bgImage="/manus-storage/hero_97225277.jpg" />
+      <PageHero en="HIGHLIGHTS" ja="見どころ" sub="日田イルミナージュ2026の主な見どころをご紹介します。" bgImage="/images/hero_97225277.jpg" />
       <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-[1200px] mx-auto px-4 -mt-4">
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

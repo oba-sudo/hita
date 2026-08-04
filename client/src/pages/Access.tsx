@@ -10,7 +10,7 @@ export default function Access() {
   });
   return (
     <PageLayout>
-      <PageHero en="ACCESS" ja="アクセス" sub="会場へのアクセス方法をご案内します。" bgImage="/manus-storage/gallery3_a3ce42f5.jpg" />
+      <PageHero en="ACCESS" ja="アクセス" sub="会場へのアクセス方法をご案内します。" bgImage="/images/gallery3.jpg" />
       <div className="pb-24 bg-[#050a1a]">
         <div className="max-w-[1100px] mx-auto px-4 pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

@@ -13,7 +13,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 export default function Tourism() {
   return (
     <PageLayout>
-      <PageHero en="TOURISM" ja="観光スポット" sub="日田市内の観光スポットをご紹介します。イルミネーション観賞と合わせてお楽しみください。" bgImage="/manus-storage/gallery3_a3ce42f5.jpg" />
+      <PageHero en="TOURISM" ja="観光スポット" sub="日田市内の観光スポットをご紹介します。イルミネーション観賞と合わせてお楽しみください。" bgImage="/images/gallery3.jpg" />
       <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-[1200px] mx-auto px-4 -mt-4">
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">

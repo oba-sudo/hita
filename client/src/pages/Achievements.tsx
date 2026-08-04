@@ -5,11 +5,11 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 
 const IMG = {
-  g1: "/manus-storage/saga-illuminage-new_43ccfc92.png",
-  g2: "/manus-storage/illuminage_each_photo_7df461c2.png",
-  g3: "/manus-storage/gallery3_a3ce42f5.jpg",
-  hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
-  crowd: "/manus-storage/hita_crowd_clean_1ea4edaa.jpg",
+  g1: "/images/saga-illuminage-new.png",
+  g2: "/images/illuminage_each_photo.png",
+  g3: "/images/gallery3.jpg",
+  hero: "/images/hero_clean1.jpg",
+  crowd: "/images/hita_crowd_clean.jpg",
 };
 
 function PageHero({ title, en }: { title: string; en: string }) {

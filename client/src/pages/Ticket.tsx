@@ -12,7 +12,7 @@ const TICKET_TYPES = [
 export default function Ticket() {
   return (
     <PageLayout>
-      <PageHero en="TICKET" ja="チケット情報" sub="チケットはオンラインまたは当日券でご購入いただけます。" bgImage="/manus-storage/hero_sp_d2322500.jpg" />
+      <PageHero en="TICKET" ja="チケット情報" sub="チケットはオンラインまたは当日券でご購入いただけます。" bgImage="/images/hero_sp.jpg" />
       <div className="pb-24 bg-[#050a1a]">
         <div className="max-w-[1000px] mx-auto px-4 pt-12">
           {/* 料金表 */}

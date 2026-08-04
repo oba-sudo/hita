@@ -6,7 +6,7 @@ import { MapPin, Clock, Phone, Waves, ParkingCircle, ExternalLink } from "lucide
 export default function Stay() {
   return (
     <PageLayout>
-      <PageHero en="STAY" ja="宿泊施設" sub="日田での宿泊をお楽しみください。温泉・旅館・ホテルなど多彩な宿泊施設をご紹介します。" bgImage="/manus-storage/gallery2_3f1cfbd2.jpg" />
+      <PageHero en="STAY" ja="宿泊施設" sub="日田での宿泊をお楽しみください。温泉・旅館・ホテルなど多彩な宿泊施設をご紹介します。" bgImage="/images/gallery2.jpg" />
       <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-[1100px] mx-auto px-4 -mt-4">
           <div className="mt-6 space-y-6">

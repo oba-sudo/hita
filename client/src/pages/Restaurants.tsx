@@ -6,7 +6,7 @@ import { MapPin, Clock, Phone } from "lucide-react";
 export default function Restaurants() {
   return (
     <PageLayout>
-      <PageHero en="RESTAURANTS" ja="飲食店" sub="会場周辺のおすすめ飲食店をご紹介します。日田の食文化をお楽しみください。" bgImage="/manus-storage/gallery1_b05537d1.jpg" />
+      <PageHero en="RESTAURANTS" ja="飲食店" sub="会場周辺のおすすめ飲食店をご紹介します。日田の食文化をお楽しみください。" bgImage="/images/gallery1.jpg" />
       <div className="pb-20 bg-[#050a1a]">
         <div className="max-w-[1200px] mx-auto px-4 -mt-4">
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

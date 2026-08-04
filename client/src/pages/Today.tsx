@@ -31,7 +31,7 @@ export default function Today() {
   const s = TODAY_STATUS;
   return (
     <PageLayout>
-      <PageHero en="TODAY'S EVENT" ja="本日の開催情報" sub="最新の開催状況をご確認ください。状況は随時更新されます。" bgImage="/manus-storage/gallery1_b05537d1.jpg" />
+      <PageHero en="TODAY'S EVENT" ja="本日の開催情報" sub="最新の開催状況をご確認ください。状況は随時更新されます。" bgImage="/images/gallery1.jpg" />
       <div className="pb-24 bg-[#050a1a] min-h-[50vh]">
         <div className="max-w-3xl mx-auto px-4 pt-12">
           <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">

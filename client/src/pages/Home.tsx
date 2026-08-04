@@ -7,14 +7,14 @@ import Footer from "@/components/Footer";
 import { Star, MapPin, Calendar, Clock, ChevronDown, ArrowRight, Building2, Users, Globe, Award } from "lucide-react";
 
 const IMG = {
-  illuminage_each: "/manus-storage/illuminage_each_photo_7df461c2.png",
-  saga: "/manus-storage/saga-illuminage-new_43ccfc92.png",
-  hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
-  tunnel: "/manus-storage/hero_clean2_71d5a923.jpg",
-  crowd: "/manus-storage/hita_crowd_clean_1ea4edaa.jpg",
-  g1: "/manus-storage/saga-illuminage-new_43ccfc92.png",
-  g2: "/manus-storage/illuminage_each_photo_7df461c2.png",
-  g3: "/manus-storage/gallery3_a3ce42f5.jpg",
+  illuminage_each: "/images/illuminage_each_photo.png",
+  saga: "/images/saga-illuminage-new.png",
+  hero: "/images/hero_clean1.jpg",
+  tunnel: "/images/hero_clean2.jpg",
+  crowd: "/images/hita_crowd_clean.jpg",
+  g1: "/images/saga-illuminage-new.png",
+  g2: "/images/illuminage_each_photo.png",
+  g3: "/images/gallery3.jpg",
 };
 
 // ─── パーティクル ───────────────────────────────

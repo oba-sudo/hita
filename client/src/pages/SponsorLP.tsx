@@ -14,9 +14,9 @@ import {
 } from "lucide-react";
 
 const IMG = {
-  hero: "/manus-storage/hero_clean1_073b3b8e.jpg",
-  crowd: "/manus-storage/hita_wide_crowd_5f089356.jpg",
-  tunnel: "/manus-storage/hero_clean2_71d5a923.jpg",
+  hero: "/images/hero_clean1.jpg",
+  crowd: "/images/hita_wide_crowd.jpg",
+  tunnel: "/images/hero_clean2.jpg",
 };
 
 // ===== データ =====
@@ -340,7 +340,7 @@ export default function SponsorLP() {
             日田の観光振興と地域経済の活性化に、ともに取り組みませんか。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-10">
-            <a href="/manus-storage/sponsor_guide_hita2026_23d12e04.pdf" download="日田イルミナージュ2026協賛企業募集のご案内.pdf" className="flex items-center justify-center gap-2 bg-[#C8A35A] text-[#0a1432] font-bold text-sm px-6 py-3 rounded font-sans-jp active:scale-95 transition-transform">
+            <a href="/images/sponsor_guide_hita2026.pdf" download="日田イルミナージュ2026協賛企業募集のご案内.pdf" className="flex items-center justify-center gap-2 bg-[#C8A35A] text-[#0a1432] font-bold text-sm px-6 py-3 rounded font-sans-jp active:scale-95 transition-transform">
               <Download size={16} />資料をダウンロード
             </a>
             <button
