@@ -42,6 +42,15 @@ export default function Tickets() {
             </div>
             <p className="mt-4 flex items-start gap-2 font-sans-jp text-xs leading-6 text-white/42"><Info size={14} className="mt-1 shrink-0 text-[#55D9FF]" />0歳のお子さまは無料です。料金・販売条件は変更になる場合があります。</p>
 
+            <div className="mt-8 flex items-start gap-4 border border-[#F5C95D]/30 bg-[#F5C95D]/[.06] p-5 md:p-6">
+              <TicketIcon size={22} className="mt-0.5 shrink-0 text-[#F5C95D]" />
+              <div>
+                <p className="font-display text-[10px] tracking-[.24em] text-[#F5C95D]">SAME-DAY TICKET</p>
+                <h3 className="mt-2 font-serif-jp text-xl font-semibold">当日券は会場受付で購入できます</h3>
+                <p className="mt-2 font-sans-jp text-sm font-bold text-white">お支払いは現金のみです。</p>
+              </div>
+            </div>
+
             <div className="mt-14 border-l border-[#F43F8E]/60 pl-6 md:pl-8">
               <div className="mb-3 flex items-center gap-2 text-[#F43F8E]"><TicketIcon size={18} /><span className="font-display text-[10px] tracking-[.26em]">WEB TICKET BENEFIT</span></div>
               <h3 className="font-serif-jp text-2xl font-semibold md:text-3xl">提携施設をご利用の方は<br />100円OFF</h3>

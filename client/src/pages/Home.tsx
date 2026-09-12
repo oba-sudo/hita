@@ -277,7 +277,7 @@ export default function Home() {
               <Link href="/tickets" className="ticket-glow inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-sans-jp text-sm font-bold text-white transition-transform active:scale-[.97]">
                 <Ticket size={17} /> チケット情報を見る
               </Link>
-              <p className="mt-4 font-sans-jp text-[10px] leading-5 text-white/38">※販売先・購入URLは順次公開します。割引は期間中お一人様1回限り、他割引との併用不可、転売・譲渡禁止です。</p>
+              <p className="mt-4 font-sans-jp text-[10px] leading-5 text-white/38">※当日券は会場受付で購入できます（現金のみ）。販売先・購入URLは順次公開します。割引は期間中お一人様1回限り、他割引との併用不可、転売・譲渡禁止です。</p>
             </Reveal>
           </div>
         </section>
