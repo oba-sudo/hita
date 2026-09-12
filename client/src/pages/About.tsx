@@ -70,7 +70,7 @@ export default function About() {
             <dl className="space-y-4">
               {[
                 { label: "主催", value: "日田イルミナージュ実行委員会" },
-                { label: "共催", value: "スカイホップブルーイング株式会社" },
+                { label: "共催", value: "スカイホップブルーイング株式会社", url: "https://skyhopbrew.com/", urlLabel: "スカイホップブルーイング公式サイト" },
                 { label: "企画運営", value: "株式会社BIDOW", url: "https://saga-illuminage.jp/", urlLabel: "佐賀イルミナージュ公式サイト" },
                 { label: "協力", value: "一般社団法人日本イルミネーション協会", url: "https://jia-or.jp/", urlLabel: "日本イルミネーション協会公式サイト" },
                 { label: "後援", value: "日田市" },

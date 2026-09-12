@@ -29,6 +29,8 @@ export default function Organization() {
       name: "スカイホップブルーイング株式会社",
       desc: "日田イルミナージュ2026を共催し、地域と連携したイベント運営を支えます。",
       color: "#55D9FF",
+      url: "https://skyhopbrew.com/",
+      urlLabel: "スカイホップブルーイング公式サイト",
     },
     {
       role: "企画運営",

@@ -54,7 +54,7 @@ export default function Footer() {
           <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
             <div className="font-sans-jp text-[10px] leading-6 text-white/34">
               <p>主催：日田イルミナージュ実行委員会</p>
-              <p>共催：スカイホップブルーイング株式会社</p>
+              <p>共催：<a href="https://skyhopbrew.com/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#55D9FF]">スカイホップブルーイング株式会社</a></p>
               <p>後援：日田市・日田商工会議所・一般社団法人日田市観光協会・進撃の日田まちおこし協議会</p>
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-2 md:justify-end">

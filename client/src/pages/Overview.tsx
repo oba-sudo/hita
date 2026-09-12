@@ -57,7 +57,13 @@ export default function Overview() {
             {DETAILS.map(([label, value]) => (
               <div key={label} className="grid border-b border-white/10 py-5 md:grid-cols-[210px_1fr] md:py-6">
                 <p className="mb-2 font-sans-jp text-[10px] font-bold tracking-[.14em] text-[#F5C95D] md:mb-0">{label}</p>
-                <p className="font-sans-jp text-sm leading-7 text-white/68">{value}</p>
+                <p className="font-sans-jp text-sm leading-7 text-white/68">
+                  {label === "共催" ? (
+                    <a href="https://skyhopbrew.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-[#55D9FF]">
+                      {value}
+                    </a>
+                  ) : value}
+                </p>
               </div>
             ))}
           </div>
