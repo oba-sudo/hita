@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import InstagramProfileEmbed from "@/components/InstagramProfileEmbed";
 import { useSEO } from "@/hooks/useSEO";
 import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 
@@ -315,6 +316,27 @@ export default function Home() {
             <Reveal delay={140} className="mt-8 flex flex-wrap gap-4">
               <Link href="/access" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 font-sans-jp text-sm text-white transition-colors hover:bg-white/10">アクセス詳細 <ArrowRight size={14} /></Link>
               <Link href="/faq" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-sans-jp text-sm text-white/65 transition-colors hover:text-white">ご来場前のFAQ <ArrowRight size={14} /></Link>
+            </Reveal>
+          </div>
+        </section>
+
+        <section id="instagram" className="relative overflow-hidden bg-[#030513] px-5 py-24 md:px-8 md:py-36">
+          <div className="light-stream right-[4%] top-0 w-[78%]" />
+          <div className="absolute left-[8%] top-[18%] h-56 w-56 rounded-full bg-[#F43F8E]/10 blur-[110px]" />
+          <div className="relative mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[.78fr_1fr] lg:items-center lg:gap-20">
+            <Reveal>
+              <div>
+                <SectionTitle number="04" en="INSTAGRAM">光の準備を、<br />いちばん近くで。</SectionTitle>
+                <p className="mt-6 max-w-xl font-sans-jp text-sm leading-8 text-white/58">
+                  会場づくりの様子や最新のお知らせを、公式Instagramからお届けします。投稿はInstagram側の更新内容が表示されます。
+                </p>
+                <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#F43F8E]/35 px-6 py-3 font-sans-jp text-sm text-[#FF9CC8] transition-colors hover:bg-[#F43F8E]/10">
+                  @hita_illuminage を見る <ExternalLink size={14} />
+                </a>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <InstagramProfileEmbed />
             </Reveal>
           </div>
         </section>
