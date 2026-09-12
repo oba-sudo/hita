@@ -3,7 +3,7 @@
  * デザイン方針: Immersive Celestial Festival。来場情報を簡潔に再掲し、協賛は補助導線として残す。
  */
 import { Link } from "wouter";
-import { ArrowUpRight, Mail, MapPin, Ticket } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail, MapPin, Ticket } from "lucide-react";
 import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 
 const mainLinks = [
@@ -44,6 +44,7 @@ export default function Footer() {
           <div>
             <p className="mb-5 font-display text-[10px] tracking-[.28em] text-[#55D9FF]">ENQUIRIES</p>
             <a href="mailto:info@bidow.jp" className="flex items-center gap-2 font-sans-jp text-sm text-white/75 transition-colors hover:text-white"><Mail size={15} /> info@bidow.jp</a>
+            <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 font-sans-jp text-sm text-white/70 transition-colors hover:text-[#FF83B7]"><Instagram size={16} /> @hita_illuminage</a>
             <p className="mt-3 font-sans-jp text-[11px] leading-6 text-white/38">イベント・取材・地域連携等のお問い合わせを受け付けています。</p>
             <Link href="/sponsor" className="mt-6 inline-flex items-center gap-2 font-sans-jp text-xs text-white/50 transition-colors hover:text-[#FF9CC8]">協賛・スポンサー募集 <ArrowUpRight size={13} /></Link>
           </div>

@@ -4,7 +4,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { ChevronDown, Globe2, Menu, Sparkles, Ticket, X } from "lucide-react";
+import { ChevronDown, Globe2, Instagram, Menu, Sparkles, Ticket, X } from "lucide-react";
 import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 
 const EVENT_LINKS = [
@@ -84,6 +84,9 @@ export default function Header() {
             </div>
             <Link href="/faq" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">よくある質問</Link>
             <Link href="/contact" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">お問い合わせ</Link>
+            <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" aria-label="日田イルミナージュ公式Instagram" className="text-white/65 transition-colors hover:text-[#FF83B7]">
+              <Instagram size={16} />
+            </a>
             <span className="flex items-center gap-1.5 border-l border-white/15 pl-6 font-sans-jp text-xs text-white/55" aria-label="表示言語 日本語">
               <Globe2 size={14} /> JA
             </span>
@@ -136,6 +139,9 @@ export default function Header() {
               <Link href="/faq" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">よくある質問</Link>
               <Link href="/contact" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">お問い合わせ</Link>
             </div>
+            <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center justify-center gap-2 border border-white/10 py-3.5 font-sans-jp text-sm text-white/70">
+              <Instagram size={16} className="text-[#FF83B7]" /> 公式Instagram
+            </a>
             <Link href="/tickets" className="ticket-glow mt-6 flex items-center justify-center gap-2 rounded-full px-6 py-4 font-sans-jp text-sm font-bold text-white">
               <Ticket size={16} /> チケット情報を見る
             </Link>
