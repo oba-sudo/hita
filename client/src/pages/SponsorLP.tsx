@@ -614,6 +614,8 @@ export default function SponsorLP() {
               <p className="font-sans-jp text-xs text-gray-500 mb-0.5">主催</p>
               <p className="font-sans-jp font-bold text-gray-900">日田イルミナージュ実行委員会</p>
               <p className="font-sans-jp text-xs text-gray-500">（株式会社BIDOW内）</p>
+              <p className="mt-3 font-sans-jp text-xs text-gray-500 mb-0.5">共催</p>
+              <p className="font-sans-jp font-bold text-gray-900">スカイホップブルーイング株式会社</p>
             </div>
             <div>
               <p className="font-sans-jp text-xs text-gray-500 mb-0.5">担当</p>
@@ -654,6 +656,7 @@ export default function SponsorLP() {
         <p className="font-sans-jp text-white/40 text-xs">
           日田イルミナージュ2026<br />
           主催：日田イルミナージュ実行委員会<br />
+          共催：スカイホップブルーイング株式会社<br />
           © 2026 日田イルミナージュ実行委員会. All rights reserved.
         </p>
       </footer>

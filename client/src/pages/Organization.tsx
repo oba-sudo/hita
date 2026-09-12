@@ -25,6 +25,12 @@ export default function Organization() {
       color: "#D4AF37",
     },
     {
+      role: "共催",
+      name: "スカイホップブルーイング株式会社",
+      desc: "日田イルミナージュ2026を共催し、地域と連携したイベント運営を支えます。",
+      color: "#55D9FF",
+    },
+    {
       role: "企画運営",
       name: "株式会社BIDOW",
       desc: "イルミネーションイベントの企画・制作・運営を専門とする会社。佐賀イルミナージュをはじめ、全国各地でイルミネーションイベントを手がけてきた実績を持ちます。",
@@ -64,7 +70,7 @@ export default function Organization() {
 
   useSEO({
     title: "開催体制 | 日田イルミナージュ2026",
-    description: "日田イルミナージュ2026の開催体制。主催：日田イルミナージュ実行委員会、企画運営：株式会社BIDOW、協力：一般社団法人日本イルミネーション協会、後援：日田市・日田商工会議所・一般社団法人日田市観光協会。",
+    description: "日田イルミナージュ2026の開催体制。主催：日田イルミナージュ実行委員会、共催：スカイホップブルーイング株式会社、企画運営：株式会社BIDOW。",
   });
   return (
     <div className="min-h-screen" style={{ background: "#050a1a", color: "#fff" }}>
@@ -73,7 +79,7 @@ export default function Organization() {
       <section className="py-16">
         <div className="container max-w-3xl">
           <p className="font-sans-jp text-white/60 text-sm leading-loose mb-10">
-            日田イルミナージュ2026は、日田イルミナージュ実行委員会が主催し、株式会社BIDOWが企画運営を行います。
+            日田イルミナージュ2026は、日田イルミナージュ実行委員会が主催し、スカイホップブルーイング株式会社が共催、株式会社BIDOWが企画運営を行います。
             一般社団法人日本イルミネーション協会の協力のもと、イベントの企画と会場づくりを進めます。
           </p>
           <div className="space-y-4">
