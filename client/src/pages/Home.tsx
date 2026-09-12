@@ -10,6 +10,7 @@ import {
   Car,
   Clock3,
   ExternalLink,
+  Instagram,
   MapPin,
   MoonStar,
   Sparkles,
@@ -336,7 +337,14 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <InstagramProfileEmbed />
+              <div>
+                <InstagramProfileEmbed />
+                <div className="mt-6 text-center">
+                  <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="ticket-glow inline-flex items-center justify-center gap-2 rounded-full px-9 py-4 font-display text-xs font-bold uppercase tracking-[.2em] text-white transition-transform active:scale-[.97]">
+                    <Instagram size={17} /> Follow Us
+                  </a>
+                </div>
+              </div>
             </Reveal>
           </div>
         </section>
