@@ -1,7 +1,7 @@
 /* ============================================================
  * 日田イルミナージュ2026 — Design System
- * Style: Dark Space × Gold Glow × Entertainment Festival
- * Reference: yorunoyo.yokohama
+ * Style: Immersive Celestial Festival
+ * Reference: illuminagegroup.com/ja/events/hita
  * ============================================================ */
 
 @import "tailwindcss";
@@ -41,6 +41,8 @@
   --gold-light: #F0D060;
   --gold-dark: #A88820;
   --cyan: #00E5FF;
+  --ticket-pink: #F43F8E;
+  --starlight-gold: #F5C95D;
   --space-deep: #050a1a;
   --space-navy: #0a0f2e;
   --space-mid: #0f1840;
@@ -120,6 +122,90 @@
 }
 .cyan-glow {
   text-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 229, 255, 0.3);
+}
+
+/* === Event CTA / Celestial Surfaces === */
+.ticket-glow {
+  background: linear-gradient(105deg, #ee3286 0%, #ff5e9f 48%, #f6c45f 120%);
+  box-shadow: 0 10px 28px rgba(238, 50, 134, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.ticket-glow:hover {
+  box-shadow: 0 12px 36px rgba(238, 50, 134, 0.44), 0 0 24px rgba(246, 196, 95, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+.cosmos-surface {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(244, 63, 142, 0.12), transparent 30%),
+    radial-gradient(circle at 18% 60%, rgba(85, 217, 255, 0.09), transparent 36%),
+    linear-gradient(145deg, #030513 0%, #090b2a 54%, #050719 100%);
+}
+.light-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(244, 63, 142, 0.95), rgba(245, 201, 93, 0.65), transparent);
+  box-shadow: 0 0 16px rgba(244, 63, 142, 0.4);
+}
+.light-stream {
+  position: absolute;
+  pointer-events: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(85, 217, 255, 0.72), rgba(244, 63, 142, 0.9), rgba(245, 201, 93, 0.72), transparent);
+  box-shadow: 0 0 18px rgba(244, 63, 142, 0.34);
+}
+.constellation-number {
+  color: #F5C95D;
+  text-shadow: 0 0 20px rgba(245, 201, 93, 0.28);
+  letter-spacing: -0.04em;
+}
+.portal-rings {
+  position: absolute;
+  left: 50%;
+  bottom: -28%;
+  width: min(112vw, 1500px);
+  aspect-ratio: 2 / 1;
+  transform: translateX(-50%);
+  border: 1px solid rgba(244, 63, 142, 0.34);
+  border-radius: 50% 50% 0 0;
+  box-shadow: 0 -4px 26px rgba(244, 63, 142, 0.22), inset 0 8px 30px rgba(85, 217, 255, 0.08);
+  opacity: 0.75;
+}
+.portal-rings::before,
+.portal-rings::after {
+  content: "";
+  position: absolute;
+  inset: 11%;
+  border: 1px solid rgba(245, 201, 93, 0.22);
+  border-radius: inherit;
+}
+.portal-rings::after {
+  inset: 22%;
+  border-color: rgba(85, 217, 255, 0.22);
+}
+
+@keyframes heroDrift {
+  0% { transform: scale(1.02) translate3d(0, 0, 0); }
+  100% { transform: scale(1.08) translate3d(-1.2%, -0.6%, 0); }
+}
+
+@keyframes ticketPulse {
+  0%, 100% { box-shadow: 0 10px 28px rgba(238, 50, 134, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+  50% { box-shadow: 0 12px 38px rgba(238, 50, 134, 0.46), 0 0 26px rgba(246, 196, 95, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.42); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-drift {
+    animation: heroDrift 16s ease-in-out infinite alternate;
+  }
+  .ticket-pulse {
+    animation: ticketPulse 3.2s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* === Section Divider === */

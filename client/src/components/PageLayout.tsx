@@ -10,12 +10,11 @@ interface Props {
 
 export default function PageLayout({ children }: Props) {
   return (
-    <div className="relative min-h-screen" style={{ background: "#050a1a" }}>
+    <div className="relative min-h-screen pb-20 lg:pb-0" style={{ background: "#050a1a" }}>
       <Header />
       <main className="relative z-10">{children}</main>
-      <Footer />
       <MobileBottomNav />
+      <Footer />
     </div>
   );
 }
-

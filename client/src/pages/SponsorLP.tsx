@@ -7,6 +7,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSEO } from "@/hooks/useSEO";
 import { Link } from "wouter";
+import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 import {
   Download, ChevronDown, ChevronUp, CheckCircle2,
   Building2, TrendingUp, MapPin, Heart,
@@ -14,9 +15,9 @@ import {
 } from "lucide-react";
 
 const IMG = {
-  hero: "/images/hero_clean1.jpg",
-  crowd: "/images/hita_wide_crowd.jpg",
-  tunnel: "/images/hero_clean2.jpg",
+  hero: RENEWAL_ASSETS.mainNight,
+  crowd: RENEWAL_ASSETS.parkRestaurant,
+  tunnel: RENEWAL_ASSETS.corridorTunnel,
 };
 
 // ===== データ =====
@@ -25,8 +26,8 @@ const OVERVIEW_ROWS = [
   { label: "会場", value: "サッポロビール九州日田工場（大分県日田市高瀬６９７９）" },
   { label: "開催期間", value: "2026年10月31日（土）〜 2027年1月31日（日）" },
   { label: "開催日数", value: "93日間" },
-  { label: "開催時間", value: "17:00 開場 ▶ 17:30 点灯 ▶ 21:30 閉場" },
-  { label: "入場料", value: "大人 1,500円 ／ 子ども（小学生まで）500円" },
+  { label: "開催時間", value: "17:30〜21:30（最終受付 21:00）" },
+  { label: "入場料", value: "大人（中学生以上）2,000円 ／ 子ども（1歳〜小学生）1,000円" },
 ];
 
 const VISITOR_BREAKDOWN = [
@@ -340,7 +341,7 @@ export default function SponsorLP() {
             日田の観光振興と地域経済の活性化に、ともに取り組みませんか。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-10">
-            <a href="/images/sponsor_guide_hita2026.pdf" download="日田イルミナージュ2026協賛企業募集のご案内.pdf" className="flex items-center justify-center gap-2 bg-[#C8A35A] text-[#0a1432] font-bold text-sm px-6 py-3 rounded font-sans-jp active:scale-95 transition-transform">
+            <a href="/manus-storage/sponsor_guide_hita2026_23d12e04.pdf" download="日田イルミナージュ2026協賛企業募集のご案内.pdf" className="flex items-center justify-center gap-2 bg-[#C8A35A] text-[#0a1432] font-bold text-sm px-6 py-3 rounded font-sans-jp active:scale-95 transition-transform">
               <Download size={16} />資料をダウンロード
             </a>
             <button

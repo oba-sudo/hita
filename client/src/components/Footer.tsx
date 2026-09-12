@@ -1,93 +1,65 @@
-// Footer — 第1段階構成
+/**
+ * Footer — イベント本番仕様
+ * デザイン方針: Immersive Celestial Festival。来場情報を簡潔に再掲し、協賛は補助導線として残す。
+ */
 import { Link } from "wouter";
-import { Instagram, Twitter } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Ticket } from "lucide-react";
+import { RENEWAL_ASSETS } from "@/data/renewalAssets";
+
+const mainLinks = [
+  { href: "/events", label: "イベント・見どころ" },
+  { href: "/tickets", label: "チケット" },
+  { href: "/faq", label: "よくある質問" },
+  { href: "/access", label: "アクセス" },
+  { href: "/news", label: "お知らせ" },
+  { href: "/contact", label: "お問い合わせ" },
+];
 
 export default function Footer() {
   return (
-    <footer
-      className="relative z-10"
-      style={{
-        background: "#030712",
-        borderTop: "1px solid rgba(212,175,55,0.15)",
-      }}
-    >
-      <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-          {/* ブランド */}
+    <footer className="relative z-10 border-t border-white/10 bg-[#02030d]">
+      <div className="mx-auto max-w-[1320px] px-5 py-16 md:px-8 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr_.8fr]">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-[#D4AF37] text-xl">◆</span>
-              <span className="font-serif-jp font-bold text-white text-lg">
-                日田イルミナージュ<span className="font-display text-[#D4AF37] ml-1">2026</span>
-              </span>
-            </div>
-            <p className="font-sans-jp text-white/45 text-xs leading-relaxed mb-4">
-              サッポロビール九州日田工場を舞台に開催される<br />
-              冬のイルミネーションイベント。<br />
-              2026年10月31日〜2027年1月31日（93日間）
-            </p>
-            <div className="flex gap-3">
-              <a href="#" className="text-white/35 hover:text-[#D4AF37] transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="text-white/35 hover:text-[#D4AF37] transition-colors">
-                <Twitter size={18} />
-              </a>
+            <img src={RENEWAL_ASSETS.logoHiRes} alt="日田イルミナージュ" className="h-auto w-full max-w-[360px] object-contain object-left drop-shadow-[0_0_18px_rgba(244,63,142,.22)]" />
+            <p className="mt-6 max-w-md font-serif-jp text-xl leading-relaxed text-white/80">九州初上陸。冬の日田で、<br />光が泳ぐ93日間。</p>
+            <div className="mt-7 flex flex-col gap-3 font-sans-jp text-xs text-white/50">
+              <p>2026年10月31日（土）〜2027年1月31日（日）</p>
+              <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 shrink-0 text-[#F43F8E]" />サッポロビール九州日田工場<br />大分県日田市高瀬6979</p>
             </div>
           </div>
 
-          {/* サイトマップ */}
           <div>
-            <h4 className="font-display text-[#D4AF37] text-xs tracking-widest mb-4 uppercase">Menu</h4>
-            <ul className="space-y-2">
-              {[
-                { href: "/about", label: "日田イルミナージュとは" },
-                { href: "/overview", label: "開催概要" },
-                { href: "/organization", label: "開催体制" },
-                { href: "/achievements", label: "過去実績" },
-                { href: "/news", label: "お知らせ" },
-                { href: "/access", label: "アクセス" },
-                { href: "/contact", label: "お問い合わせ" },
-                { href: "/sponsor", label: "協賛・スポンサー募集" },
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="font-sans-jp text-white/45 hover:text-white/90 text-xs transition-colors">
-                    {l.label}
-                  </Link>
-                </li>
+            <p className="mb-5 font-display text-[10px] tracking-[.28em] text-[#F5C95D]">NAVIGATION</p>
+            <nav className="grid grid-cols-2 gap-x-4 gap-y-3" aria-label="フッターナビゲーション">
+              {mainLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="font-sans-jp text-xs text-white/55 transition-colors hover:text-white">{item.label}</Link>
               ))}
-            </ul>
+            </nav>
+            <Link href="/tickets" className="ticket-glow mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 font-sans-jp text-xs font-bold text-white">
+              <Ticket size={14} /> チケット情報
+            </Link>
           </div>
 
-          {/* 実施体制 */}
           <div>
-            <h4 className="font-display text-[#D4AF37] text-xs tracking-widest mb-4 uppercase">Organization</h4>
-            <ul className="space-y-3">
-              {[
-                { role: "主催", name: "日田イルミナージュ実行委員会" },
-                { role: "企画運営", name: "株式会社BIDOW" },
-                { role: "協力", name: "一般社団法人日本イルミネーション協会" },
-                { role: "後援", name: "日田市\n日田商工会議所\n一般社団法人日田市観光協会" },
-              ].map((o) => (
-                <li key={o.role} className="flex gap-2">
-                  <span className="font-sans-jp text-[#D4AF37]/70 text-xs shrink-0 w-14">{o.role}</span>
-                  <span className="font-sans-jp text-white/55 text-xs whitespace-pre-line">{o.name}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mb-5 font-display text-[10px] tracking-[.28em] text-[#55D9FF]">ENQUIRIES</p>
+            <a href="mailto:info@bidow.jp" className="flex items-center gap-2 font-sans-jp text-sm text-white/75 transition-colors hover:text-white"><Mail size={15} /> info@bidow.jp</a>
+            <p className="mt-3 font-sans-jp text-[11px] leading-6 text-white/38">イベント・取材・地域連携等のお問い合わせを受け付けています。</p>
+            <Link href="/sponsor" className="mt-6 inline-flex items-center gap-2 font-sans-jp text-xs text-white/50 transition-colors hover:text-[#FF9CC8]">協賛・スポンサー募集 <ArrowUpRight size={13} /></Link>
           </div>
         </div>
 
-        <div
-          className="flex flex-col md:flex-row justify-between items-center pt-8 gap-3"
-          style={{ borderTop: "1px solid rgba(212,175,55,0.1)" }}
-        >
-          <p className="font-sans-jp text-white/30 text-xs">
-            © 2026 日田イルミナージュ実行委員会 / 株式会社BIDOW. All rights reserved.
-          </p>
-          <Link href="/privacy" className="font-sans-jp text-white/30 hover:text-white/60 text-xs transition-colors">
-            プライバシーポリシー
-          </Link>
+        <div className="mt-14 border-t border-white/10 pt-8">
+          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+            <div className="font-sans-jp text-[10px] leading-6 text-white/34">
+              <p>主催：日田イルミナージュ実行委員会</p>
+              <p>後援：日田市・日田商工会議所・一般社団法人日田市観光協会・進撃の日田まちおこし協議会</p>
+            </div>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 md:justify-end">
+              <Link href="/privacy" className="font-sans-jp text-[10px] text-white/32 transition-colors hover:text-white/65">プライバシーポリシー</Link>
+              <p className="font-sans-jp text-[10px] text-white/32">© 2026 日田イルミナージュ実行委員会</p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

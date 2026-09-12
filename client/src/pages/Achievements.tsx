@@ -3,13 +3,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 
 const IMG = {
-  g1: "/images/saga-illuminage-new.png",
-  g2: "/images/illuminage_each_photo.png",
-  g3: "/images/gallery3.jpg",
-  hero: "/images/hero_clean1.jpg",
-  crowd: "/images/hita_crowd_clean.jpg",
+  g1: RENEWAL_ASSETS.mainNight,
+  g2: RENEWAL_ASSETS.spacePlaza,
+  g3: RENEWAL_ASSETS.corridorTunnel,
+  hero: RENEWAL_ASSETS.eventKeyvisual,
+  crowd: RENEWAL_ASSETS.parkRestaurant,
 };
 
 function PageHero({ title, en }: { title: string; en: string }) {

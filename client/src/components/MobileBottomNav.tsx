@@ -1,41 +1,34 @@
-// MobileBottomNav — スマートフォン下部固定ナビ
+/**
+ * MobileBottomNav — スマホ来場者向け固定ナビ
+ * デザイン方針: 片手で「見どころ・チケット・アクセス・FAQ」へ到達できる最短導線。
+ */
 import { Link, useLocation } from "wouter";
-import { CalendarCheck, Ticket, MapPin, Menu } from "lucide-react";
+import { CircleHelp, MapPin, Sparkles, Ticket } from "lucide-react";
 
 const ITEMS = [
-  { href: "/today", icon: CalendarCheck, label: "本日の開催" },
-  { href: "/ticket", icon: Ticket, label: "チケット" },
-  { href: "/access", icon: MapPin, label: "アクセス" },
-  { href: "/about", icon: Menu, label: "メニュー" },
+  { href: "/events", label: "見どころ", icon: Sparkles },
+  { href: "/tickets", label: "チケット", icon: Ticket, primary: true },
+  { href: "/access", label: "アクセス", icon: MapPin },
+  { href: "/faq", label: "FAQ", icon: CircleHelp },
 ];
 
 export default function MobileBottomNav() {
   const [location] = useLocation();
   return (
-    <nav
-      className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
-      style={{
-        background: "rgba(5,10,26,0.95)",
-        backdropFilter: "blur(12px)",
-        borderTop: "1px solid rgba(212,175,55,0.2)",
-      }}
-    >
-      <div className="flex">
-        {ITEMS.map(({ href, icon: Icon, label }) => {
+    <nav className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-4 overflow-hidden rounded-2xl border border-white/10 bg-[#050719]/92 shadow-[0_12px_42px_rgba(0,0,0,.55)] backdrop-blur-xl lg:hidden" aria-label="スマートフォン用ナビゲーション">
+        {ITEMS.map(({ href, icon: Icon, label, primary }) => {
           const active = location === href;
           return (
             <Link
               key={href}
               href={href}
-              className="flex-1 flex flex-col items-center gap-0.5 py-2 transition-colors"
-              style={{ color: active ? "#D4AF37" : "rgba(255,255,255,0.5)" }}
+              className={`flex min-h-[58px] flex-col items-center justify-center gap-1 font-sans-jp text-[9px] transition-colors ${primary ? "bg-gradient-to-br from-[#ED3387] to-[#FF8B6A] text-white" : active ? "text-[#F5C95D]" : "text-white/48"}`}
             >
-              <Icon size={18} />
-              <span className="font-sans-jp text-[10px]">{label}</span>
+              <Icon size={16} />
+              {label}
             </Link>
           );
         })}
-      </div>
     </nav>
   );
 }

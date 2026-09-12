@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Redirect, Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -14,6 +14,9 @@ import Access from "./pages/Access";
 import Contact from "./pages/Contact";
 import SponsorLP from "./pages/SponsorLP";
 import Privacy from "./pages/Privacy";
+import Events from "./pages/Events";
+import Tickets from "./pages/Tickets";
+import FaqPage from "./pages/FaqPage";
 import StarParticles from "./components/StarParticles";
 
 function Router() {
@@ -27,6 +30,10 @@ function Router() {
       <Route path="/news" component={News} />
       <Route path="/access" component={Access} />
       <Route path="/contact" component={Contact} />
+      <Route path="/events" component={Events} />
+      <Route path="/tickets" component={Tickets} />
+      <Route path="/ticket"><Redirect to="/tickets" /></Route>
+      <Route path="/faq" component={FaqPage} />
       <Route path="/sponsor" component={SponsorLP} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/404" component={NotFound} />
