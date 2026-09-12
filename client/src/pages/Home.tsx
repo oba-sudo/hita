@@ -7,7 +7,6 @@ import { Link } from "wouter";
 import {
   ArrowRight,
   CalendarDays,
-  Car,
   Clock3,
   ExternalLink,
   Instagram,
@@ -15,7 +14,6 @@ import {
   MoonStar,
   Sparkles,
   Ticket,
-  TrainFront,
   UsersRound,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -282,41 +280,55 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="cosmos-surface relative overflow-hidden px-5 py-24 md:px-8 md:py-36">
-          <div className="light-stream left-[8%] top-0 w-[74%]" />
-          <div className="mx-auto max-w-[1320px]">
-            <Reveal><SectionTitle number="03" en="ACCESS">会場までの道のりも、<br />夜の旅のはじまり。</SectionTitle></Reveal>
-            <div className="grid gap-px bg-white/10 md:grid-cols-3">
+        <section className="relative overflow-hidden bg-[#fffefa] px-5 py-28 text-[#171717] md:px-8 md:py-44">
+          <div className="pointer-events-none absolute right-[-8%] top-8 h-80 w-80 rounded-full bg-[#55d9ff]/[0.06] blur-3xl" />
+          <div className="pointer-events-none absolute bottom-0 left-[-12%] h-80 w-80 rounded-full bg-[#f5c95d]/[0.08] blur-3xl" />
+          <div className="relative mx-auto max-w-[1240px]">
+            <Reveal>
+              <div className="max-w-4xl">
+                <div className="mb-5 flex items-center gap-4">
+                  <span className="font-display text-xs tracking-[.22em] text-[#d72677]">03</span>
+                  <span className="h-px w-16 bg-black/25" />
+                  <span className="font-display text-[10px] tracking-[.26em] text-black/45">ACCESS</span>
+                </div>
+                <h2 className="font-serif-jp text-[clamp(2.25rem,6vw,5.25rem)] font-semibold leading-[1.15] tracking-[-.04em] text-black">会場までの道のりも、<br />夜の旅のはじまり。</h2>
+                <p className="mt-7 max-w-2xl font-sans-jp text-sm leading-8 text-black/62 md:text-base">サッポロビール九州日田工場を会場に、冬の夜を彩る光の世界が広がります。公共交通機関でも、お車でもご来場いただけます。</p>
+              </div>
+            </Reveal>
+
+            <div className="mt-16 border-t border-black/15 md:mt-24">
               <Reveal>
-                <div className="h-full bg-[#06081d] p-6 md:p-8">
-                  <MapPin className="mb-5 text-[#F43F8E]" size={23} />
-                  <p className="font-sans-jp text-[10px] tracking-[.18em] text-white/40">VENUE</p>
-                  <h3 className="mt-2 font-serif-jp text-lg font-semibold">サッポロビール<br />九州日田工場</h3>
-                  <p className="mt-3 font-sans-jp text-xs leading-6 text-white/50">〒877-0054<br />大分県日田市高瀬6979</p>
+                <div className="grid gap-5 border-b border-black/15 py-9 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
+                  <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">会場</p>
+                  <div>
+                    <h3 className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">サッポロビール九州日田工場</h3>
+                    <p className="mt-3 font-sans-jp text-sm leading-7 text-black/60 md:text-base">〒877-0054 大分県日田市高瀬6979</p>
+                  </div>
                 </div>
               </Reveal>
-              <Reveal delay={70}>
-                <div className="h-full bg-[#06081d] p-6 md:p-8">
-                  <TrainFront className="mb-5 text-[#55D9FF]" size={23} />
-                  <p className="font-sans-jp text-[10px] tracking-[.18em] text-white/40">BY TRAIN</p>
-                  <h3 className="mt-2 font-serif-jp text-lg font-semibold">JR「日田」駅より</h3>
-                  <p className="mt-3 font-display text-3xl text-white">約10<span className="ml-1 font-sans-jp text-sm">分</span></p>
-                  <p className="mt-2 font-sans-jp text-xs text-white/50">タクシー利用</p>
+              <Reveal delay={80}>
+                <div className="grid gap-5 border-b border-black/15 py-9 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
+                  <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">電車でお越しの方</p>
+                  <div>
+                    <h3 className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">JR「日田」駅より、タクシーで約10分</h3>
+                    <p className="mt-3 font-sans-jp text-sm leading-7 text-black/60 md:text-base">駅から会場までの移動には、タクシーをご利用ください。</p>
+                  </div>
                 </div>
               </Reveal>
-              <Reveal delay={140}>
-                <div className="h-full bg-[#06081d] p-6 md:p-8">
-                  <Car className="mb-5 text-[#F5C95D]" size={23} />
-                  <p className="font-sans-jp text-[10px] tracking-[.18em] text-white/40">BY CAR</p>
-                  <h3 className="mt-2 font-serif-jp text-lg font-semibold">日田ICより約10分</h3>
-                  <p className="mt-3 font-sans-jp text-sm text-white/65">併設駐車場 150台・無料</p>
-                  <p className="mt-2 font-sans-jp text-xs text-white/40">台数に限りがあります。</p>
+              <Reveal delay={160}>
+                <div className="grid gap-5 border-b border-black/15 py-9 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
+                  <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">お車でお越しの方</p>
+                  <div>
+                    <h3 className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">日田ICより約10分</h3>
+                    <p className="mt-3 font-sans-jp text-sm leading-7 text-black/60 md:text-base">会場併設の無料駐車場をご利用いただけます。駐車台数は150台のため、混雑時は時間に余裕をもってお越しください。</p>
+                  </div>
                 </div>
               </Reveal>
             </div>
-            <Reveal delay={140} className="mt-8 flex flex-wrap gap-4">
-              <Link href="/access" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 font-sans-jp text-sm text-white transition-colors hover:bg-white/10">アクセス詳細 <ArrowRight size={14} /></Link>
-              <Link href="/faq" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-sans-jp text-sm text-white/65 transition-colors hover:text-white">ご来場前のFAQ <ArrowRight size={14} /></Link>
+
+            <Reveal delay={200} className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-9">
+              <Link href="/access" className="font-sans-jp text-sm font-bold text-black underline decoration-black/35 underline-offset-8 transition-colors hover:text-[#d72677]">アクセス詳細を見る</Link>
+              <Link href="/faq" className="font-sans-jp text-sm font-bold text-black/65 underline decoration-black/25 underline-offset-8 transition-colors hover:text-[#d72677]">ご来場前のFAQを見る</Link>
             </Reveal>
           </div>
         </section>
