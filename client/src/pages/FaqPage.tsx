@@ -1,16 +1,14 @@
 /**
  * FaqPage — よくある質問
- * デザイン方針: 来場前の不安を短い回答で解消し、チケット・アクセスへ迷わず進める情報設計。
+ * デザイン方針: 開催概要と同じ白背景・黒文字・横罫線の編集レイアウトで、来場前の疑問を短く解消する。
  */
 import { Link } from "wouter";
-import { ArrowRight, CircleHelp, Mail, MapPin, Ticket } from "lucide-react";
+import { ArrowRight, ExternalLink, Info, Mail, MapPin, Ticket } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
-import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 
 const FAQS = [
-  { q: "開催期間を教えてください。", a: "2026年10月31日（土）から2027年1月31日（日）まで、全93日間の開催予定です。" },
+  { q: "開催期間を教えてください。", a: "2026年10月31日（土）から2027年1月31日（日）まで、全93日間の開催予定です。期間中は無休です。" },
   { q: "開催時間と最終受付は何時ですか？", a: "開催時間は17:30〜21:30、最終受付は21:00です。時間には余裕をもってご来場ください。" },
   { q: "雨の日も開催しますか？", a: "雨天でも開催予定です。天候や安全上の理由により内容変更・中止となる場合は、公式サイトのお知らせでご案内します。" },
   { q: "会場はどこですか？", a: "サッポロビール九州日田工場（〒877-0054 大分県日田市高瀬6979）です。" },
@@ -28,45 +26,60 @@ export default function FaqPage() {
 
   return (
     <PageLayout>
-      <PageHero en="FREQUENTLY ASKED QUESTIONS" ja="ご来場前の、よくある質問。" sub="開催時間、チケット、駐車場など、ご来場前に知りたい情報をまとめています。" bgImage={RENEWAL_ASSETS.kidsTwo} />
+      <main className="relative overflow-hidden bg-[#fffefa] text-[#171717]">
+        <div className="pointer-events-none absolute right-[-8%] top-32 h-80 w-80 rounded-full bg-[#55d9ff]/[0.06] blur-3xl" />
+        <div className="pointer-events-none absolute left-[-12%] top-[54rem] h-80 w-80 rounded-full bg-[#f5c95d]/[0.08] blur-3xl" />
 
-      <section className="relative overflow-hidden bg-[#030513] px-5 py-20 md:px-8 md:py-32">
-        <div className="light-stream right-0 top-0 w-[66%]" />
-        <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[.42fr_1fr] lg:gap-20">
-          <div>
-            <div className="flex items-center gap-2 text-[#F43F8E]"><CircleHelp size={18} /><span className="font-display text-[10px] tracking-[.26em]">BEFORE YOUR VISIT</span></div>
-            <h2 className="mt-4 font-serif-jp text-3xl font-semibold leading-tight md:text-4xl">知っておくと、<br />夜がもっと楽しくなる。</h2>
-            <p className="mt-5 font-sans-jp text-sm leading-8 text-white/52">掲載内容は最新の決定情報に基づいています。運営上の変更がある場合は、公式サイトのお知らせでご案内します。</p>
-            <div className="mt-8 flex flex-col gap-3">
-              <Link href="/tickets" className="inline-flex items-center gap-2 font-sans-jp text-sm text-[#FF9CC8]">チケット情報 <Ticket size={14} /></Link>
-              <Link href="/access" className="inline-flex items-center gap-2 font-sans-jp text-sm text-[#9CEBFF]">アクセス情報 <MapPin size={14} /></Link>
+        <section className="relative px-5 pb-24 pt-32 md:px-8 md:pb-36 md:pt-44">
+          <div className="mx-auto max-w-[1240px]">
+            <header className="mb-16 text-center md:mb-24">
+              <p className="font-display text-[clamp(3.4rem,9vw,8.5rem)] font-semibold leading-none tracking-[-.045em] text-black">FAQ</p>
+              <p className="mt-4 font-sans-jp text-sm font-bold tracking-[.2em] text-black/70">よくある質問</p>
+              <div className="mx-auto mt-7 h-px w-24 bg-gradient-to-r from-[#F43F8E] via-[#F5C95D] to-[#55D9FF]" />
+              <p className="mx-auto mt-7 max-w-xl font-sans-jp text-sm leading-7 text-black/58">開催時間、チケット、駐車場など、ご来場前に知りたい情報をまとめています。</p>
+            </header>
+
+            <div className="border-t border-black/15">
+              {FAQS.map((item, index) => (
+                <details key={item.q} className="group border-b border-black/15">
+                  <summary className="grid cursor-pointer list-none gap-4 py-6 md:grid-cols-[112px_1fr_30px] md:gap-10 md:py-8">
+                    <span className="font-display text-xs tracking-[.18em] text-[#d72677] md:pt-1">Q {String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-sans-jp text-base font-bold leading-8 text-black md:text-lg">{item.q}</span>
+                    <span className="relative hidden h-6 w-6 md:mt-1 md:block before:absolute before:left-1/2 before:top-1/2 before:h-px before:w-5 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-black after:absolute after:left-1/2 after:top-1/2 after:h-5 after:w-px after:-translate-x-1/2 after:-translate-y-1/2 after:bg-black after:transition-transform group-open:after:rotate-90" />
+                    <span className="relative h-5 w-5 md:hidden before:absolute before:left-0 before:top-1/2 before:h-px before:w-4 before:bg-black after:absolute after:left-2 after:top-0 after:h-4 after:w-px after:bg-black after:transition-transform group-open:after:rotate-90" />
+                  </summary>
+                  <div className="pb-8 md:grid md:grid-cols-[112px_1fr] md:gap-10 md:pb-10">
+                    <span className="hidden font-display text-xs tracking-[.18em] text-black/35 md:block">A</span>
+                    <p className="font-sans-jp text-sm leading-8 text-black/65 md:text-base md:leading-8">{item.a}</p>
+                  </div>
+                </details>
+              ))}
             </div>
-          </div>
 
-          <div className="border-t border-white/10">
-            {FAQS.map((item, index) => (
-              <details key={item.q} className="group border-b border-white/10">
-                <summary className="flex cursor-pointer list-none items-start gap-4 py-6 font-sans-jp text-sm font-medium leading-7 text-white md:py-7 md:text-base">
-                  <span className="constellation-number mt-0.5 shrink-0 font-display text-xs">Q{String(index + 1).padStart(2, "0")}</span>
-                  <span className="flex-1">{item.q}</span>
-                  <span className="relative mt-2 h-3 w-3 shrink-0 before:absolute before:left-0 before:top-1/2 before:h-px before:w-3 before:bg-[#F43F8E] after:absolute after:left-1/2 after:top-0 after:h-3 after:w-px after:bg-[#F43F8E] after:transition-transform group-open:after:rotate-90" />
-                </summary>
-                <div className="pb-7 pl-[3.25rem] pr-6 font-sans-jp text-sm leading-8 text-white/55">{item.a}</div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+            <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div className="flex items-start gap-3 bg-[#f3f1eb] px-5 py-5 md:px-7">
+                <Info size={18} className="mt-1 shrink-0 text-[#d72677]" />
+                <p className="font-sans-jp text-xs leading-6 text-black/62 md:text-sm">掲載内容は最新の決定情報に基づいています。変更がある場合は、公式サイトのお知らせおよび公式Instagramでご案内します。</p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3 lg:flex">
+                <Link href="/tickets" className="inline-flex items-center justify-center gap-2 bg-[#171717] px-5 py-4 font-sans-jp text-sm font-bold text-white transition-colors hover:bg-[#d72677]">
+                  <Ticket size={15} /> チケット
+                </Link>
+                <Link href="/access" className="inline-flex items-center justify-center gap-2 border border-black/20 px-5 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:border-black hover:bg-black hover:text-white">
+                  <MapPin size={15} /> アクセス
+                </Link>
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-black/20 px-5 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:border-black hover:bg-black hover:text-white">
+                  <Mail size={15} /> お問い合わせ
+                </Link>
+              </div>
+            </div>
 
-      <section className="cosmos-surface px-5 py-18 md:px-8 md:py-24">
-        <div className="mx-auto flex max-w-[1080px] flex-col items-start justify-between gap-7 border-l border-[#55D9FF]/50 pl-6 md:flex-row md:items-center md:pl-9">
-          <div>
-            <p className="font-display text-[10px] tracking-[.26em] text-[#55D9FF]">STILL NEED HELP?</p>
-            <h2 className="mt-2 font-serif-jp text-2xl font-semibold md:text-3xl">解決しない場合はお問い合わせください。</h2>
+            <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 font-sans-jp text-sm font-bold text-black underline decoration-black/30 underline-offset-4 transition-colors hover:text-[#d72677]">
+              公式Instagramで最新情報を見る <ExternalLink size={14} /><ArrowRight size={14} />
+            </a>
           </div>
-          <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-sans-jp text-sm text-white"><Mail size={15} /> お問い合わせ <ArrowRight size={14} /></Link>
-        </div>
-      </section>
+        </section>
+      </main>
     </PageLayout>
   );
 }
