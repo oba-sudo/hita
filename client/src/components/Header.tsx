@@ -82,6 +82,7 @@ export default function Header() {
                 </div>
               )}
             </div>
+            <Link href="/overview" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">開催概要</Link>
             <Link href="/faq" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">よくある質問</Link>
             <Link href="/access" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">アクセス</Link>
             <Link href="/contact" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">お問い合わせ</Link>
@@ -136,7 +137,8 @@ export default function Header() {
                 )
               )}
             </div>
-            <div className="grid grid-cols-3 gap-px bg-white/10">
+            <div className="grid grid-cols-2 gap-px bg-white/10">
+              <Link href="/overview" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">開催概要</Link>
               <Link href="/access" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">アクセス</Link>
               <Link href="/faq" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">よくある質問</Link>
               <Link href="/contact" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">お問い合わせ</Link>
