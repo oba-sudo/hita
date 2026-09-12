@@ -2,7 +2,7 @@
  * Tickets — チケット案内
  * デザイン方針: Starlight Goldの料金表示とTicket Pinkの行動導線で、購入前の判断材料を明快に提示する。
  */
-import { Building2, CalendarDays, Check, Info, Ticket as TicketIcon } from "lucide-react";
+import { Building2, CalendarDays, Info, Ticket as TicketIcon } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
@@ -11,21 +11,16 @@ import { RENEWAL_ASSETS, TICKET_SELLERS } from "@/data/renewalAssets";
 export default function Tickets() {
   useSEO({
     title: "チケット・入場料金 | 日田イルミナージュ2026",
-    description: "日田イルミナージュ2026の入場料金、WEBチケット、提携施設割引、取扱予定のチケット販売会社をご案内します。",
+    description: "日田イルミナージュ2026の入場料金、当日券、WEBチケット、取扱予定のチケット販売会社をご案内します。",
   });
 
   return (
     <PageLayout>
-      <PageHero en="TICKETS" ja="光の夜へのチケット。" sub="入場料金、WEBチケットの特典、取扱予定の販売会社をご案内します。" bgImage={RENEWAL_ASSETS.parkRestaurant} />
+      <PageHero en="TICKETS" ja="光の夜へのチケット。" sub="入場料金、当日券、取扱予定の販売会社をご案内します。" bgImage={RENEWAL_ASSETS.parkRestaurant} />
 
       <section className="relative overflow-hidden bg-[#030513] px-5 py-20 md:px-8 md:py-32">
         <div className="light-stream left-0 top-0 w-[68%]" />
-        <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-start lg:gap-20">
-          <div className="lg:sticky lg:top-28">
-            <img src={RENEWAL_ASSETS.ticketPromo} alt="日田イルミナージュ提携施設100円OFF WEBチケット案内" className="mx-auto max-h-[820px] w-auto border border-white/10 shadow-[0_28px_90px_rgba(0,0,0,.5)]" />
-          </div>
-
-          <div>
+          <div className="mx-auto max-w-[900px]">
             <div className="mb-5 flex items-center gap-3"><span className="constellation-number font-display text-sm">01</span><div className="light-rule w-20" /><span className="font-display text-[10px] tracking-[.28em] text-white/42">ADMISSION</span></div>
             <h2 className="font-serif-jp text-3xl font-semibold md:text-5xl">入場料金</h2>
             <div className="mt-8 grid gap-px bg-white/10 sm:grid-cols-2">
@@ -51,15 +46,6 @@ export default function Tickets() {
               </div>
             </div>
 
-            <div className="mt-14 border-l border-[#F43F8E]/60 pl-6 md:pl-8">
-              <div className="mb-3 flex items-center gap-2 text-[#F43F8E]"><TicketIcon size={18} /><span className="font-display text-[10px] tracking-[.26em]">WEB TICKET BENEFIT</span></div>
-              <h3 className="font-serif-jp text-2xl font-semibold md:text-3xl">提携施設をご利用の方は<br />100円OFF</h3>
-              <p className="mt-5 font-sans-jp text-sm leading-8 text-white/58">進撃の巨人ミュージアム、進撃の巨人カフェ 日田店、日田森のビール園をご利用の方限定。QRから取得した割引チケットを入場時にご提示ください。</p>
-              <ul className="mt-5 space-y-2">
-                {["お一人様1回限り", "他の割引との併用不可", "転売・譲渡禁止"].map((item) => <li key={item} className="flex items-center gap-2 font-sans-jp text-xs text-white/48"><Check size={13} className="text-[#F5C95D]" />{item}</li>)}
-              </ul>
-            </div>
-
             <div className="mt-14 border border-[#F43F8E]/25 bg-[#F43F8E]/5 p-6 md:p-8">
               <p className="font-display text-[10px] tracking-[.26em] text-[#FF9CC8]">TICKET SALES</p>
               <h3 className="mt-3 font-serif-jp text-2xl font-semibold">販売URLは順次公開します</h3>
@@ -67,7 +53,6 @@ export default function Tickets() {
               <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/7 px-5 py-3 font-sans-jp text-xs text-white/55"><CalendarDays size={15} /> 公開準備中</div>
             </div>
           </div>
-        </div>
       </section>
 
       <section className="cosmos-surface relative overflow-hidden px-5 py-20 md:px-8 md:py-28">

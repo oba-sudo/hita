@@ -17,6 +17,7 @@ import Privacy from "./pages/Privacy";
 import Events from "./pages/Events";
 import Tickets from "./pages/Tickets";
 import FaqPage from "./pages/FaqPage";
+import NearbyFacilities from "./pages/NearbyFacilities";
 import StarParticles from "./components/StarParticles";
 
 function Router() {
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/tickets" component={Tickets} />
       <Route path="/ticket"><Redirect to="/tickets" /></Route>
       <Route path="/faq" component={FaqPage} />
+      <Route path="/nearby-facilities" component={NearbyFacilities} />
       <Route path="/sponsor" component={SponsorLP} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/404" component={NotFound} />

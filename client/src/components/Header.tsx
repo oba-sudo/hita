@@ -85,6 +85,7 @@ export default function Header() {
             <Link href="/overview" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">開催概要</Link>
             <Link href="/faq" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">よくある質問</Link>
             <Link href="/access" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">アクセス</Link>
+            <Link href="/nearby-facilities" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">近隣施設</Link>
             <Link href="/contact" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">お問い合わせ</Link>
             <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" aria-label="日田イルミナージュ公式Instagram" className="text-white/65 transition-colors hover:text-[#FF83B7]">
               <Instagram size={16} />
@@ -140,6 +141,7 @@ export default function Header() {
             <div className="grid grid-cols-2 gap-px bg-white/10">
               <Link href="/overview" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">開催概要</Link>
               <Link href="/access" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">アクセス</Link>
+              <Link href="/nearby-facilities" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">近隣施設</Link>
               <Link href="/faq" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">よくある質問</Link>
               <Link href="/contact" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">お問い合わせ</Link>
             </div>
