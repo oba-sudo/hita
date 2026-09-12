@@ -42,12 +42,12 @@ export default function Events() {
           <div className="space-y-5 md:space-y-8">
             {AREAS.map((area, index) => (
               <article key={area.title} className={`group grid overflow-hidden border border-white/10 bg-[#07091d] md:grid-cols-12 ${index % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}>
-                <div className="relative min-h-[300px] md:col-span-7 md:min-h-[460px]">
+                <div className="relative order-2 min-h-[300px] md:order-none md:col-span-7 md:min-h-[460px]">
                   <img src={area.image} alt={`${area.title}の会場演出イメージ`} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#030513]/65 via-transparent to-transparent" />
                   <p className="absolute bottom-3 right-4 font-sans-jp text-[9px] text-white/42">※会場演出イメージ</p>
                 </div>
-                <div className="relative flex flex-col justify-end p-7 md:col-span-5 md:p-12">
+                <div className="relative order-1 flex flex-col justify-end p-7 md:order-none md:col-span-5 md:p-12">
                   <span className="constellation-number font-display text-6xl md:text-8xl">{area.number}</span>
                   <p className="mt-4 font-display text-[10px] tracking-[.26em] text-[#55D9FF]">{area.en}</p>
                   <h3 className="mt-2 font-serif-jp text-3xl font-semibold md:text-4xl">{area.title}</h3>
