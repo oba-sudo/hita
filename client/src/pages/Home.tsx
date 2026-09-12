@@ -136,7 +136,7 @@ export default function Home() {
           <div className="light-stream left-[-8%] top-[29%] w-[62%] -rotate-[8deg]" />
           <div className="light-stream right-[-5%] top-[64%] w-[48%] rotate-[5deg]" />
 
-          <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] items-end px-5 pb-28 pt-28 sm:px-8 md:items-center md:pb-24 lg:px-14">
+          <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] items-end px-5 pb-24 pt-24 sm:px-8 md:items-center md:pb-24 lg:px-14">
             <div className="max-w-5xl">
               <p className="constellation-number mb-5 font-display text-[11px] tracking-[.38em] md:text-sm">2026 — 2027 ・ HITA</p>
               <div className="mb-7 flex items-center gap-3">
@@ -151,7 +151,7 @@ export default function Home() {
                 />
               </h1>
               <p className="mb-3 font-serif-jp text-[clamp(1.1rem,3vw,1.65rem)] leading-relaxed text-white">サッポロビール九州日田工場に、<br className="sm:hidden" />光が泳ぐ夜が姿をあらわす。</p>
-              <p className="mb-9 font-sans-jp text-xs leading-7 text-white/55 md:text-sm">2026年10月31日（土）から2027年1月31日（日）まで。<br className="hidden sm:block" />冬の日田が、光と遊びと驚きに包まれる93日間。</p>
+              <p className="mb-8 font-sans-jp text-[13px] leading-7 text-white/62 md:text-sm">2026年10月31日（土）から2027年1月31日（日）まで。<br className="hidden sm:block" />冬の日田が、光と遊びと驚きに包まれる93日間。</p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link href="/tickets" className="ticket-glow ticket-pulse inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 font-sans-jp text-sm font-bold text-white transition-transform active:scale-[.97]">
                   <Ticket size={17} /> チケット情報を見る
@@ -181,12 +181,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="cosmos-surface relative overflow-hidden px-5 pb-24 pt-24 md:px-8 md:pb-36 md:pt-36">
+        <section className="cosmos-surface relative overflow-hidden px-5 py-20 md:px-8 md:py-36">
           <div className="light-stream left-0 top-0 w-[72%]" />
-          <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-20">
+          <div className="mx-auto grid max-w-[1320px] gap-9 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-20">
             <Reveal>
               <SectionTitle number="00" en="WELCOME TO HITA">光に包まれる、<br />冬の日田へ。</SectionTitle>
-              <p className="max-w-xl font-sans-jp text-sm leading-8 text-white/64 md:text-base">
+              <p className="max-w-xl font-sans-jp text-[15px] leading-8 text-white/72 md:text-base">
                 日田イルミナージュ2026は、サッポロビール九州日田工場を舞台にした、九州初上陸のイルミネーションイベントです。光の回廊、宇宙を旅するような広場、家族で遊べる体験エリア。日常を離れ、光の中を歩く特別な夜をお楽しみください。
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -204,13 +204,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="highlights" className="relative overflow-hidden bg-[#030513] px-5 py-24 md:px-8 md:py-36">
+        <section id="highlights" className="relative overflow-hidden bg-[#030513] px-5 py-20 md:px-8 md:py-36">
           <div className="light-stream right-0 top-0 w-[62%]" />
           <div className="mx-auto max-w-[1320px]">
             <Reveal>
               <SectionTitle number="01" en="HIGHLIGHTS">今夜、どの光を<br />めぐりますか。</SectionTitle>
             </Reveal>
-            <div className="grid auto-rows-[290px] gap-4 md:grid-cols-12 md:auto-rows-[310px]">
+            <div className="grid auto-rows-[310px] gap-4 md:grid-cols-12 md:auto-rows-[310px]">
               {highlights.map((item, index) => (
                 <Reveal key={item.title} className={item.className} delay={index * 70}>
                   <article className="group relative h-full overflow-hidden border border-white/10 bg-[#090b22]">
@@ -222,7 +222,7 @@ export default function Home() {
                         <span className="font-display text-[9px] tracking-[.22em] text-white/45">{item.en}</span>
                       </div>
                       <h3 className="font-serif-jp text-2xl font-semibold text-white md:text-3xl">{item.title}</h3>
-                      <p className="mt-2 max-w-lg font-sans-jp text-xs leading-6 text-white/62 md:text-sm">{item.description}</p>
+                      <p className="mt-2 max-w-lg font-sans-jp text-[13px] leading-6 text-white/72 md:text-sm">{item.description}</p>
                     </div>
                   </article>
                 </Reveal>
@@ -251,9 +251,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-y border-white/10 bg-[#090b22] px-5 py-24 md:px-8 md:py-32">
+        <section className="relative overflow-hidden border-y border-white/10 bg-[#090b22] px-5 py-20 md:px-8 md:py-32">
           <div className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-[#F43F8E]/10 blur-[110px]" />
-          <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-center lg:gap-20">
+          <div className="mx-auto grid max-w-[1180px] gap-9 lg:grid-cols-[.82fr_1.18fr] lg:items-center lg:gap-20">
             <Reveal>
               <img src={RENEWAL_ASSETS.ticketPromo} alt="日田イルミナージュ提携施設100円OFF WEBチケット案内" className="mx-auto max-h-[720px] w-auto border border-white/10 shadow-[0_26px_80px_rgba(0,0,0,.48)]" />
             </Reveal>
@@ -280,7 +280,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#fffefa] px-5 py-28 text-[#171717] md:px-8 md:py-44">
+        <section className="relative overflow-hidden bg-[#fffefa] px-5 py-20 text-[#171717] md:px-8 md:py-44">
           <div className="pointer-events-none absolute right-[-8%] top-8 h-80 w-80 rounded-full bg-[#55d9ff]/[0.06] blur-3xl" />
           <div className="pointer-events-none absolute bottom-0 left-[-12%] h-80 w-80 rounded-full bg-[#f5c95d]/[0.08] blur-3xl" />
           <div className="relative mx-auto max-w-[1240px]">
@@ -296,29 +296,29 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-16 border-t border-black/15 md:mt-24">
+            <div className="mt-12 border-t border-black/15 md:mt-24">
               <Reveal>
-                <div className="grid gap-5 border-b border-black/15 py-9 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
-                  <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">会場</p>
-                  <div>
+                <div className="grid gap-4 border-b border-black/15 py-8 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
+                <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">会場</p>
+                <div>
                     <h3 className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">サッポロビール九州日田工場</h3>
                     <p className="mt-3 font-sans-jp text-sm leading-7 text-black/60 md:text-base">〒877-0054 大分県日田市高瀬6979</p>
                   </div>
                 </div>
               </Reveal>
               <Reveal delay={80}>
-                <div className="grid gap-5 border-b border-black/15 py-9 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
-                  <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">電車でお越しの方</p>
-                  <div>
+                <div className="grid gap-4 border-b border-black/15 py-8 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
+                <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">電車でお越しの方</p>
+                <div>
                     <h3 className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">JR「日田」駅より、タクシーで約10分</h3>
                     <p className="mt-3 font-sans-jp text-sm leading-7 text-black/60 md:text-base">駅から会場までの移動には、タクシーをご利用ください。</p>
                   </div>
                 </div>
               </Reveal>
               <Reveal delay={160}>
-                <div className="grid gap-5 border-b border-black/15 py-9 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
-                  <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">お車でお越しの方</p>
-                  <div>
+                <div className="grid gap-4 border-b border-black/15 py-8 md:grid-cols-[180px_1fr] md:gap-10 md:py-12">
+                <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">お車でお越しの方</p>
+                <div>
                     <h3 className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">日田ICより約10分</h3>
                     <p className="mt-3 font-sans-jp text-sm leading-7 text-black/60 md:text-base">会場併設の無料駐車場をご利用いただけます。駐車台数は150台のため、混雑時は時間に余裕をもってお越しください。</p>
                   </div>
@@ -326,21 +326,21 @@ export default function Home() {
               </Reveal>
             </div>
 
-            <Reveal delay={200} className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-9">
+            <Reveal delay={200} className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-9">
               <Link href="/access" className="font-sans-jp text-sm font-bold text-black underline decoration-black/35 underline-offset-8 transition-colors hover:text-[#d72677]">アクセス詳細を見る</Link>
               <Link href="/faq" className="font-sans-jp text-sm font-bold text-black/65 underline decoration-black/25 underline-offset-8 transition-colors hover:text-[#d72677]">ご来場前のFAQを見る</Link>
             </Reveal>
           </div>
         </section>
 
-        <section id="instagram" className="relative overflow-hidden bg-[#030513] px-5 py-24 md:px-8 md:py-36">
+        <section id="instagram" className="relative overflow-hidden bg-[#030513] px-5 py-20 md:px-8 md:py-36">
           <div className="light-stream right-[4%] top-0 w-[78%]" />
           <div className="absolute left-[8%] top-[18%] h-56 w-56 rounded-full bg-[#F43F8E]/10 blur-[110px]" />
-          <div className="relative mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[.78fr_1fr] lg:items-center lg:gap-20">
+          <div className="relative mx-auto grid max-w-[1180px] gap-9 lg:grid-cols-[.78fr_1fr] lg:items-center lg:gap-20">
             <Reveal>
               <div>
                 <SectionTitle number="04" en="INSTAGRAM">光の準備を、<br />いちばん近くで。</SectionTitle>
-                <p className="mt-6 max-w-xl font-sans-jp text-sm leading-8 text-white/58">
+                <p className="mt-5 max-w-xl font-sans-jp text-[15px] leading-8 text-white/70 md:mt-6 md:text-sm">
                   会場づくりの様子や最新のお知らせを、公式Instagramからお届けします。投稿はInstagram側の更新内容が表示されます。
                 </p>
                 <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#F43F8E]/35 px-6 py-3 font-sans-jp text-sm text-[#FF9CC8] transition-colors hover:bg-[#F43F8E]/10">
@@ -361,14 +361,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#030513] px-5 py-24 md:px-8 md:py-32">
+        <section className="relative overflow-hidden bg-[#030513] px-5 py-20 md:px-8 md:py-32">
           <img src={RENEWAL_ASSETS.aerial} alt="サッポロビール九州日田工場の会場全景" className="absolute inset-0 h-full w-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#030513] via-[#030513]/92 to-[#030513]/62" />
           <div className="relative mx-auto grid max-w-[1320px] gap-12 md:grid-cols-[1.15fr_.85fr] md:items-center">
             <Reveal>
               <p className="mb-4 font-display text-[10px] tracking-[.28em] text-[#F5C95D]">HITA × LIGHT × COMMUNITY</p>
               <h2 className="font-serif-jp text-3xl font-semibold leading-tight md:text-5xl">光をきっかけに、<br />冬の日田をめぐる。</h2>
-              <p className="mt-6 max-w-2xl font-sans-jp text-sm leading-8 text-white/60">
+              <p className="mt-5 max-w-2xl font-sans-jp text-[15px] leading-8 text-white/70 md:mt-6 md:text-sm">
                 会場だけでなく、飲食、温泉、観光、宿泊へ。日田イルミナージュは、冬の日田を訪れる新しい理由をつくり、地域をめぐる時間まで含めて一つの体験にしていきます。
               </p>
             </Reveal>

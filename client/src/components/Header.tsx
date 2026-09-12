@@ -19,6 +19,7 @@ export default function Header() {
   const [eventsOpen, setEventsOpen] = useState(false);
   const [location] = useLocation();
   const eventsRef = useRef<HTMLDivElement>(null);
+  const hasLightPageSurface = ["/overview", "/faq", "/tickets", "/nearby-facilities"].includes(location);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 28);
@@ -44,12 +45,12 @@ export default function Header() {
       <header
         className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled ? "rgba(3,5,19,0.9)" : "linear-gradient(180deg,rgba(3,5,19,.92),rgba(3,5,19,.18),transparent)",
-          backdropFilter: scrolled ? "blur(18px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,.08)" : "1px solid transparent",
+          background: scrolled || hasLightPageSurface ? "rgba(3,5,19,0.94)" : "linear-gradient(180deg,rgba(3,5,19,.92),rgba(3,5,19,.18),transparent)",
+          backdropFilter: scrolled || hasLightPageSurface ? "blur(18px)" : "none",
+          borderBottom: scrolled || hasLightPageSurface ? "1px solid rgba(255,255,255,.1)" : "1px solid transparent",
         }}
       >
-        <div className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between px-4 md:h-20 md:px-8">
+        <div className="mx-auto flex h-[70px] max-w-[1440px] items-center justify-between px-5 md:h-20 md:px-8">
           <Link href="/" className="group flex items-center" aria-label="日田イルミナージュ トップページ">
             <img src={RENEWAL_ASSETS.logoHiRes} alt="日田イルミナージュ" className="h-11 w-auto max-w-[166px] object-contain object-left drop-shadow-[0_0_12px_rgba(244,63,142,.28)] md:h-14 md:max-w-[218px]" />
           </Link>
@@ -98,7 +99,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <Link
               href="/tickets"
-              className="ticket-glow inline-flex items-center gap-2 rounded-full px-4 py-2.5 font-sans-jp text-xs font-bold text-white transition-transform active:scale-[.97] md:px-6 md:py-3"
+              className="ticket-glow inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2.5 font-sans-jp text-xs font-bold text-white transition-transform active:scale-[.97] md:px-6 md:py-3"
             >
               <Ticket size={14} />
               <span className="hidden sm:inline">チケット情報</span>
@@ -109,7 +110,7 @@ export default function Header() {
               onClick={() => setMobileOpen((open) => !open)}
               aria-label={mobileOpen ? "メニューを閉じる" : "メニューを開く"}
               aria-expanded={mobileOpen}
-              className="grid h-10 w-10 place-items-center text-white lg:hidden"
+              className="grid h-11 w-11 place-items-center text-white lg:hidden"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -118,7 +119,7 @@ export default function Header() {
       </header>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 overflow-y-auto bg-[#030513]/98 px-5 pb-8 pt-24 backdrop-blur-xl lg:hidden">
+        <div className="fixed inset-0 z-40 overflow-y-auto bg-[#030513]/98 px-5 pb-10 pt-24 backdrop-blur-xl lg:hidden">
           <nav className="mx-auto max-w-lg" aria-label="モバイルナビゲーション">
             <div className="mb-6 flex items-center gap-2 font-display text-[10px] tracking-[.28em] text-[#F5C95D]">
               <Sparkles size={14} /> EVENTS
@@ -126,12 +127,12 @@ export default function Header() {
             <div className="border-y border-white/10">
               {EVENT_LINKS.map((item) =>
                 item.external ? (
-                  <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between border-b border-white/5 py-4 text-white/75 last:border-b-0">
+                  <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="flex min-h-14 items-center justify-between border-b border-white/5 py-4 text-white/75 last:border-b-0">
                     <span className="font-sans-jp text-sm">{item.label}</span>
                     <span className="font-display text-[10px] tracking-[.16em] text-[#55D9FF]">{item.sub}</span>
                   </a>
                 ) : (
-                  <Link key={item.label} href={item.href} className="flex items-center justify-between border-b border-white/5 py-4 text-white last:border-b-0">
+                  <Link key={item.label} href={item.href} className="flex min-h-14 items-center justify-between border-b border-white/5 py-4 text-white last:border-b-0">
                     <span className="font-sans-jp text-sm">{item.label}</span>
                     <span className="font-sans-jp text-[10px] text-[#F5C95D]">{item.sub}</span>
                   </Link>
