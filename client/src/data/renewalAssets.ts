@@ -27,17 +27,17 @@ export const RENEWAL_ASSETS = {
   parking: "/manus-storage/parking_d12ee043.webp",
 } as const;
 
-export const TICKET_SELLERS = [
-  "アソビュー",
-  "楽天",
-  "トリップドットコム",
-  "KKDAY JAPAN",
-  "セブンドリームドットコム",
-  "ぴあ",
-  "JTB",
-  "ローソンチケット",
-  "じゃらん",
-  "チケットペイ",
-  "Livepocket",
-  "イープラス",
-] as const;
+export const TICKET_SELLERS: ReadonlyArray<{ readonly name: string; readonly href?: string }> = [
+  { name: "アソビュー" },
+  { name: "楽天", href: "https://experiences.travel.rakuten.co.jp/experiences/63163?scid=we_txp_illuminagegroup-hita-officialsite" },
+  { name: "トリップドットコム" },
+  { name: "KKDAY", href: "https://www.kkday.com/ja/product/771496?srsltid=AU7gw4WL8bk6Qk2FntKdj_-wJS6DALLI3hXYYCdD047AJxpv6Lhg-yn7" },
+  { name: "セブンドリームドットコム" },
+  { name: "ぴあ" },
+  { name: "JTB" },
+  { name: "ローソンチケット" },
+  { name: "じゃらん" },
+  { name: "チケットペイ" },
+  { name: "Livepocket" },
+  { name: "イープラス" },
+];
