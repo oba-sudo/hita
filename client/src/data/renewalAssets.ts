@@ -27,11 +27,26 @@ export const RENEWAL_ASSETS = {
   parking: "/manus-storage/parking_d12ee043.webp",
 } as const;
 
-export const TICKET_SELLERS: ReadonlyArray<{ readonly name: string; readonly href?: string }> = [
+export const TICKET_SELLERS: ReadonlyArray<{
+  readonly name: string;
+  readonly href?: string;
+  readonly logo?: string;
+  readonly logoAlt?: string;
+}> = [
   { name: "アソビュー" },
-  { name: "楽天", href: "https://experiences.travel.rakuten.co.jp/experiences/63163?scid=we_txp_illuminagegroup-hita-officialsite" },
+  {
+    name: "楽天",
+    href: "https://experiences.travel.rakuten.co.jp/experiences/63163?scid=we_txp_illuminagegroup-hita-officialsite",
+    logo: "/manus-storage/rakuten-travel-logo_7e9f6d25.png",
+    logoAlt: "Rakuten Travel",
+  },
   { name: "トリップドットコム" },
-  { name: "KKDAY", href: "https://www.kkday.com/ja/product/771496?srsltid=AU7gw4WL8bk6Qk2FntKdj_-wJS6DALLI3hXYYCdD047AJxpv6Lhg-yn7" },
+  {
+    name: "KKDAY",
+    href: "https://www.kkday.com/ja/product/771496?srsltid=AU7gw4WL8bk6Qk2FntKdj_-wJS6DALLI3hXYYCdD047AJxpv6Lhg-yn7",
+    logo: "/manus-storage/kkday-logo_6365e3c2.png",
+    logoAlt: "KKday",
+  },
   { name: "セブンドリームドットコム" },
   { name: "ぴあ" },
   { name: "JTB" },

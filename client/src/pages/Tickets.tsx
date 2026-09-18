@@ -83,10 +83,17 @@ export default function Tickets() {
               <div>
                 <p className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">前売りチケットを購入する</p>
                 <p className="mt-3 font-sans-jp text-sm leading-7 text-black/62 md:text-base">販売開始済みの購入ページを掲載しています。その他の販売先は順次公開します。取扱開始時期や販売内容は会社ごとに異なる場合があります。</p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {TICKET_SELLERS.filter((seller) => seller.href).map((seller) => (
-                    <a key={seller.name} href={seller.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#171717] px-6 py-4 font-sans-jp text-sm font-bold text-white transition-colors hover:bg-[#d72677]">
-                      {seller.name}で購入する <ExternalLink size={15} />
+                    <a key={seller.name} href={seller.href} target="_blank" rel="noopener noreferrer" className="group inline-flex min-h-[68px] items-center gap-3 bg-[#171717] p-3 font-sans-jp text-white transition-colors hover:bg-[#d72677]">
+                      <span className="grid h-11 w-16 shrink-0 place-items-center bg-white p-1.5">
+                        {seller.logo && <img src={seller.logo} alt={seller.logoAlt ?? seller.name} className={`max-h-full max-w-full object-contain ${seller.name === "KKDAY" ? "h-9 w-9" : "w-full"}`} />}
+                      </span>
+                      <span className="min-w-0 flex-1 text-left">
+                        <span className="block text-[10px] font-medium tracking-[.08em] text-white/55">ADVANCE TICKETS</span>
+                        <span className="mt-1 block text-sm font-bold">{seller.name}で購入する</span>
+                      </span>
+                      <ExternalLink size={16} className="shrink-0 text-white/65 transition-transform group-hover:translate-x-0.5" />
                     </a>
                   ))}
                 </div>
