@@ -2,11 +2,12 @@
  * FaqPage — よくある質問
  * デザイン方針: 開催概要と同じ白背景・黒文字・横罫線の編集レイアウトで、来場前の疑問を短く解消する。
  */
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, ExternalLink, Info, Mail, MapPin, Plus, Ticket } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { useSEO } from "@/hooks/useSEO";
+import { TICKET_PURCHASE_OPTIONS } from "@/data/renewalAssets";
 
 const FAQ_CATEGORIES = ["すべて", "開催・天候", "アクセス・駐車場", "チケット", "会場内・ご利用"] as const;
 
@@ -14,14 +15,26 @@ type FaqCategory = (typeof FAQ_CATEGORIES)[number];
 type FaqItem = {
   category: Exclude<FaqCategory, "すべて">;
   q: string;
-  a: string;
+  a: ReactNode;
 };
+
+const INSTAGRAM_URL = "https://www.instagram.com/hita_illuminage/";
+const RAKUTEN_URL = TICKET_PURCHASE_OPTIONS[0].href;
+const KKDAY_URL = TICKET_PURCHASE_OPTIONS[1].href;
+
+function ExternalTextLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black underline decoration-black/30 underline-offset-4 transition-colors hover:text-[#d72677] hover:decoration-[#d72677]">
+      {children}<ExternalLink size={13} strokeWidth={1.8} aria-hidden="true" />
+    </a>
+  );
+}
 
 const FAQS = [
   { category: "開催・天候", q: "開催期間を教えてください。", a: "2026年10月31日（土）から2027年1月31日（日）まで、全93日間の開催予定です。期間中は無休です。" },
   { category: "開催・天候", q: "会場時間と点灯時間は何時ですか？", a: "会場時間は17:00〜21:30、点灯時間は17:30〜21:30です。雨天決行です。" },
   { category: "開催・天候", q: "雨の日も開催しますか？", a: "雨天でも開催予定です。天候や安全上の理由により内容変更・中止となる場合は、公式サイトのお知らせでご案内します。" },
-  { category: "開催・天候", q: "開催中止や変更の場合はどこで確認できますか？", a: "公式サイトのお知らせおよび公式Instagramでご案内します。" },
+  { category: "開催・天候", q: "開催中止や変更の場合はどこで確認できますか？", a: <>公式サイトのお知らせおよび<ExternalTextLink href={INSTAGRAM_URL}>公式Instagram</ExternalTextLink>でご案内します。</> },
   { category: "アクセス・駐車場", q: "会場はどこですか？", a: "サッポロビール九州日田工場（〒877-0054 大分県日田市高瀬6979）です。" },
   { category: "アクセス・駐車場", q: "駐車場はありますか？", a: "会場併設の無料駐車場を150台ご用意しています。台数に限りがあるため、混雑時は時間に余裕をもってお越しください。" },
   { category: "アクセス・駐車場", q: "駐車料金はかかりますか？", a: "会場併設駐車場は無料です。" },
@@ -36,8 +49,8 @@ const FAQS = [
   { category: "会場内・ご利用", q: "どのような服装がおすすめですか？", a: "屋外イベントのため、冬の夜間は冷え込みます。暖かい服装と、歩きやすい靴でのご来場をおすすめします。" },
   { category: "チケット", q: "入場料金を教えてください。", a: "大人（中学生以上）2,000円、子ども（1歳〜小学生）1,000円です。0歳のお子さまは無料です。" },
   { category: "チケット", q: "当日券は購入できますか？", a: "会場受付で購入できます。支払いは現金のみです。" },
-  { category: "チケット", q: "WEBチケットはありますか？", a: "前売り券のみWEBチケットを販売します。楽天・KKDAYで購入でき、購入先は随時追加予定です。" },
-  { category: "チケット", q: "前売りチケットはどこで購入できますか？", a: "楽天とKKDAYの購入ページを前売りチケット情報ページに掲載しています。その他の販売先は決定次第、順次公開します。当日券は会場受付で購入でき、お支払いは現金のみです。" },
+  { category: "チケット", q: "WEBチケットはありますか？", a: <>前売り券のみWEBチケットを販売します。<ExternalTextLink href={RAKUTEN_URL}>楽天</ExternalTextLink>・<ExternalTextLink href={KKDAY_URL}>KKDAY</ExternalTextLink>で購入でき、購入先は随時追加予定です。</> },
+  { category: "チケット", q: "前売りチケットはどこで購入できますか？", a: <><ExternalTextLink href={RAKUTEN_URL}>楽天</ExternalTextLink>と<ExternalTextLink href={KKDAY_URL}>KKDAY</ExternalTextLink>の購入ページを前売りチケット情報ページに掲載しています。その他の販売先は決定次第、順次公開します。当日券は会場受付で購入でき、お支払いは現金のみです。</> },
 ] satisfies ReadonlyArray<FaqItem>;
 
 export default function FaqPage() {
@@ -126,7 +139,7 @@ export default function FaqPage() {
             <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="flex items-start gap-3 bg-[#f3f1eb] px-5 py-5 md:px-7">
                 <Info size={18} className="mt-1 shrink-0 text-[#d72677]" />
-                <p className="font-sans-jp text-xs leading-6 text-black/62 md:text-sm">掲載内容は最新の決定情報に基づいています。変更がある場合は、公式サイトのお知らせおよび公式Instagramでご案内します。</p>
+                <p className="font-sans-jp text-xs leading-6 text-black/62 md:text-sm">掲載内容は最新の決定情報に基づいています。変更がある場合は、公式サイトのお知らせおよび<ExternalTextLink href={INSTAGRAM_URL}>公式Instagram</ExternalTextLink>でご案内します。</p>
               </div>
               <div className="grid gap-3 sm:grid-cols-3 lg:flex">
                 <Link href="/tickets" className="inline-flex items-center justify-center gap-2 bg-[#171717] px-5 py-4 font-sans-jp text-sm font-bold text-white transition-colors hover:bg-[#d72677]">
