@@ -279,6 +279,8 @@ export default function SponsorLP() {
             <span className="font-display text-sm text-[#C8A35A] tracking-wider cursor-pointer">日田イルミナージュ</span>
           </Link>
           <nav className="hidden md:flex items-center gap-1">
+            <Link href="/" className="text-white/70 hover:text-white text-xs px-3 py-1.5 rounded transition-colors font-sans-jp">トップ</Link>
+            <Link href="/faq" className="text-white/70 hover:text-white text-xs px-3 py-1.5 rounded transition-colors font-sans-jp">FAQ</Link>
             {[
               { label: "事業概要", ref: sectionsRef.about },
               { label: "協賛プラン", ref: sectionsRef.plans },
@@ -305,6 +307,8 @@ export default function SponsorLP() {
         </div>
         {/* モバイル用アンカーナビ */}
         <div className="md:hidden flex overflow-x-auto gap-1 px-4 pb-2 scrollbar-hide">
+          <Link href="/" className="text-[#C8A35A] hover:text-white text-[11px] whitespace-nowrap px-2 py-1 rounded font-sans-jp flex-shrink-0">トップ</Link>
+          <Link href="/faq" className="text-[#C8A35A] hover:text-white text-[11px] whitespace-nowrap px-2 py-1 rounded font-sans-jp flex-shrink-0">FAQ</Link>
           {[
             { label: "事業概要", ref: sectionsRef.about },
             { label: "協賛プラン", ref: sectionsRef.plans },

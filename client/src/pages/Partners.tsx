@@ -55,6 +55,21 @@ export default function Partners() {
               <p className="mx-auto mt-7 max-w-2xl font-sans-jp text-sm leading-7 text-black/58 md:text-base md:leading-8">日田イルミナージュを支えてくださる地域・団体の皆さまをご紹介します。各団体名から公式サイトをご覧いただけます。</p>
             </header>
 
+            <nav aria-label="後援・協賛ページのクイックナビゲーション" className="mb-14 grid border-y border-black/15 sm:grid-cols-3 md:mb-20">
+              <Link href="/" className="group flex min-h-14 items-center justify-between border-b border-black/15 px-4 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:bg-black/[0.025] hover:text-[#d72677] sm:border-b-0 sm:border-r sm:border-black/15 md:px-6">
+                <span><span className="mr-3 font-display text-[10px] tracking-[.18em] text-[#d72677]">TOP</span>トップページ</span>
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <Link href="/faq" className="group flex min-h-14 items-center justify-between border-b border-black/15 px-4 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:bg-black/[0.025] hover:text-[#d72677] sm:border-b-0 sm:border-r sm:border-black/15 md:px-6">
+                <span><span className="mr-3 font-display text-[10px] tracking-[.18em] text-[#d72677]">FAQ</span>よくある質問</span>
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <Link href="/overview" className="group flex min-h-14 items-center justify-between px-4 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:bg-black/[0.025] hover:text-[#d72677] md:px-6">
+                <span><span className="mr-3 font-display text-[10px] tracking-[.18em] text-[#d72677]">INFO</span>開催概要</span>
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+            </nav>
+
             <section aria-labelledby="supporters-heading">
               <div className="mb-5 flex items-end justify-between gap-5 md:mb-7">
                 <div>
