@@ -46,9 +46,14 @@ export default function Today() {
             {/* ステータスグリッド */}
             <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white/5 border border-white/5 rounded-xl p-4">
-                <div className="flex items-center gap-2 text-white/40 text-xs font-sans-jp mb-2"><Clock size={13} />開催時間</div>
+                <div className="flex items-center gap-2 text-white/40 text-xs font-sans-jp mb-2"><Clock size={13} />会場時間</div>
                 <p className="font-serif-jp font-bold text-white text-xl">{s.startTime}〜{s.endTime}</p>
-                <p className="text-xs text-white/40 font-sans-jp mt-1">最終入場 {s.lastEntry}</p>
+                <p className="text-xs text-white/40 font-sans-jp mt-1">{s.weatherPolicy}</p>
+              </div>
+              <div className="bg-white/5 border border-white/5 rounded-xl p-4">
+                <div className="flex items-center gap-2 text-white/40 text-xs font-sans-jp mb-2"><Clock size={13} />点灯時間</div>
+                <p className="font-serif-jp font-bold text-white text-xl">{s.lightingStartTime}〜{s.lightingEndTime}</p>
+                <p className="text-xs text-white/40 font-sans-jp mt-1">{s.weatherPolicy}</p>
               </div>
               <div className="bg-white/5 border border-white/5 rounded-xl p-4">
                 <div className="flex items-center gap-2 text-white/40 text-xs font-sans-jp mb-2">チケット</div>
