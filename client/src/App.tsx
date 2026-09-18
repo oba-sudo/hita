@@ -19,8 +19,8 @@ import Tickets from "./pages/Tickets";
 import FaqPage from "./pages/FaqPage";
 import NearbyFacilities from "./pages/NearbyFacilities";
 import StarParticles from "./components/StarParticles";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
