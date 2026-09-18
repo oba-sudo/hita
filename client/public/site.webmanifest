@@ -1,0 +1,21 @@
+{
+  "name": "日田イルミナージュ2026",
+  "short_name": "日田イルミナージュ",
+  "lang": "ja",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#050a1a",
+  "theme_color": "#050a1a",
+  "icons": [
+    {
+      "src": "/images/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
