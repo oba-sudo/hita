@@ -1,7 +1,7 @@
 export const EVENT_INFO = {
   name: "日田イルミナージュ2026",
   period: "2026年10月31日（土）〜2027年1月31日（日）",
-  hours: "会場時間 17:00〜21:30／点灯時間 17:00〜21:30（雨天決行）",
+  hours: "会場時間 17:00〜21:30／点灯時間 17:30〜21:30（雨天決行）",
   venue: "サッポロビール九州日田工場（大分県日田市高瀬６９７９）",
   venueShort: "サッポロビール九州日田工場",
   mainCopy: "光を見に来る。日田に泊まり、食べ、巡り、また訪れる。",
@@ -13,7 +13,7 @@ export const TODAY_STATUS = {
   status: "通常開催" as "通常開催" | "内容を一部変更して開催" | "開催時間を変更" | "中止",
   startTime: "17:00",
   endTime: "21:30",
-  lightingStartTime: "17:00",
+  lightingStartTime: "17:30",
   lightingEndTime: "21:30",
   weatherPolicy: "雨天決行",
   ticketStatus: "販売中",

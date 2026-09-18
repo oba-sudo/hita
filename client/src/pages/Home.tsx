@@ -80,7 +80,7 @@ function SectionTitle({ number, en, children }: { number: string; en: string; ch
 
 const eventFacts = [
   { icon: CalendarDays, label: "開催期間", value: "2026.10.31 — 2027.1.31", note: "全93日間・期間中無休" },
-  { icon: Clock3, label: "営業時間", value: "会場時間 17:00 — 21:30", note: "点灯時間 17:00 — 21:30・雨天決行" },
+  { icon: Clock3, label: "営業時間", value: "会場時間 17:00 — 21:30", note: "点灯時間 17:30 — 21:30・雨天決行" },
   { icon: MapPin, label: "会場", value: "サッポロビール 九州日田工場", note: "大分県日田市高瀬6979" },
 ];
 
