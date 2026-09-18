@@ -255,7 +255,7 @@ export default function Home() {
           <div className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-[#F43F8E]/10 blur-[110px]" />
           <div className="mx-auto grid max-w-[1180px] gap-9 lg:grid-cols-[.82fr_1.18fr] lg:items-center lg:gap-20">
             <Reveal>
-              <img src={RENEWAL_ASSETS.ticketPromo} alt="日田イルミナージュ提携施設100円OFF WEBチケット案内" className="mx-auto max-h-[720px] w-auto border border-white/10 shadow-[0_26px_80px_rgba(0,0,0,.48)]" />
+              <img src={RENEWAL_ASSETS.officialKeyvisual} alt="日田イルミナージュ2026 公式ビジュアル" className="mx-auto max-h-[720px] w-auto border border-white/10 shadow-[0_26px_80px_rgba(0,0,0,.48)]" />
             </Reveal>
             <Reveal delay={100}>
               <SectionTitle number="02" en="TICKETS">光の夜へ、<br />一歩先に。</SectionTitle>
