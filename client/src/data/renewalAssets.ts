@@ -7,7 +7,7 @@ export const RENEWAL_ASSETS = {
   logo: "/manus-storage/illuminage-logo_8b4466de.png",
   logoDark: "/manus-storage/illuminage-logo-dark_aa97592c.png",
   logoTransparentCropped: "/manus-storage/hita-illuminage-logo-transparent-cropped_7db5d1fa.png",
-  logoHiRes: "/manus-storage/hita-illuminage-logo-hires_f81b1672.png",
+  logoHiRes: "/images/hita-illuminage-logo-2026-light.webp",
   officialLogo: "/manus-storage/hita-illuminage-official-logo_84eb9588.png",
   officialLogoTransparent: "/manus-storage/hita-illuminage-logo-transparent-v2_a3751dc7.png",
   officialLogoTransparentWhite: "/manus-storage/hita-illuminage-logo-transparent-white_38acbf55.png",
