@@ -15,12 +15,12 @@ export default function Tickets() {
 
   return (
     <PageLayout>
-      <main className="relative overflow-hidden bg-[#fffefa] px-5 pb-28 pt-32 text-[#171717] md:px-8 md:pb-44 md:pt-44">
+      <main className="relative overflow-hidden bg-[#fffefa] px-5 pb-20 pt-28 text-[#171717] md:px-8 md:pb-44 md:pt-44">
         <div className="pointer-events-none absolute left-[-10%] top-20 h-80 w-80 rounded-full bg-[#f5c95d]/[0.08] blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 right-[-10%] h-80 w-80 rounded-full bg-[#55d9ff]/[0.05] blur-3xl" />
 
         <div className="relative mx-auto max-w-[1240px]">
-          <header className="mb-16 text-center md:mb-24">
+          <header className="mb-12 text-center md:mb-24">
             <p className="font-display text-[clamp(3.4rem,9vw,8.5rem)] font-semibold leading-none tracking-[-.045em] text-black">ADVANCE TICKET</p>
             <p className="mt-4 font-sans-jp text-sm font-bold tracking-[.2em] text-black/70">前売りチケット情報・料金</p>
             <div className="mx-auto mt-7 h-px w-24 bg-gradient-to-r from-[#F43F8E] via-[#F5C95D] to-[#55D9FF]" />
@@ -32,7 +32,19 @@ export default function Tickets() {
               <span className="font-display text-[10px] tracking-[.2em] text-black/40">ADMISSION</span>
             </div>
 
-            <div className="mt-8 overflow-x-auto border-t border-black/15">
+            <div className="mt-7 grid gap-3 md:hidden">
+              <div className="border border-black/15 bg-white px-5 py-5">
+                <p className="font-sans-jp text-sm font-bold text-black">大人（中学生以上）</p>
+                <p className="mt-2 font-display text-4xl text-black">¥2,000</p>
+                <p className="mt-3 font-sans-jp text-xs leading-6 text-black/58">入場当日にご利用いただけます。</p>
+              </div>
+              <div className="border border-black/15 bg-white px-5 py-5">
+                <p className="font-sans-jp text-sm font-bold text-black">子ども（1歳〜小学生）</p>
+                <p className="mt-2 font-display text-4xl text-black">¥1,000</p>
+                <p className="mt-3 font-sans-jp text-xs leading-6 text-black/58">0歳のお子さまは無料です。</p>
+              </div>
+            </div>
+            <div className="mt-8 hidden overflow-x-auto border-t border-black/15 md:block">
               <table className="min-w-[620px] w-full border-collapse text-left">
                 <thead className="border-b border-black/15 bg-[#ded5b5]">
                   <tr>
@@ -58,12 +70,12 @@ export default function Tickets() {
             <p className="mt-4 font-sans-jp text-xs leading-6 text-black/55">料金・販売条件は変更になる場合があります。最新情報は本サイトでご確認ください。</p>
           </section>
 
-          <section className="mt-20 md:mt-28" aria-labelledby="same-day-title">
+          <section className="mt-14 md:mt-28" aria-labelledby="same-day-title">
             <div className="flex items-baseline gap-4 border-b border-black/15 pb-5">
               <h2 id="same-day-title" className="font-sans-jp text-xl font-bold tracking-[.08em] text-black md:text-2xl">当日券について</h2>
               <span className="font-display text-[10px] tracking-[.2em] text-black/40">SAME-DAY TICKET</span>
             </div>
-            <div className="grid gap-5 border-b border-black/15 py-8 md:grid-cols-[200px_1fr] md:gap-10 md:py-10">
+            <div className="grid gap-4 border-b border-black/15 py-7 md:grid-cols-[200px_1fr] md:gap-10 md:py-10">
               <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">購入場所</p>
               <div>
                 <p className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">会場受付で購入できます</p>
@@ -72,20 +84,20 @@ export default function Tickets() {
             </div>
           </section>
 
-          <section className="mt-20 md:mt-28" aria-labelledby="sales-title">
+          <section className="mt-14 md:mt-28" aria-labelledby="sales-title">
             <div className="flex items-baseline gap-4 border-b border-black/15 pb-5">
               <h2 id="sales-title" className="font-sans-jp text-xl font-bold tracking-[.08em] text-black md:text-2xl">前売りチケット販売について</h2>
               <span className="font-display text-[10px] tracking-[.2em] text-black/40">ADVANCE TICKETS</span>
             </div>
 
-            <div className="grid gap-5 border-b border-black/15 py-8 md:grid-cols-[200px_1fr] md:gap-10 md:py-10">
+            <div className="grid gap-4 border-b border-black/15 py-7 md:grid-cols-[200px_1fr] md:gap-10 md:py-10">
               <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">購入ページ</p>
               <div>
                 <p className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">前売りチケットを購入する</p>
                 <p className="mt-3 font-sans-jp text-sm leading-7 text-black/62 md:text-base">販売開始済みの購入ページを掲載しています。その他の販売先は順次公開します。取扱開始時期や販売内容は会社ごとに異なる場合があります。</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {TICKET_PURCHASE_OPTIONS.map((seller) => (
-                    <a key={seller.name} href={seller.href} target="_blank" rel="noopener noreferrer" className="group inline-flex min-h-[68px] items-center gap-3 bg-[#171717] p-3 font-sans-jp text-white transition-colors hover:bg-[#d72677]">
+                    <a key={seller.name} href={seller.href} target="_blank" rel="noopener noreferrer" className="group inline-flex min-h-[72px] items-center gap-3 bg-[#171717] p-3 font-sans-jp text-white transition-colors active:scale-[.99] hover:bg-[#d72677]">
                       <span className="grid h-11 w-16 shrink-0 place-items-center bg-white p-1.5">
                         {seller.logo && <img src={seller.logo} alt={seller.logoAlt ?? seller.name} className={`max-h-full max-w-full object-contain ${seller.name === "KKDAY" ? "h-9 w-9" : "w-full"}`} />}
                       </span>

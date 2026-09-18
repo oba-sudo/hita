@@ -74,9 +74,9 @@ export default function FaqPage() {
         <div className="pointer-events-none absolute right-[-8%] top-32 h-80 w-80 rounded-full bg-[#55d9ff]/[0.06] blur-3xl" />
         <div className="pointer-events-none absolute left-[-12%] top-[54rem] h-80 w-80 rounded-full bg-[#f5c95d]/[0.08] blur-3xl" />
 
-        <section className="relative px-5 pb-24 pt-32 md:px-8 md:pb-36 md:pt-44">
+        <section className="relative px-5 pb-20 pt-28 md:px-8 md:pb-36 md:pt-44">
           <div className="mx-auto max-w-[1240px]">
-            <header className="mb-16 text-center md:mb-24">
+            <header className="mb-12 text-center md:mb-24">
               <p className="font-display text-[clamp(3.4rem,9vw,8.5rem)] font-semibold leading-none tracking-[-.045em] text-black">FAQ</p>
               <p className="mt-4 font-sans-jp text-sm font-bold tracking-[.2em] text-black/70">よくある質問</p>
               <div className="mx-auto mt-7 h-px w-24 bg-gradient-to-r from-[#F43F8E] via-[#F5C95D] to-[#55D9FF]" />
@@ -85,7 +85,7 @@ export default function FaqPage() {
 
             <div className="mb-10 border-y border-black/15 py-5 md:mb-14 md:py-6">
               <p className="mb-3 font-sans-jp text-xs font-bold tracking-[.14em] text-black/55">カテゴリから探す</p>
-              <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 md:mx-0 md:flex-wrap md:px-0" aria-label="FAQカテゴリ">
+              <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:flex-wrap md:px-0" aria-label="FAQカテゴリ">
                 {FAQ_CATEGORIES.map((category) => {
                   const isActive = activeCategory === category;
                   const count = category === "すべて" ? FAQS.length : FAQS.filter((item) => item.category === category).length;
@@ -95,7 +95,7 @@ export default function FaqPage() {
                       key={category}
                       onClick={() => selectCategory(category)}
                       aria-pressed={isActive}
-                      className={`shrink-0 border px-4 py-2.5 font-sans-jp text-sm font-bold transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d72677] ${isActive ? "border-[#171717] bg-[#171717] text-white" : "border-black/20 bg-transparent text-black hover:border-[#d72677] hover:text-[#d72677]"}`}
+                      className={`min-h-11 shrink-0 border px-4 py-2.5 font-sans-jp text-sm font-bold transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d72677] ${isActive ? "border-[#171717] bg-[#171717] text-white" : "border-black/20 bg-transparent text-black hover:border-[#d72677] hover:text-[#d72677]"}`}
                     >
                       {category}<span className={`ml-2 font-display text-[10px] ${isActive ? "text-white/60" : "text-black/40"}`}>{String(count).padStart(2, "0")}</span>
                     </button>
@@ -116,18 +116,18 @@ export default function FaqPage() {
                     onClick={() => setOpenQuestion(isOpen ? null : item.q)}
                     aria-expanded={isOpen}
                     aria-controls={answerId}
-                    className="grid w-full cursor-pointer gap-4 py-6 text-left outline-offset-4 transition-colors hover:text-[#d72677] focus-visible:outline-2 focus-visible:outline-[#d72677] md:grid-cols-[112px_1fr_30px] md:gap-10 md:py-8"
+                    className="grid w-full grid-cols-[auto_1fr_auto] items-start gap-x-3 gap-y-0 py-5 text-left outline-offset-4 transition-colors hover:text-[#d72677] focus-visible:outline-2 focus-visible:outline-[#d72677] md:grid-cols-[112px_1fr_30px] md:gap-10 md:py-8"
                   >
-                    <span className="font-display text-xs tracking-[.18em] text-[#d72677] md:pt-1">Q {String(index + 1).padStart(2, "0")}</span>
-                    <span className="font-sans-jp text-base font-bold leading-8 text-black md:text-lg">{item.q}</span>
+                    <span className="pt-1 font-display text-[10px] tracking-[.18em] text-[#d72677] md:pt-1 md:text-xs">Q {String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-sans-jp text-[15px] font-bold leading-7 text-black md:text-lg md:leading-8">{item.q}</span>
                     <Plus size={22} strokeWidth={1.5} className={`hidden justify-self-end text-black transition-transform duration-300 ease-[cubic-bezier(.23,1,.32,1)] md:mt-1 md:block ${isOpen ? "rotate-45 text-[#d72677]" : ""}`} aria-hidden="true" />
-                    <Plus size={19} strokeWidth={1.5} className={`justify-self-end text-black transition-transform duration-300 ease-[cubic-bezier(.23,1,.32,1)] md:hidden ${isOpen ? "rotate-45 text-[#d72677]" : ""}`} aria-hidden="true" />
+                    <Plus size={19} strokeWidth={1.5} className={`mt-1 justify-self-end text-black transition-transform duration-300 ease-[cubic-bezier(.23,1,.32,1)] md:hidden ${isOpen ? "rotate-45 text-[#d72677]" : ""}`} aria-hidden="true" />
                   </button>
                   <div id={answerId} role="region" aria-label={`${item.q}への回答`} className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(.23,1,.32,1)] motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="min-h-0 overflow-hidden">
-                      <div className="pb-8 md:grid md:grid-cols-[112px_1fr] md:gap-10 md:pb-10">
+                      <div className="pb-7 pl-10 pr-1 md:grid md:grid-cols-[112px_1fr] md:gap-10 md:pb-10 md:pl-0">
                         <span className="hidden font-display text-xs tracking-[.18em] text-black/35 md:block">A</span>
-                        <p className="font-sans-jp text-sm leading-8 text-black/65 md:text-base md:leading-8">{item.a}</p>
+                        <p className="font-sans-jp text-sm leading-7 text-black/65 md:text-base md:leading-8">{item.a}</p>
                       </div>
                     </div>
                   </div>
@@ -136,7 +136,7 @@ export default function FaqPage() {
               })}
             </div>
 
-            <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="mt-10 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="flex items-start gap-3 bg-[#f3f1eb] px-5 py-5 md:px-7">
                 <Info size={18} className="mt-1 shrink-0 text-[#d72677]" />
                 <p className="font-sans-jp text-xs leading-6 text-black/62 md:text-sm">掲載内容は最新の決定情報に基づいています。変更がある場合は、公式サイトのお知らせおよび<ExternalTextLink href={INSTAGRAM_URL}>公式Instagram</ExternalTextLink>でご案内します。</p>

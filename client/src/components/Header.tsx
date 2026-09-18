@@ -33,6 +33,13 @@ export default function Header() {
   }, [location]);
 
   useEffect(() => {
+    document.documentElement.dataset.mobileMenu = mobileOpen ? "open" : "closed";
+    return () => {
+      delete document.documentElement.dataset.mobileMenu;
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {
       if (!eventsRef.current?.contains(event.target as Node)) setEventsOpen(false);
     };
@@ -43,16 +50,16 @@ export default function Header() {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+        className="fixed inset-x-0 top-0 z-[70] transition-all duration-300"
         style={{
           background: scrolled || hasLightPageSurface ? "rgba(3,5,19,0.94)" : "linear-gradient(180deg,rgba(3,5,19,.92),rgba(3,5,19,.18),transparent)",
           backdropFilter: scrolled || hasLightPageSurface ? "blur(18px)" : "none",
           borderBottom: scrolled || hasLightPageSurface ? "1px solid rgba(255,255,255,.1)" : "1px solid transparent",
         }}
       >
-        <div className="mx-auto flex h-[70px] max-w-[1440px] items-center justify-between px-5 md:h-20 md:px-8">
-          <Link href="/" className="group flex items-center" aria-label="日田イルミナージュ トップページ">
-            <img src={RENEWAL_ASSETS.logoHiRes} alt="日田イルミナージュ" className="h-11 w-auto max-w-[166px] object-contain object-left drop-shadow-[0_0_12px_rgba(244,63,142,.28)] md:h-14 md:max-w-[218px]" />
+        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 sm:px-5 md:h-20 md:px-8">
+          <Link href="/" className="group flex min-h-11 min-w-0 items-center" aria-label="日田イルミナージュ トップページ">
+            <img src={RENEWAL_ASSETS.logoHiRes} alt="日田イルミナージュ" className="h-9 w-auto max-w-[132px] object-contain object-left drop-shadow-[0_0_12px_rgba(244,63,142,.28)] sm:h-11 sm:max-w-[166px] md:h-14 md:max-w-[218px]" />
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="メインナビゲーション">
@@ -95,10 +102,10 @@ export default function Header() {
             </span>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <Link
               href="/tickets"
-              className="ticket-glow inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2.5 font-sans-jp text-xs font-bold text-white transition-transform active:scale-[.97] md:px-6 md:py-3"
+              className="ticket-glow inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2.5 font-sans-jp text-xs font-bold text-white transition-transform active:scale-[.97] sm:gap-2 sm:px-4 md:px-6 md:py-3"
             >
               <Ticket size={14} />
               <span className="hidden sm:inline">前売りチケット情報</span>
@@ -109,7 +116,7 @@ export default function Header() {
               onClick={() => setMobileOpen((open) => !open)}
               aria-label={mobileOpen ? "メニューを閉じる" : "メニューを開く"}
               aria-expanded={mobileOpen}
-              className="grid h-11 w-11 place-items-center text-white lg:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5C95D] lg:hidden"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -118,7 +125,7 @@ export default function Header() {
       </header>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 overflow-y-auto bg-[#030513]/98 px-5 pb-10 pt-24 backdrop-blur-xl lg:hidden">
+        <div className="fixed inset-0 z-[60] overflow-y-auto bg-[#030513]/98 px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-20 backdrop-blur-xl lg:hidden">
           <nav className="mx-auto max-w-lg" aria-label="モバイルナビゲーション">
             <div className="mb-6 flex items-center gap-2 font-display text-[10px] tracking-[.28em] text-[#F5C95D]">
               <Sparkles size={14} /> EVENTS
@@ -139,10 +146,10 @@ export default function Header() {
               )}
             </div>
             <div className="grid grid-cols-2 gap-px bg-white/10">
-              <Link href="/overview" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">開催概要</Link>
-              <Link href="/access" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">アクセス</Link>
-              <Link href="/faq" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">よくある質問</Link>
-              <Link href="/contact" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">お問い合わせ</Link>
+              <Link href="/overview" className="flex min-h-16 items-center justify-center bg-[#030513] px-3 py-4 text-center font-sans-jp text-sm text-white/75">開催概要</Link>
+              <Link href="/access" className="flex min-h-16 items-center justify-center bg-[#030513] px-3 py-4 text-center font-sans-jp text-sm text-white/75">アクセス</Link>
+              <Link href="/faq" className="flex min-h-16 items-center justify-center bg-[#030513] px-4 py-4 text-center font-sans-jp text-sm text-white/75">よくある質問</Link>
+              <Link href="/contact" className="flex min-h-16 items-center justify-center bg-[#030513] px-4 py-4 text-center font-sans-jp text-sm text-white/75">お問い合わせ</Link>
             </div>
             <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center justify-center gap-2 border border-white/10 py-3.5 font-sans-jp text-sm text-white/70">
               <Instagram size={16} className="text-[#FF83B7]" /> 公式Instagram

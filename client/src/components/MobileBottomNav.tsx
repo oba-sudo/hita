@@ -15,14 +15,14 @@ const ITEMS = [
 export default function MobileBottomNav() {
   const [location] = useLocation();
   return (
-    <nav className="fixed inset-x-2 bottom-2 z-50 grid grid-cols-4 overflow-hidden rounded-[20px] border border-white/10 bg-[#050719]/95 shadow-[0_12px_42px_rgba(0,0,0,.55)] backdrop-blur-xl lg:hidden" aria-label="スマートフォン用ナビゲーション">
+    <nav className="mobile-bottom-nav fixed inset-x-2 bottom-[calc(.5rem+env(safe-area-inset-bottom))] z-50 grid grid-cols-4 overflow-hidden rounded-[20px] border border-white/10 bg-[#050719]/95 shadow-[0_12px_42px_rgba(0,0,0,.55)] backdrop-blur-xl lg:hidden" aria-label="スマートフォン用ナビゲーション">
         {ITEMS.map(({ href, icon: Icon, label, primary }) => {
           const active = location === href;
           return (
             <Link
               key={href}
               href={href}
-              className={`flex min-h-[64px] flex-col items-center justify-center gap-1.5 font-sans-jp text-[10px] transition-colors ${primary ? "bg-gradient-to-br from-[#ED3387] to-[#FF8B6A] text-white" : active ? "text-[#F5C95D]" : "text-white/55"}`}
+              className={`flex min-h-[64px] flex-col items-center justify-center gap-1.5 font-sans-jp text-[10px] transition-colors active:scale-[.98] ${primary ? "bg-gradient-to-br from-[#ED3387] to-[#FF8B6A] text-white" : active ? "text-[#F5C95D]" : "text-white/55"}`}
             >
               <Icon size={17} strokeWidth={1.8} />
               {label}

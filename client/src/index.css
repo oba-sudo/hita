@@ -208,6 +208,27 @@
   }
 }
 
+/* === Mobile Interaction Refinements === */
+html[data-mobile-menu="open"] {
+  overflow: hidden;
+}
+
+.mobile-bottom-nav {
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), opacity 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html[data-mobile-menu="open"] .mobile-bottom-nav {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(calc(100% + 1.5rem));
+}
+
+@media (max-width: 639px) {
+  input, select, textarea, button {
+    font-size: max(16px, 1em);
+  }
+}
+
 /* === Section Divider === */
 .section-divider {
   width: 60px;
