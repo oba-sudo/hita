@@ -5,7 +5,7 @@
 import { ExternalLink } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { useSEO } from "@/hooks/useSEO";
-import { TICKET_SELLERS } from "@/data/renewalAssets";
+import { TICKET_PURCHASE_OPTIONS, TICKET_SELLERS } from "@/data/renewalAssets";
 
 export default function Tickets() {
   useSEO({
@@ -84,7 +84,7 @@ export default function Tickets() {
                 <p className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">前売りチケットを購入する</p>
                 <p className="mt-3 font-sans-jp text-sm leading-7 text-black/62 md:text-base">販売開始済みの購入ページを掲載しています。その他の販売先は順次公開します。取扱開始時期や販売内容は会社ごとに異なる場合があります。</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {TICKET_SELLERS.filter((seller) => seller.href).map((seller) => (
+                  {TICKET_PURCHASE_OPTIONS.map((seller) => (
                     <a key={seller.name} href={seller.href} target="_blank" rel="noopener noreferrer" className="group inline-flex min-h-[68px] items-center gap-3 bg-[#171717] p-3 font-sans-jp text-white transition-colors hover:bg-[#d72677]">
                       <span className="grid h-11 w-16 shrink-0 place-items-center bg-white p-1.5">
                         {seller.logo && <img src={seller.logo} alt={seller.logoAlt ?? seller.name} className={`max-h-full max-w-full object-contain ${seller.name === "KKDAY" ? "h-9 w-9" : "w-full"}`} />}
@@ -106,13 +106,7 @@ export default function Tickets() {
                 {TICKET_SELLERS.map((seller, index) => (
                   <div key={seller.name} className="flex min-h-[82px] items-center gap-4 border-b border-black/15 py-5 md:border-r md:px-6 md:[&:nth-child(3n)]:border-r-0">
                     <span className="font-display text-[10px] tracking-[.15em] text-[#d72677]">{String(index + 1).padStart(2, "0")}</span>
-                    {seller.href ? (
-                      <a href={seller.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-sans-jp text-sm font-medium leading-6 text-black underline decoration-black/25 underline-offset-4 transition-colors hover:text-[#d72677]">
-                        {seller.name}<ExternalLink size={13} />
-                      </a>
-                    ) : (
-                      <span className="font-sans-jp text-sm font-medium leading-6 text-black">{seller.name}</span>
-                    )}
+                    <span className="font-sans-jp text-sm font-medium leading-6 text-black">{seller.name}</span>
                   </div>
                 ))}
               </div>

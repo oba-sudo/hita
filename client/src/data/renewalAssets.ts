@@ -27,26 +27,33 @@ export const RENEWAL_ASSETS = {
   parking: "/manus-storage/parking_d12ee043.webp",
 } as const;
 
-export const TICKET_SELLERS: ReadonlyArray<{
+export type TicketSeller = {
   readonly name: string;
-  readonly href?: string;
+  readonly href: string;
   readonly logo?: string;
   readonly logoAlt?: string;
-}> = [
-  { name: "アソビュー" },
+};
+
+/** 販売開始済みの前売りチケット購入先 */
+export const TICKET_PURCHASE_OPTIONS: ReadonlyArray<TicketSeller> = [
   {
     name: "楽天",
     href: "https://experiences.travel.rakuten.co.jp/experiences/63163?scid=we_txp_illuminagegroup-hita-officialsite",
     logo: "/manus-storage/rakuten-travel-logo_7e9f6d25.png",
     logoAlt: "Rakuten Travel",
   },
-  { name: "トリップドットコム" },
   {
     name: "KKDAY",
     href: "https://www.kkday.com/ja/product/771496?srsltid=AU7gw4WL8bk6Qk2FntKdj_-wJS6DALLI3hXYYCdD047AJxpv6Lhg-yn7",
     logo: "/manus-storage/kkday-logo_6365e3c2.png",
     logoAlt: "KKday",
   },
+];
+
+/** 今後取扱予定の前売りチケット販売会社（販売開始後に購入先へ移動） */
+export const TICKET_SELLERS = [
+  { name: "アソビュー" },
+  { name: "トリップドットコム" },
   { name: "セブンドリームドットコム" },
   { name: "ぴあ" },
   { name: "JTB" },
