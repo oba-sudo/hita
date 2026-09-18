@@ -223,6 +223,12 @@ html[data-mobile-menu="open"] .mobile-bottom-nav {
   transform: translateY(calc(100% + 1.5rem));
 }
 
+html[data-mobile-menu="open"] .scroll-top-button {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
 @media (max-width: 639px) {
   input, select, textarea, button {
     font-size: max(16px, 1em);

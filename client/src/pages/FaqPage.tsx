@@ -4,7 +4,7 @@
  */
 import { type ReactNode, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, ExternalLink, Info, Mail, MapPin, Plus, Ticket } from "lucide-react";
+import { ArrowRight, ExternalLink, Info, Mail, MapPin, Plus, Search, Ticket, X } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { useSEO } from "@/hooks/useSEO";
 import { TICKET_PURCHASE_OPTIONS } from "@/data/renewalAssets";
@@ -16,6 +16,7 @@ type FaqItem = {
   category: Exclude<FaqCategory, "すべて">;
   q: string;
   a: ReactNode;
+  keywords: string;
 };
 
 const INSTAGRAM_URL = "https://www.instagram.com/hita_illuminage/";
@@ -30,36 +31,50 @@ function ExternalTextLink({ href, children }: { href: string; children: ReactNod
   );
 }
 
+function normalizeSearchText(value: string) {
+  return value.normalize("NFKC").toLocaleLowerCase("ja-JP").trim();
+}
+
 const FAQS = [
-  { category: "開催・天候", q: "開催期間を教えてください。", a: "2026年10月31日（土）から2027年1月31日（日）まで、全93日間の開催予定です。期間中は無休です。" },
-  { category: "開催・天候", q: "会場時間と点灯時間は何時ですか？", a: "会場時間は17:00〜21:30、点灯時間は17:30〜21:30です。雨天決行です。" },
-  { category: "開催・天候", q: "雨の日も開催しますか？", a: "雨天でも開催予定です。天候や安全上の理由により内容変更・中止となる場合は、公式サイトのお知らせでご案内します。" },
-  { category: "開催・天候", q: "開催中止や変更の場合はどこで確認できますか？", a: <>公式サイトのお知らせおよび<ExternalTextLink href={INSTAGRAM_URL}>公式Instagram</ExternalTextLink>でご案内します。</> },
-  { category: "アクセス・駐車場", q: "会場はどこですか？", a: "サッポロビール九州日田工場（〒877-0054 大分県日田市高瀬6979）です。" },
-  { category: "アクセス・駐車場", q: "駐車場はありますか？", a: "会場併設の無料駐車場を150台ご用意しています。台数に限りがあるため、混雑時は時間に余裕をもってお越しください。" },
-  { category: "アクセス・駐車場", q: "駐車料金はかかりますか？", a: "会場併設駐車場は無料です。" },
-  { category: "アクセス・駐車場", q: "車で会場まで直接行くことはできますか？", a: "可能です。日田ICから約10分、会場併設駐車場をご利用いただけます。" },
-  { category: "会場内・ご利用", q: "車椅子での入場は可能ですか？", a: "車椅子でご入場いただけます。会場内は概ね平坦ですが、一部に砂利道があります。" },
-  { category: "会場内・ご利用", q: "ベビーカーでの入場は可能ですか？", a: "ベビーカーでご入場いただけます。会場内は概ね平坦ですが、一部に砂利道があります。" },
-  { category: "会場内・ご利用", q: "再入場はできますか？", a: "入場後の再入場はできません。" },
-  { category: "会場内・ご利用", q: "愛犬などのペットを連れて入場できますか？", a: "介助犬を除き、ペットのご入場はできません。" },
-  { category: "会場内・ご利用", q: "会場内で写真や動画を撮影できますか？", a: "個人でお楽しみいただく範囲で撮影できます。三脚・一脚をご使用の際は、ほかのお客様のご迷惑とならないようご配慮ください。商用目的での撮影をご希望の場合は、事前にお問い合わせください。" },
-  { category: "会場内・ご利用", q: "飲食できる場所はありますか？", a: "飲食は日田森のビール園のみでご利用いただけます。" },
-  { category: "会場内・ご利用", q: "トイレはありますか？", a: "トイレは会場の外に設置しています。" },
-  { category: "会場内・ご利用", q: "どのような服装がおすすめですか？", a: "屋外イベントのため、冬の夜間は冷え込みます。暖かい服装と、歩きやすい靴でのご来場をおすすめします。" },
-  { category: "チケット", q: "入場料金を教えてください。", a: "大人（中学生以上）2,000円、子ども（1歳〜小学生）1,000円です。0歳のお子さまは無料です。" },
-  { category: "チケット", q: "当日券は購入できますか？", a: "会場受付で購入できます。支払いは現金のみです。" },
-  { category: "チケット", q: "WEBチケットはありますか？", a: <>前売り券のみWEBチケットを販売します。<ExternalTextLink href={RAKUTEN_URL}>楽天</ExternalTextLink>・<ExternalTextLink href={KKDAY_URL}>KKDAY</ExternalTextLink>で購入でき、購入先は随時追加予定です。</> },
-  { category: "チケット", q: "前売りチケットはどこで購入できますか？", a: <><ExternalTextLink href={RAKUTEN_URL}>楽天</ExternalTextLink>と<ExternalTextLink href={KKDAY_URL}>KKDAY</ExternalTextLink>の購入ページを前売りチケット情報ページに掲載しています。その他の販売先は決定次第、順次公開します。当日券は会場受付で購入でき、お支払いは現金のみです。</> },
+  { category: "開催・天候", q: "開催期間を教えてください。", a: "2026年10月31日（土）から2027年1月31日（日）まで、全93日間の開催予定です。期間中は無休です。", keywords: "日程 開催日 期間 93日 無休 10月 1月" },
+  { category: "開催・天候", q: "会場時間と点灯時間は何時ですか？", a: "会場時間は17:00〜21:30、点灯時間は17:30〜21:30です。雨天決行です。", keywords: "時間 営業時間 点灯 最終入場 17時 21時30分" },
+  { category: "開催・天候", q: "雨の日も開催しますか？", a: "雨天でも開催予定です。天候や安全上の理由により内容変更・中止となる場合は、公式サイトのお知らせでご案内します。", keywords: "雨天 雨 悪天候 雪 風 中止" },
+  { category: "開催・天候", q: "開催中止や変更の場合はどこで確認できますか？", a: <>公式サイトのお知らせおよび<ExternalTextLink href={INSTAGRAM_URL}>公式Instagram</ExternalTextLink>でご案内します。</>, keywords: "中止 変更 お知らせ インスタ instagram 最新情報" },
+  { category: "アクセス・駐車場", q: "会場はどこですか？", a: "サッポロビール九州日田工場（〒877-0054 大分県日田市高瀬6979）です。", keywords: "場所 住所 会場 工場 高瀬6979 サッポロビール" },
+  { category: "アクセス・駐車場", q: "駐車場はありますか？", a: "会場併設の無料駐車場を150台ご用意しています。台数に限りがあるため、混雑時は時間に余裕をもってお越しください。", keywords: "車 駐車 150台 無料 混雑" },
+  { category: "アクセス・駐車場", q: "駐車料金はかかりますか？", a: "会場併設駐車場は無料です。", keywords: "車 駐車 無料 料金" },
+  { category: "アクセス・駐車場", q: "車で会場まで直接行くことはできますか？", a: "可能です。日田ICから約10分、会場併設駐車場をご利用いただけます。", keywords: "車 自動車 日田IC インター 高速道路 直接" },
+  { category: "会場内・ご利用", q: "車椅子での入場は可能ですか？", a: "車椅子でご入場いただけます。会場内は概ね平坦ですが、一部に砂利道があります。", keywords: "バリアフリー 車いす 車椅子 砂利" },
+  { category: "会場内・ご利用", q: "ベビーカーでの入場は可能ですか？", a: "ベビーカーでご入場いただけます。会場内は概ね平坦ですが、一部に砂利道があります。", keywords: "子ども 赤ちゃん バギー 砂利" },
+  { category: "会場内・ご利用", q: "再入場はできますか？", a: "入場後の再入場はできません。", keywords: "再入場 入り直し 退場" },
+  { category: "会場内・ご利用", q: "愛犬などのペットを連れて入場できますか？", a: "介助犬を除き、ペットのご入場はできません。", keywords: "犬 愛犬 動物 介助犬 ペット同伴" },
+  { category: "会場内・ご利用", q: "会場内で写真や動画を撮影できますか？", a: "個人でお楽しみいただく範囲で撮影できます。三脚・一脚をご使用の際は、ほかのお客様のご迷惑とならないようご配慮ください。商用目的での撮影をご希望の場合は、事前にお問い合わせください。", keywords: "撮影 写真 動画 三脚 一脚 カメラ 商用" },
+  { category: "会場内・ご利用", q: "飲食できる場所はありますか？", a: "飲食は日田森のビール園のみでご利用いただけます。", keywords: "食事 レストラン 飲食 ビール園" },
+  { category: "会場内・ご利用", q: "トイレはありますか？", a: "トイレは会場の外に設置しています。", keywords: "お手洗い 化粧室" },
+  { category: "会場内・ご利用", q: "どのような服装がおすすめですか？", a: "屋外イベントのため、冬の夜間は冷え込みます。暖かい服装と、歩きやすい靴でのご来場をおすすめします。", keywords: "服装 防寒 寒さ 冬 靴" },
+  { category: "チケット", q: "入場料金を教えてください。", a: "大人（中学生以上）2,000円、子ども（1歳〜小学生）1,000円です。0歳のお子さまは無料です。", keywords: "価格 値段 大人 子ども 幼児 0歳 2000円 1000円" },
+  { category: "チケット", q: "当日券は購入できますか？", a: "会場受付で購入できます。支払いは現金のみです。", keywords: "当日 会場 受付 現金 支払い" },
+  { category: "チケット", q: "WEBチケットはありますか？", a: <>前売り券のみWEBチケットを販売します。<ExternalTextLink href={RAKUTEN_URL}>楽天</ExternalTextLink>・<ExternalTextLink href={KKDAY_URL}>KKDAY</ExternalTextLink>で購入でき、購入先は随時追加予定です。</>, keywords: "オンライン web 前売り 楽天 KKDAY 購入" },
+  { category: "チケット", q: "前売りチケットはどこで購入できますか？", a: <><ExternalTextLink href={RAKUTEN_URL}>楽天</ExternalTextLink>と<ExternalTextLink href={KKDAY_URL}>KKDAY</ExternalTextLink>の購入ページを前売りチケット情報ページに掲載しています。その他の販売先は決定次第、順次公開します。当日券は会場受付で購入でき、お支払いは現金のみです。</>, keywords: "前売り 購入 楽天 KKDAY 販売先 現金" },
 ] satisfies ReadonlyArray<FaqItem>;
 
 export default function FaqPage() {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<FaqCategory>("すべて");
-  const visibleFaqs = activeCategory === "すべて" ? FAQS : FAQS.filter((item) => item.category === activeCategory);
+  const [searchQuery, setSearchQuery] = useState("");
+  const normalizedQuery = normalizeSearchText(searchQuery);
+  const categoryFaqs = activeCategory === "すべて" ? FAQS : FAQS.filter((item) => item.category === activeCategory);
+  const visibleFaqs = normalizedQuery
+    ? categoryFaqs.filter((item) => normalizeSearchText(`${item.q} ${item.keywords}`).includes(normalizedQuery))
+    : categoryFaqs;
 
   const selectCategory = (category: FaqCategory) => {
     setActiveCategory(category);
+    setOpenQuestion(null);
+  };
+
+  const updateSearchQuery = (value: string) => {
+    setSearchQuery(value);
     setOpenQuestion(null);
   };
 
@@ -84,7 +99,33 @@ export default function FaqPage() {
             </header>
 
             <div className="mb-10 border-y border-black/15 py-5 md:mb-14 md:py-6">
-              <p className="mb-3 font-sans-jp text-xs font-bold tracking-[.14em] text-black/55">カテゴリから探す</p>
+              <label htmlFor="faq-search" className="mb-3 block font-sans-jp text-xs font-bold tracking-[.14em] text-black/55">キーワードで探す</label>
+              <div className="relative">
+                <Search size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-black/45" aria-hidden="true" />
+                <input
+                  id="faq-search"
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) => updateSearchQuery(event.target.value)}
+                  placeholder="例：駐車場、現金、ペット、楽天"
+                  className="h-12 w-full border border-black/20 bg-white py-3 pl-11 pr-12 font-sans-jp text-base text-black outline-none transition-colors placeholder:text-black/38 focus:border-[#d72677] focus:ring-2 focus:ring-[#d72677]/15"
+                  autoComplete="off"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => updateSearchQuery("")}
+                    aria-label="検索語をクリア"
+                    className="absolute right-1 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center text-black/55 transition-colors hover:text-[#d72677] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#d72677]"
+                  >
+                    <X size={18} aria-hidden="true" />
+                  </button>
+                )}
+              </div>
+              <div className="mt-5 flex items-center justify-between gap-4">
+                <p className="font-sans-jp text-xs font-bold tracking-[.14em] text-black/55">カテゴリから探す</p>
+                {normalizedQuery && <p className="shrink-0 font-sans-jp text-xs text-[#d72677]">検索結果：{visibleFaqs.length}件</p>}
+              </div>
               <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:flex-wrap md:px-0" aria-label="FAQカテゴリ">
                 {FAQ_CATEGORIES.map((category) => {
                   const isActive = activeCategory === category;
@@ -105,7 +146,13 @@ export default function FaqPage() {
             </div>
 
             <div className="border-t border-black/15" aria-live="polite">
-              {visibleFaqs.map((item, index) => {
+              {visibleFaqs.length === 0 ? (
+                <div className="border-b border-black/15 py-12 text-center">
+                  <p className="font-sans-jp text-base font-bold text-black">該当する質問が見つかりませんでした。</p>
+                  <p className="mt-3 font-sans-jp text-sm leading-7 text-black/58">別のキーワードで検索するか、「すべて」のカテゴリからお探しください。</p>
+                  <button type="button" onClick={() => { updateSearchQuery(""); selectCategory("すべて"); }} className="mt-6 min-h-11 border border-black/20 px-5 py-2.5 font-sans-jp text-sm font-bold text-black transition-colors hover:border-[#d72677] hover:text-[#d72677]">検索をリセット</button>
+                </div>
+              ) : visibleFaqs.map((item, index) => {
                 const isOpen = openQuestion === item.q;
                 const answerId = `faq-answer-${index + 1}`;
 

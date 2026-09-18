@@ -2,6 +2,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import MobileBottomNav from "./MobileBottomNav";
+import ScrollToTopButton from "./ScrollToTopButton";
 import { ReactNode } from "react";
 
 interface Props {
@@ -14,6 +15,7 @@ export default function PageLayout({ children }: Props) {
       <Header />
       <main className="relative z-10">{children}</main>
       <MobileBottomNav />
+      <ScrollToTopButton />
       <Footer />
     </div>
   );
