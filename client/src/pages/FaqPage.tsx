@@ -2,8 +2,9 @@
  * FaqPage — よくある質問
  * デザイン方針: 開催概要と同じ白背景・黒文字・横罫線の編集レイアウトで、来場前の疑問を短く解消する。
  */
+import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, ExternalLink, Info, Mail, MapPin, Ticket } from "lucide-react";
+import { ArrowRight, ExternalLink, Info, Mail, MapPin, Plus, Ticket } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -24,6 +25,8 @@ const FAQS = [
 ];
 
 export default function FaqPage() {
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+
   useSEO({
     title: "よくある質問 | 日田イルミナージュ2026",
     description: "日田イルミナージュ2026の開催時間、雨天時、料金、チケット、駐車場、アクセスに関するよくある質問をご案内します。",
@@ -45,20 +48,35 @@ export default function FaqPage() {
             </header>
 
             <div className="border-t border-black/15">
-              {FAQS.map((item, index) => (
-                <details key={item.q} className="group border-b border-black/15">
-                  <summary className="grid cursor-pointer list-none gap-4 py-6 md:grid-cols-[112px_1fr_30px] md:gap-10 md:py-8">
+              {FAQS.map((item, index) => {
+                const isOpen = openQuestion === item.q;
+                const answerId = `faq-answer-${index + 1}`;
+
+                return (
+                <article key={item.q} className="border-b border-black/15">
+                  <button
+                    type="button"
+                    onClick={() => setOpenQuestion(isOpen ? null : item.q)}
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
+                    className="grid w-full cursor-pointer gap-4 py-6 text-left outline-offset-4 transition-colors hover:text-[#d72677] focus-visible:outline-2 focus-visible:outline-[#d72677] md:grid-cols-[112px_1fr_30px] md:gap-10 md:py-8"
+                  >
                     <span className="font-display text-xs tracking-[.18em] text-[#d72677] md:pt-1">Q {String(index + 1).padStart(2, "0")}</span>
                     <span className="font-sans-jp text-base font-bold leading-8 text-black md:text-lg">{item.q}</span>
-                    <span className="relative hidden h-6 w-6 md:mt-1 md:block before:absolute before:left-1/2 before:top-1/2 before:h-px before:w-5 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-black after:absolute after:left-1/2 after:top-1/2 after:h-5 after:w-px after:-translate-x-1/2 after:-translate-y-1/2 after:bg-black after:transition-transform group-open:after:rotate-90" />
-                    <span className="relative h-5 w-5 md:hidden before:absolute before:left-0 before:top-1/2 before:h-px before:w-4 before:bg-black after:absolute after:left-2 after:top-0 after:h-4 after:w-px after:bg-black after:transition-transform group-open:after:rotate-90" />
-                  </summary>
-                  <div className="pb-8 md:grid md:grid-cols-[112px_1fr] md:gap-10 md:pb-10">
-                    <span className="hidden font-display text-xs tracking-[.18em] text-black/35 md:block">A</span>
-                    <p className="font-sans-jp text-sm leading-8 text-black/65 md:text-base md:leading-8">{item.a}</p>
+                    <Plus size={22} strokeWidth={1.5} className={`hidden justify-self-end text-black transition-transform duration-300 ease-[cubic-bezier(.23,1,.32,1)] md:mt-1 md:block ${isOpen ? "rotate-45 text-[#d72677]" : ""}`} aria-hidden="true" />
+                    <Plus size={19} strokeWidth={1.5} className={`justify-self-end text-black transition-transform duration-300 ease-[cubic-bezier(.23,1,.32,1)] md:hidden ${isOpen ? "rotate-45 text-[#d72677]" : ""}`} aria-hidden="true" />
+                  </button>
+                  <div id={answerId} role="region" aria-label={`${item.q}への回答`} className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(.23,1,.32,1)] motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                    <div className="min-h-0 overflow-hidden">
+                      <div className="pb-8 md:grid md:grid-cols-[112px_1fr] md:gap-10 md:pb-10">
+                        <span className="hidden font-display text-xs tracking-[.18em] text-black/35 md:block">A</span>
+                        <p className="font-sans-jp text-sm leading-8 text-black/65 md:text-base md:leading-8">{item.a}</p>
+                      </div>
+                    </div>
                   </div>
-                </details>
-              ))}
+                </article>
+                );
+              })}
             </div>
 
             <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
