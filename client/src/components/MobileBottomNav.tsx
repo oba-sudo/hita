@@ -7,7 +7,7 @@ import { CircleHelp, MapPin, Sparkles, Ticket } from "lucide-react";
 
 const ITEMS = [
   { href: "/events", label: "見どころ", icon: Sparkles },
-  { href: "/tickets", label: "チケット", icon: Ticket, primary: true },
+  { href: "/tickets", label: "前売り", icon: Ticket, primary: true },
   { href: "/access", label: "アクセス", icon: MapPin },
   { href: "/faq", label: "FAQ", icon: CircleHelp },
 ];

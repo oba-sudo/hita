@@ -65,9 +65,9 @@ export default function Events() {
           <div>
             <div className="mb-3 flex items-center gap-2 text-[#F43F8E]"><Sparkles size={16} /><span className="font-display text-[10px] tracking-[.24em]">READY FOR THE NIGHT?</span></div>
             <h2 className="font-serif-jp text-3xl font-semibold md:text-4xl">光の夜へ、出かけよう。</h2>
-            <p className="mt-3 font-sans-jp text-sm text-white/52">販売先・購入URLは順次公開します。</p>
+            <p className="mt-3 font-sans-jp text-sm text-white/52">前売りチケットの販売先・購入URLは順次公開します。</p>
           </div>
-          <Link href="/tickets" className="ticket-glow inline-flex items-center gap-2 rounded-full px-8 py-4 font-sans-jp text-sm font-bold text-white"><Ticket size={17} /> チケット情報を見る <ArrowRight size={14} /></Link>
+          <Link href="/tickets" className="ticket-glow inline-flex items-center gap-2 rounded-full px-8 py-4 font-sans-jp text-sm font-bold text-white"><Ticket size={17} /> 前売りチケット情報を見る <ArrowRight size={14} /></Link>
         </div>
       </section>
     </PageLayout>

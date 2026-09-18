@@ -14,8 +14,7 @@ const FAQS = [
   { q: "会場はどこですか？", a: "サッポロビール九州日田工場（〒877-0054 大分県日田市高瀬6979）です。" },
   { q: "駐車場はありますか？", a: "会場併設の無料駐車場を150台分ご用意する予定です。台数には限りがあるため、混雑時は時間に余裕をもってお越しください。" },
   { q: "入場料金を教えてください。", a: "大人（中学生以上）2,000円、子ども（1歳〜小学生）1,000円です。0歳のお子さまは無料です。" },
-  { q: "チケットはどこで購入できますか？", a: "各チケット販売会社での取扱いを予定しています。購入URLは決定次第、チケットページで公開します。当日券は会場受付で購入でき、お支払いは現金のみです。" },
-  { q: "WEBチケットの100円OFF特典とは何ですか？", a: "進撃の巨人ミュージアム、進撃の巨人カフェ 日田店、日田森のビール園をご利用の方が対象です。QRから割引チケットを取得し、入場時にご提示ください。" },
+  { q: "前売りチケットはどこで購入できますか？", a: "各チケット販売会社での取扱いを予定しています。購入URLは決定次第、前売りチケット情報ページで公開します。当日券は会場受付で購入でき、お支払いは現金のみです。" },
 ];
 
 export default function FaqPage() {
@@ -36,7 +35,7 @@ export default function FaqPage() {
               <p className="font-display text-[clamp(3.4rem,9vw,8.5rem)] font-semibold leading-none tracking-[-.045em] text-black">FAQ</p>
               <p className="mt-4 font-sans-jp text-sm font-bold tracking-[.2em] text-black/70">よくある質問</p>
               <div className="mx-auto mt-7 h-px w-24 bg-gradient-to-r from-[#F43F8E] via-[#F5C95D] to-[#55D9FF]" />
-              <p className="mx-auto mt-7 max-w-xl font-sans-jp text-sm leading-7 text-black/58">開催時間、チケット、駐車場など、ご来場前に知りたい情報をまとめています。</p>
+              <p className="mx-auto mt-7 max-w-xl font-sans-jp text-sm leading-7 text-black/58">開催時間、前売りチケット、駐車場など、ご来場前に知りたい情報をまとめています。</p>
             </header>
 
             <div className="border-t border-black/15">
@@ -63,7 +62,7 @@ export default function FaqPage() {
               </div>
               <div className="grid gap-3 sm:grid-cols-3 lg:flex">
                 <Link href="/tickets" className="inline-flex items-center justify-center gap-2 bg-[#171717] px-5 py-4 font-sans-jp text-sm font-bold text-white transition-colors hover:bg-[#d72677]">
-                  <Ticket size={15} /> チケット
+                  <Ticket size={15} /> 前売りチケット
                 </Link>
                 <Link href="/access" className="inline-flex items-center justify-center gap-2 border border-black/20 px-5 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:border-black hover:bg-black hover:text-white">
                   <MapPin size={15} /> アクセス

@@ -79,7 +79,7 @@ export default function Overview() {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link href="/tickets" className="inline-flex items-center justify-center gap-2 bg-[#171717] px-7 py-4 font-sans-jp text-sm font-bold text-white transition-colors hover:bg-[#d72677]">
-                  <Ticket size={16} /> チケット情報
+                  <Ticket size={16} /> 前売りチケット情報
                 </Link>
                 <Link href="/access" className="inline-flex items-center justify-center gap-2 border border-black/20 px-7 py-4 font-sans-jp text-sm font-bold text-black transition-colors hover:border-black hover:bg-black hover:text-white">
                   アクセス <ArrowRight size={16} />

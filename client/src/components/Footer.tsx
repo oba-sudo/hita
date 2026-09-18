@@ -8,7 +8,7 @@ import { RENEWAL_ASSETS } from "@/data/renewalAssets";
 
 const mainLinks = [
   { href: "/events", label: "イベント・見どころ" },
-  { href: "/tickets", label: "チケット" },
+  { href: "/tickets", label: "前売りチケット" },
   { href: "/faq", label: "よくある質問" },
   { href: "/access", label: "アクセス" },
   { href: "/news", label: "お知らせ" },
@@ -37,7 +37,7 @@ export default function Footer() {
               ))}
             </nav>
             <Link href="/tickets" className="ticket-glow mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 font-sans-jp text-xs font-bold text-white">
-              <Ticket size={14} /> チケット情報
+              <Ticket size={14} /> 前売りチケット情報
             </Link>
           </div>
 

@@ -14,7 +14,6 @@ export const RENEWAL_ASSETS = {
   officialKeyvisual: "/manus-storage/hita-illuminage-official-keyvisual-2026_53d9ca24.png",
   mainNight: "/manus-storage/main-night_6d59f88e.webp",
   eventKeyvisual: "/manus-storage/event-keyvisual_65a32828.webp",
-  ticketPromo: "/manus-storage/ticket-promo_dcf66932.webp",
   aerial: "/manus-storage/aerial_352af9e6.webp",
   ebisuPond: "/manus-storage/ebisu-pond_79cd3f2f.webp",
   spacePlaza: "/manus-storage/space-plaza_a8a70cbb.webp",

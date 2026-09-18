@@ -19,7 +19,7 @@ export default function Header() {
   const [eventsOpen, setEventsOpen] = useState(false);
   const [location] = useLocation();
   const eventsRef = useRef<HTMLDivElement>(null);
-  const hasLightPageSurface = ["/overview", "/faq", "/tickets", "/nearby-facilities"].includes(location);
+  const hasLightPageSurface = ["/overview", "/faq", "/tickets"].includes(location);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 28);
@@ -86,7 +86,6 @@ export default function Header() {
             <Link href="/overview" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">開催概要</Link>
             <Link href="/faq" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">よくある質問</Link>
             <Link href="/access" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">アクセス</Link>
-            <Link href="/nearby-facilities" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">近隣施設</Link>
             <Link href="/contact" className="font-sans-jp text-xs font-medium text-white/75 transition-colors hover:text-white">お問い合わせ</Link>
             <a href="https://www.instagram.com/hita_illuminage/" target="_blank" rel="noopener noreferrer" aria-label="日田イルミナージュ公式Instagram" className="text-white/65 transition-colors hover:text-[#FF83B7]">
               <Instagram size={16} />
@@ -102,8 +101,8 @@ export default function Header() {
               className="ticket-glow inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2.5 font-sans-jp text-xs font-bold text-white transition-transform active:scale-[.97] md:px-6 md:py-3"
             >
               <Ticket size={14} />
-              <span className="hidden sm:inline">チケット情報</span>
-              <span className="sm:hidden">チケット</span>
+              <span className="hidden sm:inline">前売りチケット情報</span>
+              <span className="sm:hidden">前売り</span>
             </Link>
             <button
               type="button"
@@ -142,7 +141,6 @@ export default function Header() {
             <div className="grid grid-cols-2 gap-px bg-white/10">
               <Link href="/overview" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">開催概要</Link>
               <Link href="/access" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">アクセス</Link>
-              <Link href="/nearby-facilities" className="bg-[#030513] px-3 py-5 text-center font-sans-jp text-sm text-white/75">近隣施設</Link>
               <Link href="/faq" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">よくある質問</Link>
               <Link href="/contact" className="bg-[#030513] px-4 py-5 text-center font-sans-jp text-sm text-white/75">お問い合わせ</Link>
             </div>
@@ -150,7 +148,7 @@ export default function Header() {
               <Instagram size={16} className="text-[#FF83B7]" /> 公式Instagram
             </a>
             <Link href="/tickets" className="ticket-glow mt-6 flex items-center justify-center gap-2 rounded-full px-6 py-4 font-sans-jp text-sm font-bold text-white">
-              <Ticket size={16} /> チケット情報を見る
+              <Ticket size={16} /> 前売りチケット情報を見る
             </Link>
           </nav>
         </div>

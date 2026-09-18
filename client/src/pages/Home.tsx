@@ -154,7 +154,7 @@ export default function Home() {
               <p className="mb-8 font-sans-jp text-[13px] leading-7 text-white/62 md:text-sm">2026年10月31日（土）から2027年1月31日（日）まで。<br className="hidden sm:block" />冬の日田が、光と遊びと驚きに包まれる93日間。</p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link href="/tickets" className="ticket-glow ticket-pulse inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 font-sans-jp text-sm font-bold text-white transition-transform active:scale-[.97]">
-                  <Ticket size={17} /> チケット情報を見る
+                  <Ticket size={17} /> 前売りチケット情報を見る
                 </Link>
                 <Link href="/events" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-black/10 px-7 py-4 font-sans-jp text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-white/60 hover:bg-white/10">
                   見どころをめぐる <ArrowRight size={15} />
@@ -258,7 +258,7 @@ export default function Home() {
               <img src={RENEWAL_ASSETS.officialKeyvisual} alt="日田イルミナージュ2026 公式ビジュアル" className="mx-auto max-h-[720px] w-auto border border-white/10 shadow-[0_26px_80px_rgba(0,0,0,.48)]" />
             </Reveal>
             <Reveal delay={100}>
-              <SectionTitle number="02" en="TICKETS">光の夜へ、<br />一歩先に。</SectionTitle>
+              <SectionTitle number="02" en="ADVANCE TICKETS">光の夜へ、<br />一歩先に。</SectionTitle>
               <div className="mb-8 grid grid-cols-2 gap-px bg-white/10">
                 <div className="bg-[#06081d] p-5 md:p-7">
                   <p className="font-sans-jp text-[10px] text-white/45">大人（中学生以上）</p>
@@ -269,13 +269,10 @@ export default function Home() {
                   <p className="constellation-number mt-2 font-display text-3xl md:text-4xl">¥1,000</p>
                 </div>
               </div>
-              <p className="mb-7 font-sans-jp text-sm leading-8 text-white/62">
-                進撃の巨人ミュージアム、進撃の巨人カフェ、日田森のビール園をご利用の方には、QRチケット提示で各100円OFFの特典をご用意しています。
-              </p>
               <Link href="/tickets" className="ticket-glow inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-sans-jp text-sm font-bold text-white transition-transform active:scale-[.97]">
-                <Ticket size={17} /> チケット情報を見る
+                <Ticket size={17} /> 前売りチケット情報を見る
               </Link>
-              <p className="mt-4 font-sans-jp text-[10px] leading-5 text-white/38">※当日券は会場受付で購入できます（現金のみ）。販売先・購入URLは順次公開します。割引は期間中お一人様1回限り、他割引との併用不可、転売・譲渡禁止です。</p>
+              <p className="mt-4 font-sans-jp text-[10px] leading-5 text-white/38">※当日券は会場受付で購入できます（現金のみ）。前売りチケットの販売先・購入URLは順次公開します。</p>
             </Reveal>
           </div>
         </section>

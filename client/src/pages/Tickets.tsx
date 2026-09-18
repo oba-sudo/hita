@@ -8,8 +8,8 @@ import { TICKET_SELLERS } from "@/data/renewalAssets";
 
 export default function Tickets() {
   useSEO({
-    title: "チケット・入場料金 | 日田イルミナージュ2026",
-    description: "日田イルミナージュ2026の入場料金、当日券、WEBチケット、取扱予定のチケット販売会社をご案内します。",
+    title: "前売りチケット・入場料金 | 日田イルミナージュ2026",
+    description: "日田イルミナージュ2026の前売りチケット、入場料金、当日券、取扱予定のチケット販売会社をご案内します。",
   });
 
   return (
@@ -20,8 +20,8 @@ export default function Tickets() {
 
         <div className="relative mx-auto max-w-[1240px]">
           <header className="mb-16 text-center md:mb-24">
-            <p className="font-display text-[clamp(3.4rem,9vw,8.5rem)] font-semibold leading-none tracking-[-.045em] text-black">TICKET</p>
-            <p className="mt-4 font-sans-jp text-sm font-bold tracking-[.2em] text-black/70">チケット・料金</p>
+            <p className="font-display text-[clamp(3.4rem,9vw,8.5rem)] font-semibold leading-none tracking-[-.045em] text-black">ADVANCE TICKET</p>
+            <p className="mt-4 font-sans-jp text-sm font-bold tracking-[.2em] text-black/70">前売りチケット情報・料金</p>
             <div className="mx-auto mt-7 h-px w-24 bg-gradient-to-r from-[#F43F8E] via-[#F5C95D] to-[#55D9FF]" />
           </header>
 
@@ -73,20 +73,20 @@ export default function Tickets() {
 
           <section className="mt-20 md:mt-28" aria-labelledby="sales-title">
             <div className="flex items-baseline gap-4 border-b border-black/15 pb-5">
-              <h2 id="sales-title" className="font-sans-jp text-xl font-bold tracking-[.08em] text-black md:text-2xl">チケット販売について</h2>
-              <span className="font-display text-[10px] tracking-[.2em] text-black/40">TICKET SALES</span>
+              <h2 id="sales-title" className="font-sans-jp text-xl font-bold tracking-[.08em] text-black md:text-2xl">前売りチケット販売について</h2>
+              <span className="font-display text-[10px] tracking-[.2em] text-black/40">ADVANCE TICKETS</span>
             </div>
 
             <div className="grid gap-5 border-b border-black/15 py-8 md:grid-cols-[200px_1fr] md:gap-10 md:py-10">
               <p className="font-sans-jp text-sm font-bold tracking-[.08em] text-black">販売URL</p>
               <div>
                 <p className="font-serif-jp text-2xl font-semibold leading-relaxed text-black md:text-3xl">販売URLは順次公開します</p>
-                <p className="mt-3 font-sans-jp text-sm leading-7 text-black/62 md:text-base">販売開始後、各チケット購入ページへのリンクを本ページに掲載します。取扱開始時期や販売内容は会社ごとに異なる場合があります。</p>
+                <p className="mt-3 font-sans-jp text-sm leading-7 text-black/62 md:text-base">販売開始後、各前売りチケット購入ページへのリンクを本ページに掲載します。取扱開始時期や販売内容は会社ごとに異なる場合があります。</p>
               </div>
             </div>
 
             <div className="mt-10 border-t border-black/15">
-              <p className="py-5 font-sans-jp text-sm font-bold tracking-[.08em] text-black">取扱予定のチケット販売会社</p>
+              <p className="py-5 font-sans-jp text-sm font-bold tracking-[.08em] text-black">前売りチケット取扱予定の販売会社</p>
               <div className="grid md:grid-cols-3">
                 {TICKET_SELLERS.map((seller, index) => (
                   <div key={seller} className="flex min-h-[82px] items-center gap-4 border-b border-black/15 py-5 md:border-r md:px-6 md:[&:nth-child(3n)]:border-r-0">
