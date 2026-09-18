@@ -17,6 +17,7 @@ import Privacy from "./pages/Privacy";
 import Events from "./pages/Events";
 import Tickets from "./pages/Tickets";
 import FaqPage from "./pages/FaqPage";
+import Partners from "./pages/Partners";
 import StarParticles from "./components/StarParticles";
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/tickets" component={Tickets} />
       <Route path="/ticket"><Redirect to="/tickets" /></Route>
       <Route path="/faq" component={FaqPage} />
+      <Route path="/partners" component={Partners} />
       <Route path="/nearby-facilities"><Redirect to="/tickets" /></Route>
       <Route path="/sponsor" component={SponsorLP} />
       <Route path="/privacy" component={Privacy} />

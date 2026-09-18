@@ -10,6 +10,7 @@ const mainLinks = [
   { href: "/events", label: "イベント・見どころ" },
   { href: "/tickets", label: "前売りチケット" },
   { href: "/faq", label: "よくある質問" },
+  { href: "/partners", label: "後援・協賛" },
   { href: "/access", label: "アクセス" },
   { href: "/news", label: "お知らせ" },
   { href: "/contact", label: "お問い合わせ" },
@@ -55,7 +56,7 @@ export default function Footer() {
             <div className="font-sans-jp text-[10px] leading-6 text-white/34">
               <p>主催：日田イルミナージュ実行委員会</p>
               <p>共催：<a href="https://skyhopbrew.com/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#55D9FF]">スカイホップブルーイング株式会社</a></p>
-              <p>後援：日田市・日田商工会議所・一般社団法人日田市観光協会・進撃の日田まちおこし協議会</p>
+              <p>後援：<Link href="/partners" className="transition-colors hover:text-[#55D9FF]">日田市・日田商工会議所・一般社団法人日田市観光協会・進撃の日田まちおこし協議会</Link></p>
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-2 md:justify-end">
               <Link href="/privacy" className="font-sans-jp text-[10px] text-white/32 transition-colors hover:text-white/65">プライバシーポリシー</Link>

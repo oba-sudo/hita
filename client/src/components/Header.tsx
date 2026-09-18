@@ -19,7 +19,7 @@ export default function Header() {
   const [eventsOpen, setEventsOpen] = useState(false);
   const [location] = useLocation();
   const eventsRef = useRef<HTMLDivElement>(null);
-  const hasLightPageSurface = ["/overview", "/faq", "/tickets"].includes(location);
+  const hasLightPageSurface = ["/overview", "/faq", "/tickets", "/partners"].includes(location);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 28);
