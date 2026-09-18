@@ -4,7 +4,7 @@
  */
 import { type ReactNode, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, ExternalLink, Info, Mail, MapPin, Plus, Search, Ticket, X } from "lucide-react";
+import { ArrowRight, ExternalLink, Info, Mail, MapPin, Plus, Search, ThumbsDown, ThumbsUp, Ticket, X } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { useSEO } from "@/hooks/useSEO";
 import { TICKET_PURCHASE_OPTIONS } from "@/data/renewalAssets";
@@ -62,6 +62,7 @@ export default function FaqPage() {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<FaqCategory>("すべて");
   const [searchQuery, setSearchQuery] = useState("");
+  const [feedbackByQuestion, setFeedbackByQuestion] = useState<Record<string, "yes" | "no">>({});
   const normalizedQuery = normalizeSearchText(searchQuery);
   const categoryFaqs = activeCategory === "すべて" ? FAQS : FAQS.filter((item) => item.category === activeCategory);
   const visibleFaqs = normalizedQuery
@@ -155,6 +156,7 @@ export default function FaqPage() {
               ) : visibleFaqs.map((item, index) => {
                 const isOpen = openQuestion === item.q;
                 const answerId = `faq-answer-${index + 1}`;
+                const feedback = feedbackByQuestion[item.q];
 
                 return (
                 <article key={item.q} className="border-b border-black/15">
@@ -174,7 +176,29 @@ export default function FaqPage() {
                     <div className="min-h-0 overflow-hidden">
                       <div className="pb-7 pl-10 pr-1 md:grid md:grid-cols-[112px_1fr] md:gap-10 md:pb-10 md:pl-0">
                         <span className="hidden font-display text-xs tracking-[.18em] text-black/35 md:block">A</span>
-                        <p className="font-sans-jp text-sm leading-7 text-black/65 md:text-base md:leading-8">{item.a}</p>
+                        <div>
+                          <p className="font-sans-jp text-sm leading-7 text-black/65 md:text-base md:leading-8">{item.a}</p>
+                          <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-black/10 pt-4">
+                            <p className="mr-1 font-sans-jp text-xs font-bold text-black/55">この回答は役に立ちましたか？</p>
+                            <button
+                              type="button"
+                              onClick={() => setFeedbackByQuestion((current) => ({ ...current, [item.q]: "yes" }))}
+                              aria-pressed={feedback === "yes"}
+                              className={`inline-flex min-h-10 items-center gap-1.5 border px-3 py-2 font-sans-jp text-xs font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d72677] ${feedback === "yes" ? "border-[#d72677] bg-[#d72677] text-white" : "border-black/20 bg-white text-black hover:border-[#d72677] hover:text-[#d72677]"}`}
+                            >
+                              <ThumbsUp size={14} aria-hidden="true" /> はい
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setFeedbackByQuestion((current) => ({ ...current, [item.q]: "no" }))}
+                              aria-pressed={feedback === "no"}
+                              className={`inline-flex min-h-10 items-center gap-1.5 border px-3 py-2 font-sans-jp text-xs font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d72677] ${feedback === "no" ? "border-[#171717] bg-[#171717] text-white" : "border-black/20 bg-white text-black hover:border-[#171717] hover:text-[#171717]"}`}
+                            >
+                              <ThumbsDown size={14} aria-hidden="true" /> いいえ
+                            </button>
+                            {feedback && <p className="basis-full pt-1 font-sans-jp text-xs text-[#d72677]" role="status">ご回答ありがとうございます。</p>}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
